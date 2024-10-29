@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import MovieSearch, home
+from .views import home, MovieSearch
 
 urlpatterns = [
     path('', home, name='home'),
-    path('search/', MovieSearch.as_view(), name='movie-search'),
+    path('api/search/', MovieSearch.as_view(), name='movie-search'),
 ]

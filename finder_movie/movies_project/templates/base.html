@@ -10,13 +10,32 @@
 </head>
 <body>
     <header>
-        <h1>Movie Finder</h1>
+        <nav class="navbar-content navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="d-flex align-items-center navbar-brand" href="{% url 'home' %}">Movie Finder</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link">#</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">#</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main>
         {% block content %}
-
         {% endblock %}
     </main>
+
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/movie-search.js' %}"></script>
 </body>
 </html>
