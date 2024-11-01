@@ -7,16 +7,26 @@ Home
 {% endblock %}
 
 {% block content %}
-<h2>Welcome to the Movie Finder API</h2>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="info-search col-md-6">
+            <h2 class="text-center">Welcome to the Movie Finder API</h2>
 
-<form id="movie-search-form">
-    <label for="query">Enter movie title:</label>
-    <input type="text" id="query" name="query" required>
-    <button type="submit">Search</button>
-</form>
+            <form id="movie-search-form" class="my-3">
+                <label for="query" class="form-label">Enter movie title:</label>
+                <div class="input-group">
+                    <input type="text" id="query" name="query" class="form-control" placeholder="Enter movie title"
+                        required>
+                    <div class="input-group-append ms-2">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
 
-<div id="movie-info">
+            <div id="movie-info" class="mt-4">
 
+            </div>
+        </div>
+    </div>
 </div>
-
 {% endblock %}
