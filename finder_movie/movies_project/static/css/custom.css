@@ -1,3 +1,36 @@
 .info-search {
-    margin-top: 11vh;
+    margin-top: 7vh;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.custom-navbar {
+    border-bottom: 2px solid rgb(150, 150, 150);
+}
+
+.custom-navbar a, .custom-footer p {
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-navbar a:hover {
+    color: rgb(181, 180, 180);
+}
+
+.custom-navbar, .custom-footer {
+    background-color: rgb(48, 48, 48);
+}
+
+.custom-footer {
+    padding-top: 1px; 
+    padding-bottom: 1px;
+    border-top: 2px solid rgb(150, 150, 150) ;
+
+}
+
+.custom-footer p {
+    margin-top: 11px;
 }
