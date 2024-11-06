@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,18 @@
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/custom.css' %}" rel="stylesheet">
 </head>
+
 <body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar-content navbar navbar-expand-lg custom-navbar">
             <div class="container">
-                <a class="d-flex align-items-center navbar-brand" href="{% url 'home' %}">MovieFinderApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="d-flex align-items-center navbar-brand" href="{% url 'home' %}">
+                    <img src="{% static 'images/logocinema1.png' %}" alt="Logo"
+                        style="width: 30px; height: 30px; margin-right: 8px;">
+                    MovieFinderApp
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -45,4 +52,5 @@
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/movie-search.js' %}"></script>
 </body>
+
 </html>
