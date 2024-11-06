@@ -71,19 +71,26 @@ main {
 }
 
 .form-control:focus {
-    border-color: rgb(254, 212, 115);
-    box-shadow: 0 0 0 0.2rem rgba(254, 212, 115, 0.665); 
+    /* border-color: rgb(254, 212, 115); */
+    border-color: rgb(255, 255, 255);
+    /* box-shadow: 0 0 0 0.2rem rgba(254, 212, 115, 0.665); */
+    box-shadow: 0 0 0 0.2rem rgba(209, 209, 209, 0.665); 
     outline: none;
 }
 
 .btn-custom {
-    background-color: rgb(138, 138, 138);; 
+    background-color: rgb(138, 138, 138); 
     color: white; 
     border: none; 
     border-radius: 5px; 
 }
 
 .btn-custom:hover {
-    background-color: rgb(253, 186, 31); 
+    /* background-color: rgb(251, 189, 42);  */
+    background-color: rgb(113, 158, 78); 
     color: #fff;
+}
+
+.input-radius {
+    border-radius: 14px; /* Скругление углов */
 }
