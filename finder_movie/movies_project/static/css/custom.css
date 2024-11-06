@@ -48,8 +48,8 @@ body {
 }
 
 main {
-    border-left: 2px solid rgb(150, 150, 150);
-    border-right: 2px solid rgb(150, 150, 150);
+    border-left: 1px solid rgb(150, 150, 150);
+    border-right: 1px solid rgb(150, 150, 150);
     padding-left: 11px;
     padding-right: 11px;
 }
@@ -68,4 +68,22 @@ main {
 
 .camera-movie img {
     border: 3px solid rgb(199, 199, 199);
+}
+
+.form-control:focus {
+    border-color: rgb(254, 212, 115);
+    box-shadow: 0 0 0 0.2rem rgba(254, 212, 115, 0.665); 
+    outline: none;
+}
+
+.btn-custom {
+    background-color: rgb(138, 138, 138);; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+}
+
+.btn-custom:hover {
+    background-color: rgb(253, 186, 31); 
+    color: #fff;
 }
