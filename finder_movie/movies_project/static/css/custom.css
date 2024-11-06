@@ -65,3 +65,7 @@ main {
 .link-font:hover {
     color: rgb(254, 212, 115);
 }
+
+.camera-movie img {
+    border: 3px solid rgb(199, 199, 199);
+}
