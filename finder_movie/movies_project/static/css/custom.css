@@ -10,14 +10,20 @@ body {
     border-bottom: 2px solid rgb(150, 150, 150);
 }
 
-.custom-navbar a, .custom-footer p {
+.custom-navbar a  {
     color: white;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
 }
 
 .custom-navbar a:hover {
-    color: rgb(181, 180, 180);
+    color: rgb(254, 212, 115);
+    -webkit-text-stroke: 0.3px white;
+}
+
+.custom-footer p {
+    font-weight: 400;
+    color: white;
 }
 
 .custom-navbar, .custom-footer {
@@ -27,10 +33,17 @@ body {
 .custom-footer {
     padding-top: 1px; 
     padding-bottom: 1px;
-    border-top: 2px solid rgb(150, 150, 150) ;
+    border-top: 2px solid rgb(150, 150, 150);
 
 }
 
 .custom-footer p {
     margin-top: 11px;
+}
+
+main {
+    border-left: 2px solid rgb(150, 150, 150);
+    border-right: 2px solid rgb(150, 150, 150);
+    padding-left: 11px;
+    padding-right: 11px;
 }
