@@ -90,6 +90,17 @@ body {
     border-bottom: 3px solid rgb(199, 199, 199);
 }
 
+.poster::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.271); /* Черный полупрозрачный фон */
+    pointer-events: none; /* Чтобы не мешать взаимодействию с изображением */
+}
+
 main {
     padding-top: 60px; 
 }
@@ -101,12 +112,28 @@ html {
 .text-overlay {
     opacity: 1;
     z-index: 1000;
-    filter: brightness(1.1) contrast(1.3);
+    filter: brightness(1.40) contrast(1.40);
     text-shadow: 
-        4px 4px 0px rgb(72, 72, 72), 
-        -2px -2px 0px rgb(72, 72, 72), 
-        2px -2px 0px rgb(72, 72, 72), 
-        -2px 2px 0px rgb(72, 72, 72);
+        4px 4px 0px rgb(54, 54, 54), 
+        -2px -2px 0px rgb(67, 67, 67), 
+        2px -2px 0px rgb(67, 66, 66), 
+        -2px 2px 0px rgb(76, 76, 76);
+}
+
+.text-overlay h1 {
+    font-family: "Rowdies", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+    font-size: 3.4em;
+}
+
+.text-overlay p {
+    font-family: "Play", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.4em;
+    letter-spacing: 1px;
 }
 
 .custom-footer a {
