@@ -97,8 +97,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.271); /* Черный полупрозрачный фон */
-    pointer-events: none; /* Чтобы не мешать взаимодействию с изображением */
+    background-color: rgba(0, 0, 0, 0.308); 
+    pointer-events: none; 
 }
 
 main {
