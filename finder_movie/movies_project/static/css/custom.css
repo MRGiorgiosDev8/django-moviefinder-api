@@ -100,8 +100,9 @@ html {
 
 .text-overlay {
     opacity: 1;
+    z-index: 1000;
     text-shadow: 
-        2px 2px 0px rgb(72, 72, 72), 
+        4px 4px 0px rgb(72, 72, 72), 
         -2px -2px 0px rgb(72, 72, 72), 
         2px -2px 0px rgb(72, 72, 72), 
         -2px 2px 0px rgb(72, 72, 72);
