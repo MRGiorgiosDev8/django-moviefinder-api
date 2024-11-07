@@ -49,12 +49,7 @@ body {
     margin-top: 11px;
 }
 
-main {
-    border-left: 1px solid #303030;
-    border-right: 1px solid #303030;
-    /* padding-left: 11px;
-    padding-right: 11px; */
-}
+
 
 .link-font {
     font-family: "Viaoda Libre", serif;
