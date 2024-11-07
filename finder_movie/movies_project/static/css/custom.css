@@ -6,9 +6,9 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-/* .custom-navbar {
-    border-bottom: 2px solid rgb(150, 150, 150);
-} */
+.custom-navbar {
+    z-index: 1050;
+}
 
 .custom-navbar .logo-font {
     color: white;
@@ -49,8 +49,6 @@ body {
     margin-top: 11px;
 }
 
-
-
 .link-font {
     font-family: "Viaoda Libre", serif;
     font-weight: 400;
@@ -86,4 +84,25 @@ body {
     /* background-color: rgb(251, 189, 42);  */
     background-color: rgb(167, 167, 167); 
     color: #fff;
+}
+
+.poster img {
+    border-bottom: 3px solid rgb(199, 199, 199);
+}
+
+main {
+    padding-top: 60px; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.text-overlay {
+    opacity: 1;
+    text-shadow: 
+        2px 2px 0px rgb(72, 72, 72), 
+        -2px -2px 0px rgb(72, 72, 72), 
+        2px -2px 0px rgb(72, 72, 72), 
+        -2px 2px 0px rgb(72, 72, 72);
 }

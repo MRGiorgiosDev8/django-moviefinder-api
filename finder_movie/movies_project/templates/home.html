@@ -7,8 +7,12 @@ Home
 {% endblock %}
 
 {% block content %}
-<div class="w-100">
-    <img src="{% static 'images/poster.png' %}" alt="Poster" class="img-fluid" style="width: 100%; opacity:0.87;">
+<div class="poster w-100" style="position: relative;">
+    <img src="{% static 'images/poster.png' %}" alt="Poster" class="img-fluid" style="width: 100%; opacity: 0.87;">
+    <div class="text-overlay" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+        <h1>MovieFinder</h1>
+        <p>Lorem Ipsum</p>
+    </div>
 </div>
 <div class="container">
     <div class="row justify-content-center">
