@@ -107,3 +107,7 @@ html {
         2px -2px 0px rgb(72, 72, 72), 
         -2px 2px 0px rgb(72, 72, 72);
 }
+
+.custom-footer a {
+    color: #fff; 
+}
