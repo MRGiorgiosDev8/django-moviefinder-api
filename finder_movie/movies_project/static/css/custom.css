@@ -6,9 +6,9 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-.custom-navbar {
+/* .custom-navbar {
     border-bottom: 2px solid rgb(150, 150, 150);
-}
+} */
 
 .custom-navbar .logo-font {
     color: white;
@@ -50,10 +50,10 @@ body {
 }
 
 main {
-    border-left: 1px solid rgb(150, 150, 150);
-    border-right: 1px solid rgb(150, 150, 150);
-    padding-left: 11px;
-    padding-right: 11px;
+    border-left: 1px solid #303030;
+    border-right: 1px solid #303030;
+    /* padding-left: 11px;
+    padding-right: 11px; */
 }
 
 .link-font {
