@@ -86,7 +86,7 @@ body {
     color: #fff;
 }
 
-.poster img {
+.poster{
     border-bottom: 3px solid rgb(199, 199, 199);
 }
 
@@ -97,7 +97,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.308); 
+    background-color: rgba(0, 0, 0, 0.271); 
     pointer-events: none; 
 }
 
@@ -109,10 +109,9 @@ html {
     scroll-behavior: smooth;
 }
 
-.text-overlay {
+.text-overlay{
     opacity: 1;
     z-index: 1000;
-    filter: brightness(1.40) contrast(1.40);
     text-shadow: 
         4px 4px 0px rgb(54, 54, 54), 
         -2px -2px 0px rgb(67, 67, 67), 
@@ -120,12 +119,12 @@ html {
         -2px 2px 0px rgb(76, 76, 76);
 }
 
-.text-overlay h1 {
+.text-overlay h1  {
     font-family: "Rowdies", sans-serif;
     font-weight: 400;
     font-style: normal;
     letter-spacing: 1px;
-    font-size: 3.4em;
+    font-size: 4.7em;
 }
 
 .text-overlay p {
@@ -134,6 +133,14 @@ html {
     font-style: normal;
     font-size: 1.4em;
     letter-spacing: 1px;
+}
+
+.text-overlay h1 p {
+    filter: brightness(1.70) contrast(1.70);
+}
+
+.popcornimg {
+    filter: brightness(1.03) contrast(1.03);
 }
 
 .custom-footer a {
@@ -167,4 +174,28 @@ html {
 
 .gmail-icon:hover {
     color: #fc695bf8 !important; 
+}
+
+.d-span {
+    color: #d8f6ca;
+}
+
+.f-span {
+    color: rgb(255, 255, 145);
+}
+
+.d-span, .f-span {
+    font-family: "Rowdies", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4em;
+}
+
+.i-span {
+    padding: 3px;
+    background-color: #edc748;
+    font-family: "Rowdies", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 0.3px;
 }

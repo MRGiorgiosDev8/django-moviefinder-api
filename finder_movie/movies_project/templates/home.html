@@ -8,12 +8,18 @@ Home
 
 {% block content %}
 <div class="poster w-100" style="position: relative;">
-    <img src="{% static 'images/poster.png' %}" alt="Poster" class="img-fluid" style="width: 100%; opacity: 0.84;">
+    <img src="{% static 'images/poster.png' %}" alt="Poster" class="img-fluid" style="width: 100%; opacity: 0.94;">
+
     <div class="text-overlay" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
-        <h1>MovieFinder</h1>
-        <p>The project utilizes the IMDB API and is developed using Django and Frontend technologies.</p>
+        <div class="title-container" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <img src="{% static 'images/pocornart.png' %}" class="popcornimg" alt="Popcorn Left" style="width: 80px; height: auto;">
+            <h1>MovieFinder</h1>
+            <img src="{% static 'images/pocornart.png' %}" class="popcornimg" alt="Popcorn Right" style="width: 80px; height: auto;">
+        </div>
+        <p>The project utilizes the <span class="i-span">IMDB API</span> and is developed using <span class="d-span">Django</span> and <span class="f-span">Frontend</span> technologies.</p>
     </div>
 </div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="info-search col-md-6">
