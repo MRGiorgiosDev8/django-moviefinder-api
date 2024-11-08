@@ -1,23 +1,54 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     fetch(`/api/random-high-rated/`)
         .then(response => response.json())
         .then(data => {
             const randomMovieInfo = document.getElementById("random-movie-info");
-            randomMovieInfo.innerHTML = "<h2>High-Rated Random Movies</h2>";
+            randomMovieInfo.innerHTML = "";
 
             if (data.movies && data.movies.length > 0) {
-                data.movies.forEach(movie => {
-                    randomMovieInfo.innerHTML += `
-                        <div class="movie-card">
-                            <h3>${movie.Title} (${movie.Year})</h3>
-                            <img src="${movie.Poster}" alt="${movie.Title} Poster" style="width:100px;height:auto;">
+                const carouselInner = document.createElement("div");
+                carouselInner.classList.add("carousel-inner");
+
+                for (let i = 0; i < data.movies.length; i += 7) {
+                    const carouselItem = document.createElement("div");
+                    carouselItem.classList.add("carousel-item");
+                    if (i === 0) carouselItem.classList.add("active");
+
+                    const cardGroup = document.createElement("div");
+                    cardGroup.classList.add("d-flex", "justify-content-center", "gap-3");
+
+                    data.movies.slice(i, i + 7).forEach(movie => {
+                        const movieCard = document.createElement("div");
+                        movieCard.classList.add("movie-card", "card", "text-center", "p-2");
+
+                        movieCard.innerHTML = `
+                            <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid mb-3" style="width:150px; height:auto;">
+                            <p><strong>${movie.Title}</strong> (${movie.Year})</p>
                             <p><strong>IMDb Rating:</strong> ${movie.imdbRating}</p>
-                            <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank">View on IMDb</a>
-                        </div>
-                    `;
-                });
+                            <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link">View on IMDb</a>
+                        `;
+                        cardGroup.appendChild(movieCard);
+                    });
+
+                    carouselItem.appendChild(cardGroup);
+                    carouselInner.appendChild(carouselItem);
+                }
+
+                randomMovieInfo.appendChild(carouselInner);
+                randomMovieInfo.insertAdjacentHTML("beforeend", `
+                    <button class="carousel-control-prev" type="button" data-bs-target="#random-movie-info" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#random-movie-info" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                `);
+
+                randomMovieInfo.id = "movieCarousel";
             } else {
-                randomMovieInfo.innerHTML += `<p>No high-rated movies found.</p>`;
+                randomMovieInfo.innerHTML = `<p>No high-rated movies found.</p>`;
             }
         })
         .catch(error => {
@@ -25,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 });
 
-document.getElementById("movie-search-form").addEventListener("submit", function(event) {
+document.getElementById("movie-search-form").addEventListener("submit", function (event) {
     event.preventDefault();
     const query = document.getElementById("query").value;
 
@@ -38,15 +69,23 @@ document.getElementById("movie-search-form").addEventListener("submit", function
             if (data.error) {
                 movieInfo.innerHTML = `<p>${data.error}</p>`;
             } else {
+                const cardContainer = document.createElement("div");
+                cardContainer.classList.add("d-flex", "flex-wrap", "justify-content-start");
+
                 data.movies.forEach(movie => {
-                    movieInfo.innerHTML += `
-                        <div class="movie-card">
-                            <h3>${movie.Title} (${movie.Year})</h3>
-                            <img src="${movie.Poster}" alt="${movie.Title} Poster" style="width:100px;height:auto;">
-                            <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank">View on IMDb</a>
-                        </div>
+                    const movieCard = document.createElement("div");
+                    movieCard.classList.add("movie-card", "d-flex", "flex-column", "align-items-center", "m-3", "card");
+
+                    movieCard.innerHTML = `
+                        <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid mb-3" style="width:150px; height:auto;">
+                        <h3>${movie.Title} (${movie.Year})</h3>
+                        <p><strong>IMDb Rating:</strong> ${movie.imdbRating}</p>
+                        <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link">View on IMDb</a>
                     `;
+                    cardContainer.appendChild(movieCard);
                 });
+
+                movieInfo.appendChild(cardContainer);
             }
         })
         .catch(error => {

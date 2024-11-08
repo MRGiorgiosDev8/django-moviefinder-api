@@ -20,8 +20,12 @@ body {
 }
 
 .custom-navbar .logo-font:hover {
-    color: #ffffff;
+    color: #feeebb;
     -webkit-text-stroke: 0.3px white;
+}
+
+.logo-text {
+    font-size: 1.4rem;
 }
 
 .custom-footer p {
@@ -191,4 +195,38 @@ html {
     font-weight: 400;
     font-style: normal;
     border-radius: 0.3px;
+}
+
+.movie-card {
+    width: 150px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px; 
+    overflow: hidden; 
+    background-color: white;
+}
+
+.movie-card img {
+    border-radius: 8px; 
+}
+
+.carousel-item {
+    text-align: center;
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.movie-card img {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+.carousel .carousel-control-prev-icon,
+.carousel .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
 }

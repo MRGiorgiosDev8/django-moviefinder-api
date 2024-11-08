@@ -16,18 +16,24 @@ Home
             <h1>MovieFinder</h1>
             <img src="{% static 'images/pocornart.png' %}" class="popcornimg" alt="Popcorn Right" style="width: 80px; height: auto;">
         </div>
-        <p>The project utilizes the <span class="i-span">IMDB API</span> and is developed using <span class="d-span">Django</span> and <span class="f-span">Frontend</span> technologies.</p>
+        <p>The project utilizes the <span class="i-span">IMDb API</span> and is developed using <span class="d-span">Django</span> and <span class="f-span">Frontend</span> technologies.</p>
     </div>
 </div>
 
 <div class="container mt-4">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h3>Random High-Rated Movies</h3>
-        </div>
-    </div>
-    <div class="row" id="random-movie-info">
+    <h2 class="text-center">Rated Movies</h2>
+    <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner" id="random-movie-info">
 
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </div>
 
