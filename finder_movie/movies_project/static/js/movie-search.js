@@ -5,21 +5,21 @@ document.getElementById("movie-search-form").addEventListener("submit", function
     fetch(`/api/search/?query=${query}`)
         .then(response => response.json())
         .then(data => {
+            const movieInfo = document.getElementById("movie-info");
+            movieInfo.innerHTML = ""; 
+
             if (data.error) {
-                document.getElementById("movie-info").innerHTML = `<p>${data.error}</p>`;
+                movieInfo.innerHTML = `<p>${data.error}</p>`;
             } else {
-                document.getElementById("movie-info").innerHTML = `
-                    <h3>${data.Title} (${data.Year})</h3>
-                    <img src="${data.Poster}" alt="${data.Title} Poster" style="width:100px;height:auto;">
-                    <p><strong>Rated:</strong> ${data.Rated}</p>
-                    <p><strong>Released:</strong> ${data.Released}</p>
-                    <p><strong>Runtime:</strong> ${data.Runtime}</p>
-                    <p><strong>Genre:</strong> ${data.Genre}</p>
-                    <p><strong>Director:</strong> ${data.Director}</p>
-                    <p><strong>Actors:</strong> ${data.Actors}</p>
-                    <p><strong>Plot:</strong> ${data.Plot}</p>
-                    <p><strong>IMDb Rating:</strong> ${data.imdbRating}</p>
-                `;
+                data.movies.forEach(movie => {
+                    movieInfo.innerHTML += `
+                        <div class="movie-card">
+                            <h3>${movie.Title} (${movie.Year})</h3>
+                            <img src="${movie.Poster}" alt="${movie.Title} Poster" style="width:100px;height:auto;">
+                            <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank">View on IMDb</a>
+                        </div>
+                    `;
+                });
             }
         })
         .catch(error => {
