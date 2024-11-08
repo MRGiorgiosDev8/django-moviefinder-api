@@ -61,28 +61,21 @@ body {
     color: rgb(254, 212, 115);
 }
 
-.camera-movie img {
-    border: 3px solid rgb(199, 199, 199);
-}
-
 .form-control:focus {
-    /* border-color: rgb(254, 212, 115); */
-    border-color: rgb(255, 255, 255);
-    /* box-shadow: 0 0 0 0.2rem rgba(254, 212, 115, 0.665); */
-    box-shadow: 0 0 0 0.2rem rgba(209, 209, 209, 0.665); 
+    border-color: #656565;
+    box-shadow: 0 0 0 0.1rem #656565; 
     outline: none;
 }
 
 .btn-custom {
-    background-color: rgb(138, 138, 138); 
+    background-color: #656565; 
     color: white; 
     border: none; 
     border-radius: 5px; 
 }
 
 .btn-custom:hover {
-    /* background-color: rgb(251, 189, 42);  */
-    background-color: rgb(167, 167, 167); 
+    background-color: #a5b978; 
     color: #fff;
 }
 
