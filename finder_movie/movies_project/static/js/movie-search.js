@@ -9,20 +9,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 const carouselInner = document.createElement("div");
                 carouselInner.classList.add("carousel-inner");
 
-                for (let i = 0; i < data.movies.length; i += 7) {
+                for (let i = 0; i < data.movies.length; i += 5) {
                     const carouselItem = document.createElement("div");
                     carouselItem.classList.add("carousel-item");
                     if (i === 0) carouselItem.classList.add("active");
 
                     const cardGroup = document.createElement("div");
-                    cardGroup.classList.add("d-flex", "justify-content-center", "gap-3");
+                    cardGroup.classList.add("d-flex", "justify-content-center");
 
-                    data.movies.slice(i, i + 7).forEach(movie => {
+                    data.movies.slice(i, i + 5).forEach(movie => {
                         const movieCard = document.createElement("div");
-                        movieCard.classList.add("movie-card", "card", "text-center", "p-2");
+                        movieCard.classList.add("movie-card", "card", "text-center");
 
                         movieCard.innerHTML = `
-                            <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid mb-3" style="width:150px; height:auto;">
+                            <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" style="height: 300px;">
                             <p><strong>${movie.Title}</strong> (${movie.Year})</p>
                             <p><strong>IMDb Rating:</strong> ${movie.imdbRating}</p>
                             <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link">View on IMDb</a>
