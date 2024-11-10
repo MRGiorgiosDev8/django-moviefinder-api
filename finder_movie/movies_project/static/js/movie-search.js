@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             const randomMovieInfo = document.getElementById("random-movie-info");
             randomMovieInfo.innerHTML = "";
+            const ratedTitle = document.createElement("h2");
+            ratedTitle.classList.add("rated-h2");
+            ratedTitle.textContent = "Rated Movies";
+            randomMovieInfo.appendChild(ratedTitle);
 
             if (data.movies && data.movies.length > 0) {
                 const carouselInner = document.createElement("div");
@@ -22,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         movieCard.classList.add("movie-card", "card", "text-center");
 
                         movieCard.innerHTML = `
-                            <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" style="height: 300px;">
-                            <p><strong>${movie.Title}</strong> (${movie.Year})</p>
+                            <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" style="height: 307px;">
+                            <p><strong>${movie.Title}</strong></p>
                             <p><strong>IMDb Rating:</strong> ${movie.imdbRating}</p>
                             <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link">View on IMDb</a>
                         `;
