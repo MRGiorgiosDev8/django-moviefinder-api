@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             0.7px -0.7px 0.7px #656565,
                             -0.7px  0.7px 0.7px #656565,
                             0.7px  0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
-                            <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link">View on IMDb</a>
+                             <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link link-imbd">
+                                <i class="fa fa-hand-point-right"></i> <span class="imbd-text">IMDb</span>
+                             </a>
                         `;
                         cardGroup.appendChild(movieCard);
                     });
