@@ -28,7 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         movieCard.innerHTML = `
                             <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" style="height: 307px;">
                             <p><strong>${movie.Title}</strong></p>
-                            <p><i class="fa fa-star" style="color: Gold;"></i> ${movie.imdbRating}</p>
+                            <p><i class="fa fa-star" style="color: #FFD700; text-shadow: 
+                            -0.7px -0.7px 0.7px #656565,
+                            0.7px -0.7px 0.7px #656565,
+                            -0.7px  0.7px 0.7px #656565,
+                            0.7px  0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
                             <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link">View on IMDb</a>
                         `;
                         cardGroup.appendChild(movieCard);
