@@ -58,7 +58,7 @@ body {
     font-weight: 400;
     font-style: normal;
     color: white;
-    transition: ease-in-out  0.3s all;
+    transition: ease-in-out 0.3s all;
 }
 
 .link-font:hover {
@@ -67,23 +67,23 @@ body {
 
 .form-control:focus {
     border-color: #656565;
-    box-shadow: 0 0 0 0.1rem #656565; 
+    box-shadow: 0 0 0 0.1rem #656565;
     outline: none;
 }
 
 .btn-custom {
-    background-color: #656565; 
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
+    background-color: #656565;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
 .btn-custom:hover {
-    background-color: #a5b978; 
+    background-color: #a5b978;
     color: #fff;
 }
 
-.poster{
+.poster {
     border-bottom: 3px solid rgb(199, 199, 199);
 }
 
@@ -94,29 +94,29 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.271); 
-    pointer-events: none; 
+    background-color: rgba(0, 0, 0, 0.271);
+    pointer-events: none;
 }
 
 main {
-    padding-top: 60px; 
+    padding-top: 60px;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-.text-overlay{
+.text-overlay {
     opacity: 1;
     z-index: 1000;
-    text-shadow: 
-        4px 4px 0px rgb(54, 54, 54), 
-        -2px -2px 0px rgb(67, 67, 67), 
-        2px -2px 0px rgb(67, 66, 66), 
+    text-shadow:
+        4px 4px 0px rgb(54, 54, 54),
+        -2px -2px 0px rgb(67, 67, 67),
+        2px -2px 0px rgb(67, 66, 66),
         -2px 2px 0px rgb(76, 76, 76);
 }
 
-.text-overlay h1  {
+.text-overlay h1 {
     font-family: "Rowdies", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -141,36 +141,36 @@ html {
 }
 
 .custom-footer a {
-    color: #fff; 
+    color: #fff;
 }
 
 .nav-link {
-    color: inherit !important; 
+    color: inherit !important;
 }
 
 .nav-link:hover {
-    color: inherit !important; 
-    text-decoration: none !important; 
+    color: inherit !important;
+    text-decoration: none !important;
 }
 
 .github-icon,
 .telegram-icon,
 .gmail-icon {
-    transition: color 0.3s ease; 
+    transition: color 0.3s ease;
     font-size: 1.6em;
     color: white;
 }
 
 .github-icon:hover {
-    color: #b0b0b0 !important; 
+    color: #b0b0b0 !important;
 }
 
 .telegram-icon:hover {
-    color: #40bcfaf1 !important; 
+    color: #40bcfaf1 !important;
 }
 
 .gmail-icon:hover {
-    color: #fc695bf8 !important; 
+    color: #fc695bf8 !important;
 }
 
 .d-span {
@@ -181,7 +181,8 @@ html {
     color: rgb(255, 255, 145);
 }
 
-.d-span, .f-span {
+.d-span,
+.f-span {
     font-family: "Rowdies", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -202,9 +203,9 @@ html {
     flex-direction: column;
     align-items: center;
     width: 230px;
-    height: auto; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    border-radius: 10px; 
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     overflow: hidden;
     /* background-image: linear-gradient(170deg, #cfcfcf, #ffffff);  */
     /* background-image: linear-gradient(170deg, #e6e6e6, #e9e9e9); */
@@ -217,7 +218,7 @@ html {
 
 .movie-card p {
     font-size: 1em;
-    overflow: hidden;        
+    overflow: hidden;
     white-space: nowrap;
     line-height: 1em;
     font-family: "Play", sans-serif;
@@ -241,13 +242,16 @@ html {
     /* color: #ffffff; */
     /* color: rgb(202, 202, 202); */
     color: rgb(207, 207, 207);
-    background: linear-gradient(90deg, rgb(245, 238, 161) 0%, #fef0af 16%, #ffffff 16%);
+    background-color: #e7c85f;
+    width: 16%;
+    padding: 3px;
+    border-radius: 7px;
     filter: contrast(1.1) brightness(1.1);
-    text-shadow: 
-    2px 2px 0px rgb(73, 73, 73), 
-    -2px -2px 0px rgb(91, 91, 91), 
-    2px -2px 0px rgb(111, 111, 111), 
-    -2px 2px 0px rgb(116, 116, 116)
+    text-shadow:
+        2px 2px 0px rgb(73, 73, 73),
+        -2px -2px 0px rgb(91, 91, 91),
+        2px -2px 0px rgb(111, 111, 111),
+        -2px 2px 0px rgb(116, 116, 116)
 }
 
 .carousel-inner {
@@ -262,12 +266,13 @@ html {
     text-decoration: none;
 }
 
-.imbd-text, .fa-hand-point-right {
-    text-shadow: 
-    0.8px 0.8px 0px rgb(54, 54, 54), 
-    -0.8px -0.8px 0px rgb(67, 67, 67), 
-    0.8px -0.8px 0px rgb(67, 66, 66), 
-    -0.8px 0.8px 0px rgb(76, 76, 76);
+.imbd-text,
+.fa-hand-point-right {
+    text-shadow:
+        0.8px 0.8px 0px rgb(54, 54, 54),
+        -0.8px -0.8px 0px rgb(67, 67, 67),
+        0.8px -0.8px 0px rgb(67, 66, 66),
+        -0.8px 0.8px 0px rgb(76, 76, 76);
 }
 
 .imbd-text {
@@ -283,4 +288,14 @@ html {
 
 .fa-hand-point-right {
     color: #fae4d4;
+}
+
+.p-card {
+    color: #f6e5d6;
+    font-weight: 400;
+    text-shadow:
+    1px 1px 0px rgb(0, 0, 0),
+    -1px -1px 0px rgb(0, 0, 0),
+    1px -1px 0px rgb(0, 0, 0),
+    -1px 1px 0px rgb(0, 0, 0);
 }
