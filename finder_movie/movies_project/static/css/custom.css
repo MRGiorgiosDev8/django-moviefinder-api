@@ -217,7 +217,6 @@ html {
 }
 
 .movie-card p {
-    font-size: 1em;
     overflow: hidden;
     white-space: nowrap;
     line-height: 1em;
@@ -242,10 +241,10 @@ html {
     /* color: #ffffff; */
     /* color: rgb(202, 202, 202); */
     color: rgb(207, 207, 207);
-    background-color: #e7c85f;
+    background-color: #e0c15e;
     width: 16%;
     /* border: 2px double #656565c0; */
-    border: 2px double #656565;
+    border: 2px double #ffffff7f;
     padding: 3px;
     border-radius: 7px;
     filter: contrast(1.1) brightness(1.1);
@@ -293,10 +292,10 @@ html {
 }
 
 .p-card {
-    color: #e9d9cd;
+    color: #ffffff;
     text-shadow:
-    0.8px 0.8px 0px rgb(43, 43, 43),
-    -0.8px -0.8px 0px rgb(42, 42, 42),
-    0.8px -0.8px 0px rgb(48, 48, 48),
+    1px 1px 0px rgb(43, 43, 43),
+    -1px -1px 0px rgb(42, 42, 42),
+    1px -1px 0px rgb(48, 48, 48),
     -0.8px 0.8px 0.8px rgb(42, 42, 42);
 }
