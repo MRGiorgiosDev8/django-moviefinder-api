@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         rotation: 360,
         duration: 1,
         ease: "none",
+        ease: "power1.inOut",
         repeat: -1
     });
 
@@ -54,6 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
                              </a>
                         `;
                         cardGroup.appendChild(movieCard);
+
+                        gsap.fromTo(movieCard, { x: -100 }, { x: 0,  duration: 0.3, ease: "power1.inOut"  });
                     });
 
                     carouselItem.appendChild(cardGroup);
@@ -114,6 +117,8 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                         <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link">View on IMDb</a>
                     `;
                     cardContainer.appendChild(movieCard);
+
+                    gsap.fromTo(movieCard, { x: -100 }, { x: 0,  duration: 0.3, ease: "power1.inOut"});
                 });
 
                 movieInfo.appendChild(cardContainer);
