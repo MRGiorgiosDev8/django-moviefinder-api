@@ -7,23 +7,29 @@ Home
 {% endblock %}
 
 {% block content %}
-
 <div class="poster w-100" style="position: relative;">
     <img src="{% static 'images/poster.png' %}" alt="Poster" class="img-fluid" style="width: 100%; opacity: 0.94;">
 
-    <div class="text-overlay" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+    <div class="text-overlay"
+        style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
         <div class="title-container" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-            <img src="{% static 'images/pocornart.png' %}" class="popcornimg" alt="Popcorn Left" style="width: 80px; height: auto;">
+            <img src="{% static 'images/pocornart.png' %}" class="popcornimg" alt="Popcorn Left"
+                style="width: 80px; height: auto;">
             <h1>MovieFinder</h1>
-            <img src="{% static 'images/pocornart.png' %}" class="popcornimg" alt="Popcorn Right" style="width: 80px; height: auto;">
+            <img src="{% static 'images/pocornart.png' %}" class="popcornimg" alt="Popcorn Right"
+                style="width: 80px; height: auto;">
         </div>
-        <p>The project utilizes the <span class="i-span">IMDb API</span> and is developed using <span class="d-span">Django</span> and <span class="f-span">Frontend</span> technologies.</p>
+        <p>The project utilizes the <span class="i-span">IMDb API</span> and is developed using <span
+                class="d-span">Django</span> and <span class="f-span">Frontend</span> technologies.</p>
     </div>
 </div>
 
 <div class="container col-12 mt-4">
     <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" id="random-movie-info">
+            <div id="spinner-container">
+                <div class="spinner"></div>
+            </div>
 
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
@@ -42,11 +48,12 @@ Home
         <div class="info-search col-md-6">
             <div class="camera-movie text-center mb-3">
                 <img src="{% static 'images/clapperboard.gif' %}" alt="Movie Camera" class="img-fluid"
-                     style="width: 200px; height: 200px; border-radius: 30px; opacity: 0.8;">
+                    style="width: 200px; height: 200px; border-radius: 30px; opacity: 0.8;">
             </div>
             <form id="movie-search-form" class="my-3">
                 <div class="input-group">
-                    <input type="text" id="query" name="query" class="form-control input-radius" placeholder="Enter movie title" required>
+                    <input type="text" id="query" name="query" class="form-control input-radius"
+                        placeholder="Enter movie title" required>
                     <div class="input-group-append ms-2">
                         <button type="submit" class="btn btn-custom">Search</button>
                     </div>

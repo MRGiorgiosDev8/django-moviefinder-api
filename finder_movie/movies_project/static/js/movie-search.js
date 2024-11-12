@@ -1,13 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const randomMovieInfo = document.getElementById("random-movie-info");
+
+    const spinnerContainer = document.createElement("div");
+    spinnerContainer.id = "spinner-container";
+    randomMovieInfo.appendChild(spinnerContainer);
+
+    gsap.set("#spinner-container", { opacity: 1 });
+
+    gsap.to(".spinner", {
+        rotation: 360,
+        duration: 1,
+        ease: "none",
+        repeat: -1
+    });
+
     fetch(`/api/random-high-rated/`)
         .then(response => response.json())
         .then(data => {
-            const randomMovieInfo = document.getElementById("random-movie-info");
             randomMovieInfo.innerHTML = "";
             const ratedTitle = document.createElement("h2");
             ratedTitle.classList.add("rated-h2");
             ratedTitle.textContent = "Rated Movies";
             randomMovieInfo.appendChild(ratedTitle);
+
+            gsap.to("#spinner-container", { opacity: 0, duration: 0.5 });
 
             if (data.movies && data.movies.length > 0) {
                 const carouselInner = document.createElement("div");
@@ -28,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         movieCard.innerHTML = `
                             <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" style="height: 307px;">
                             <p class="p-card" style="font-size: 18px;"><strong>${movie.Title}</strong></p>
-                            <p><i class="fa fa-star" style="color: #FFD700; text-shadow: 
+                            <p><i class="fa fa-star" style="color: #FFD700; text-shadow:
                             -0.7px -0.7px 0.7px #656565,
                             0.7px -0.7px 0.7px #656565,
                             -0.7px  0.7px 0.7px #656565,
@@ -62,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         })
         .catch(error => {
-            document.getElementById("random-movie-info").innerHTML = `<p>An error occurred: ${error}</p>`;
+            randomMovieInfo.innerHTML = `<p>An error occurred: ${error}</p>`;
         });
 });
 
@@ -70,11 +86,16 @@ document.getElementById("movie-search-form").addEventListener("submit", function
     event.preventDefault();
     const query = document.getElementById("query").value;
 
+    const spinnerContainer = document.getElementById("spinner-container");
+    gsap.set(spinnerContainer, { opacity: 1 });
+
     fetch(`/api/search/?query=${query}`)
         .then(response => response.json())
         .then(data => {
             const movieInfo = document.getElementById("movie-info");
             movieInfo.innerHTML = "";
+
+            gsap.to(spinnerContainer, { opacity: 0, duration: 0.5 });
 
             if (data.error) {
                 movieInfo.innerHTML = `<p>${data.error}</p>`;
