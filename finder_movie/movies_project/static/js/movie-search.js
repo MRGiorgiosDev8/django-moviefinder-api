@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     gsap.to(".spinner", {
         rotation: 360,
         duration: 1,
-        ease: "none",
         ease: "power1.inOut",
         repeat: -1
     });
@@ -23,6 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
             ratedTitle.classList.add("rated-h2");
             ratedTitle.textContent = "Rated Movies";
             randomMovieInfo.appendChild(ratedTitle);
+
+              gsap.fromTo(".rated-h2",
+                { scale: 0, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.4 }
+            );
 
             gsap.to("#spinner-container", { opacity: 0, duration: 0.5 });
 
@@ -65,11 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 randomMovieInfo.appendChild(carouselInner);
                 randomMovieInfo.insertAdjacentHTML("beforeend", `
-                    <button class="carousel-control-prev" type="button" data-bs-target="#random-movie-info" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#random-movie-info" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -98,7 +102,7 @@ document.getElementById("movie-search-form").addEventListener("submit", function
             const movieInfo = document.getElementById("movie-info");
             movieInfo.innerHTML = "";
 
-            gsap.to(spinnerContainer, { opacity: 0, duration: 0.5 });
+            gsap.to(spinnerContainer, { opacity: 0, duration: 0.4, ease: "power1.inOut" });
 
             if (data.error) {
                 movieInfo.innerHTML = `<p>${data.error}</p>`;
