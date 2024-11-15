@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
             randomMovieInfo.innerHTML = "";
             const ratedTitle = document.createElement("h2");
             ratedTitle.classList.add("rated-h2");
-            ratedTitle.textContent = "Rated Movies";
+            ratedTitle.textContent = "Top 20 Movies";
             randomMovieInfo.appendChild(ratedTitle);
 
               gsap.fromTo(".rated-h2",
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         movieCard.innerHTML = `
                             <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" style="height: 307px;">
-                            <p class="p-card" style="font-size: 18px;"><strong>${movie.Title}</strong></p>
+                            <p class="p-card"><strong>${movie.Title}</strong></p>
                             <p><i class="fa fa-star" style="color: #FFD700; text-shadow:
                             -0.7px -0.7px 0.7px #656565,
                             0.7px -0.7px 0.7px #656565,

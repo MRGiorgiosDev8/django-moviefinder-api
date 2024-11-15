@@ -236,14 +236,14 @@ html {
 .carousel .carousel-control-prev,
 .carousel .carousel-control-next {
     width: 3%; 
-    margin-bottom: 11px; 
+    margin-bottom: 11px;
 }
 
 .carousel .carousel-control-prev-icon,
 .carousel .carousel-control-next-icon {
     background-color: #a5b978;
     border-radius: 30%;
-    padding: 10px; 
+    padding: 10px;
 }
 
 .rated-h2 {
@@ -252,7 +252,7 @@ html {
     font-weight: 300;
     color: white;
     background-color: #e0c15e;
-    width: 16%;
+    width: 17%;
     border: 2px double #ffffff;
     padding: 3px;
     border-radius: 7px;
@@ -302,7 +302,9 @@ html {
 }
 
 .p-card {
-    color: #4b4b4b;
+    color: #383838;
+    opacity: 0.87;
+    font-size: 1.3em;
     font-weight: 400;
     filter: contrast(1.4) brightness(1.4);
     text-shadow:

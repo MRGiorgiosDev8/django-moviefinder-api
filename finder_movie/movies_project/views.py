@@ -1,6 +1,5 @@
 from django.shortcuts import render
 import requests
-import random
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -46,30 +45,30 @@ class MovieSearch(APIView):
 class RandomHighRatedMovies(APIView):
     def get(self, request):
         api_key = 'caf8f515'
-        high_rated_movies = []
-        rating_threshold = 7.0
+        movies_top = []
 
-        random_keywords = ["action", "adventure", "comedy", "drama", "horror", "sci-fi", "fantasy", "romance"]
-        random.shuffle(random_keywords)
+        movie_titles = [
+            "The Penguin", "The Substance", "Deadpool & Wolverine", "Alien: Romulus",
+            "Agatha All Along", "Smile 2", "Arcane", "The Apprentice", "The Batman",
+            "Furiosa: A Mad Max Saga", "Joker: Folie à Deux", "The Lord of the Rings: The Rings of Power",
+            "The Boys", "The Legend of Vox Machina", "Cyberpunk: Edgerunners", "Loki",
+            "Beetlejuice Beetlejuice", "Madame Web", "X-Men '97", "Stranger Things"
+        ]
 
-        for keyword in random_keywords[:5]:
-            url = f'http://www.omdbapi.com/?s={keyword}&apikey={api_key}'
+        for title in movie_titles:
+            url = f'http://www.omdbapi.com/?t={title}&apikey={api_key}'
             response = requests.get(url)
-            data = response.json()
+            movie_data = response.json()
 
-            if response.status_code == 200 and data.get('Response') != 'False':
-                for item in data.get('Search', []):
-                    movie_details_url = f'http://www.omdbapi.com/?i={item.get("imdbID")}&apikey={api_key}'
-                    movie_response = requests.get(movie_details_url)
-                    movie_data = movie_response.json()
+            if response.status_code == 200 and movie_data.get('Response') != 'False':
+                movies_top.append({
+                    "Title": movie_data.get('Title'),
+                    "Year": movie_data.get('Year'),
+                    "Poster": movie_data.get('Poster'),
+                    "imdbRating": movie_data.get('imdbRating'),
+                    "Genre": movie_data.get('Genre'),
+                    "Plot": movie_data.get('Plot'),
+                    "imdbID": movie_data.get('imdbID')
+                })
 
-                    if movie_data.get('imdbRating') and float(movie_data.get('imdbRating')) >= rating_threshold:
-                        high_rated_movies.append({
-                            "Title": movie_data.get('Title'),
-                            "Year": movie_data.get('Year'),
-                            "Poster": movie_data.get('Poster'),
-                            "imdbRating": movie_data.get('imdbRating'),
-                            "imdbID": movie_data.get('imdbID')
-                        })
-
-        return Response({"movies": high_rated_movies}, status=status.HTTP_200_OK)
+        return Response({"movies": movies_top}, status=status.HTTP_200_OK)
