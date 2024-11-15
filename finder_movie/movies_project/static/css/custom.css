@@ -11,17 +11,12 @@ body {
 }
 
 .custom-navbar .logo-font {
-    color: rgba(255, 255, 255, 0.938);
+    color: #ffffff;
     transition: all 0.3s ease-in-out;
     font-family: "Rowdies", sans-serif;
     font-weight: 400;
     font-style: normal;
     letter-spacing: 0.7px;
-}
-
-.custom-navbar .logo-font:hover {
-    color: #feeebb;
-    -webkit-text-stroke: 0.3px white;
 }
 
 .logo-text {
@@ -57,12 +52,6 @@ body {
     font-family: "Viaoda Libre", serif;
     font-weight: 400;
     font-style: normal;
-    color: white;
-    transition: ease-in-out 0.3s all;
-}
-
-.link-font:hover {
-    color: rgb(254, 212, 115);
 }
 
 .form-control:focus {
@@ -145,11 +134,7 @@ html {
 }
 
 .nav-link {
-    color: inherit !important;
-}
-
-.nav-link:hover {
-    color: inherit !important;
+    color: white !important;
     text-decoration: none !important;
 }
 
