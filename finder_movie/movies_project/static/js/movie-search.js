@@ -107,25 +107,33 @@ document.getElementById("movie-search-form").addEventListener("submit", function
             if (data.error) {
                 movieInfo.innerHTML = `<p>${data.error}</p>`;
             } else {
-                const cardContainer = document.createElement("div");
-                cardContainer.classList.add("d-flex", "flex-wrap", "justify-content-start");
+                const listContainer = document.createElement("ul");
+                listContainer.classList.add("list-group", "w-100");
 
-                data.movies.forEach(movie => {
-                    const movieCard = document.createElement("div");
-                    movieCard.classList.add("movie-card", "d-flex", "flex-column", "align-items-center", "m-3", "card");
+                data.movies.forEach((movie, index) => {
+                    const listItem = document.createElement("li");
+                    listItem.classList.add("list-group-item", "d-flex", "align-items-center", "mb-2");
 
-                    movieCard.innerHTML = `
-                        <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid mb-3" style="width:150px; height:auto;">
-                        <h3>${movie.Title} (${movie.Year})</h3>
-                        <p><strong>IMDb Rating:</strong> ${movie.imdbRating}</p>
-                        <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link">View on IMDb</a>
+                    listItem.innerHTML = `
+                        <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-thumbnail me-3" style="width:100px; height:auto;">
+                        <div>
+                            <h5>${movie.Title} (${movie.Year})</h5>
+                            <p class="mb-1"><strong>IMDb Rating:</strong> ${movie.imdbRating}</p>
+                            <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link p-0">View on IMDb</a>
+                        </div>
                     `;
-                    cardContainer.appendChild(movieCard);
+                    listContainer.appendChild(listItem);
 
-                    gsap.fromTo(movieCard, { x: -100 }, { x: 0,  duration: 0.3, ease: "power1.inOut"});
+                    if (index < data.movies.length - 1) {
+                        const hr = document.createElement("hr");
+                        hr.style.border = "1px solid #ccc"; 
+                        listContainer.appendChild(hr);
+                    }
+
+                    gsap.fromTo(listItem, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power1.inOut" });
                 });
 
-                movieInfo.appendChild(cardContainer);
+                movieInfo.appendChild(listContainer);
             }
         })
         .catch(error => {

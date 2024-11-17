@@ -28,12 +28,22 @@ Home
     <a href="#movie-search-form" class="btn scroll-button">Search Movies</a>
 </div>
 
+<div class="container col-12 mt-4">
+    <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner" id="random-movie-info">
+            <div id="spinner-container">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container mt-5">
     <div class="row justify-content-center text-center">
 
         <div class="col-md-4 mb-4">
             <a href="https://www.imdb.com" target="_blank" class="btn btn-outline w-100">
-                Visit IMDb
+                IMDb
             </a>
             <p class="mt-2">
                 IMDb (Internet Movie Database) — the largest database of movies, TV shows, and actors.
@@ -42,10 +52,10 @@ Home
 
         <div class="col-md-4 mb-4">
             <a href="https://www.omdbapi.com/" target="_blank" class="btn btn-outline w-100">
-                Visit OMDb API
+                OMDb API
             </a>
             <p class="mt-2">
-                OMDb API — an open API for retrieving data about movies and TV shows from IMDb.
+                OMDb API — an unofficial open API for retrieving data about movies and TV shows, including information from IMDb.
             </p>
         </div>
 
@@ -60,25 +70,15 @@ Home
     </div>
 </div>
 
-<div class="container col-12 mt-4">
-    <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner" id="random-movie-info">
-            <div id="spinner-container">
-                <div class="spinner"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="container">
     <div class="row justify-content-center">
-        <div class="info-search col-md-6">
+        <div class="info-search col-md-8">
             <div class="camera-movie text-center mb-3">
                 <img src="{% static 'images/clapperboard.gif' %}" alt="Movie Camera" class="img-fluid"
                     style="width: 200px; height: 200px; border-radius: 30px; opacity: 0.8;">
             </div>
             <form id="movie-search-form" class="my-3">
-                <div class="input-group">
+                <div class="input-group input-custom-width">
                     <input type="text" id="query" name="query" class="form-control input-radius"
                         placeholder="Enter movie title" required>
                     <div class="input-group-append ms-2">
