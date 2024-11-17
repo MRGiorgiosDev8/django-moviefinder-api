@@ -61,14 +61,17 @@ body {
 }
 
 .btn-custom {
-    background-color: #656565;
+    background-color: #99ab70;
     color: white;
     border: none;
+    border: 0.4px double white;
+    box-shadow: 0px 4px 8px rgba(82, 82, 82, 0.3);
+    font-weight: bold;
     border-radius: 5px;
 }
 
 .btn-custom:hover {
-    background-color: #a5b978;
+    background-color: #a5b978d2;
     color: #fff;
 }
 
@@ -336,3 +339,17 @@ html {
     border: none;
 }
 
+.btn-link-search {
+    padding: 11px;
+    background-color: #99ab70;
+    color: white;
+    font-weight: bold;
+    border: 0.6px double white;
+    box-shadow: 0px 4px 8px rgba(82, 82, 82, 0.3);
+    transition: all ease-in-out 0.3s;
+}
+
+.btn-link-search:hover {
+    background-color:  #a5b978d2;
+    color: white;
+}
