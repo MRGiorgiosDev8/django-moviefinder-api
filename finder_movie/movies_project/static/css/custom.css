@@ -64,7 +64,7 @@ body {
     background-color: #99ab70;
     color: white;
     border: none;
-    border: 0.4px double white;
+    border: 0.3px solid white;
     box-shadow: 0px 4px 8px rgba(82, 82, 82, 0.3);
     font-weight: bold;
     border-radius: 5px;
@@ -192,14 +192,15 @@ html {
     align-items: center;
     width: 230px;
     height: auto;
-    box-shadow: 0px 6px 12px rgba(61, 61, 61, 0.2), 0px 4px 6px rgba(60, 60, 60, 0.15);
+    box-shadow: 0px 6px 12px rgba(72, 72, 72, 0.2), 0px 4px 6px rgba(85, 85, 85, 0.15);
     border-radius: 10px;
     overflow: hidden;
     background-image: linear-gradient(140deg, #f1f1f1, #ebebebe5);
+    /* background-color: whitesmoke; */
     margin: auto;
     color: black;
-    border: 2px double #5e5e5e;
-    padding: 3px;
+    border: 0.8px solid #777777;
+    padding: 2px;
     scale: 1;
     transition: all ease-in-out 0.3s;
     cursor: pointer;
@@ -213,7 +214,7 @@ html {
     overflow: hidden;
     white-space: nowrap;
     line-height: 1em;
-    font-family: "Play", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .movie-card img {
@@ -223,7 +224,7 @@ html {
 
 .carousel .carousel-control-prev,
 .carousel .carousel-control-next {
-    width: 3%; 
+    width: 3%;
     margin-bottom: 11px;
 }
 
@@ -241,7 +242,7 @@ html {
     color: white;
     background-color: #e0c15e;
     width: 17%;
-    border: 2px double #ffffff;
+    border: 1px solid #ffffff;
     padding: 3px;
     border-radius: 7px;
     filter: contrast(1.1) brightness(1.1);
@@ -290,16 +291,16 @@ html {
 }
 
 .p-card {
-    color: #383838;
+    color: #383838ef;
     opacity: 0.87;
     font-size: 1.1em;
     font-weight: 400;
     filter: contrast(1.4) brightness(1.4);
     text-shadow:
-    1px 1px 0px rgb(255, 255, 255),
-    -1px -1px 0px rgb(255, 255, 255),
-    1px -1px 0px rgb(255, 255, 255),
-    -1px 1px 1px rgb(255, 255, 255);
+        1px 1px 0px rgb(255, 255, 255),
+        -1px -1px 0px rgb(255, 255, 255),
+        1px -1px 0px rgb(255, 255, 255),
+        -1px 1px 1px rgb(255, 255, 255);
 }
 
 #spinner-container {
@@ -319,8 +320,8 @@ html {
 }
 
 .input-custom-width {
-    max-width: 600px; 
-    margin: 0 auto; 
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #movie-info {
@@ -332,7 +333,7 @@ html {
     margin: 0;
     list-style-type: none;
     padding: 3px;
-    border: 2px double #5e5e5e6f;
+    border: 1.4px solid #dcdcdc;
 }
 
 #movie-info .list-group-item {
@@ -344,12 +345,69 @@ html {
     background-color: #99ab70;
     color: white;
     font-weight: bold;
-    border: 0.6px double white;
+    border: 0.7px solid white;
     box-shadow: 0px 4px 8px rgba(82, 82, 82, 0.3);
     transition: all ease-in-out 0.3s;
 }
 
 .btn-link-search:hover {
-    background-color:  #a5b978d2;
+    background-color: #a5b978d2;
     color: white;
+}
+
+.link-urls {
+    padding: 7px;
+    border: 1.4px solid #7e7e7e72;
+    border-radius: 7px;
+    margin-top: 7vh;
+    background-color: rgba(245, 245, 245, 0.482);
+    box-shadow: 1px 1px 7px rgba(58, 58, 58, 0.2);
+}
+
+.content-urls {
+    transform: translateY(11px);
+}
+
+.content-urls p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+    background-color: #4040400f;
+    border: 1px solid #5e5e5e2b;
+    padding: 7px;
+    border-radius: 7px;
+}
+
+.content-urls a {
+    font-size: 1.4em;
+    font-family: "Play", sans-serif;
+    color: #607eb3;
+}
+
+.btn-link-url {
+    transition: all ease-in-out;
+    border-left: 1px solid #f9db76;
+    border-radius: 0%;
+    border-width: 7px;
+    height: 40px;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+.btn-link-url:hover {
+    color: #607eb3;
+    border-left: 1px solid #f9db76;
+    border-radius: 0%;
+    border-width: 7px;
+    height: 40px;
+    line-height: 14px;
+}
+
+.arrow-icon {
+    width: 36px;
+    height: 20px;
+    margin-left: 1px;
+    display: none; 
+    position: relative;
 }
