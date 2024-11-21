@@ -383,9 +383,10 @@ html {
     font-size: 1.4em;
     font-family: "Play", sans-serif;
     color: #607eb3;
+    text-decoration: none;
 }
 
-.btn-link-url {
+ .btn-link-url {
     transition: all ease-in-out;
     border-left: 1px solid #f9db76;
     border-radius: 0%;
@@ -395,7 +396,7 @@ html {
     white-space: nowrap;
 }
 
-.btn-link-url:hover {
+ .btn-link-url:hover {
     color: #607eb3;
     border-left: 1px solid #f9db76;
     border-radius: 0%;
@@ -410,4 +411,10 @@ html {
     margin-left: 1px;
     display: none; 
     position: relative;
+}
+
+.bold-text {
+    font-weight: 500;
+    color: rgb(59, 59, 59);
+    opacity: 0.8;
 }
