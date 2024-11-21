@@ -7,7 +7,7 @@ links.forEach(link => {
         gsap.killTweensOf(arrow);
 
         gsap.set(arrow, { display: 'inline-block', opacity: 0, x: 0 });
-        gsap.to(arrow, { opacity: 1, duration: 0.3 });
+        gsap.to(arrow, { opacity: 0.6, duration: 0.3 });
 
         gsap.to(arrow, {
             x: 7,

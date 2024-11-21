@@ -7,7 +7,6 @@ from rest_framework import status
 def home(request):
     return render(request, 'home.html')
 
-
 class MovieSearch(APIView):
     def get(self, request):
         query = request.query_params.get('query')

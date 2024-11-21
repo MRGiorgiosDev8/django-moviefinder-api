@@ -117,9 +117,16 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                     listItem.innerHTML = `
                         <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-thumbnail me-3" style="width:100px; height:auto;">
                         <div>
-                            <h5>${movie.Title} (${movie.Year})</h5>
-                            <p class="mb-1"><strong>IMDb Rating:</strong> ${movie.imdbRating}</p>
-                            <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link p-0">View on IMDb</a>
+                            <h5>${movie.Title}</h5>
+                            <p style="margin-left:1px;" class="text-muted">${movie.Year}</p>
+                             <p style="padding:0; margin-right:3vh;"><i class="fa fa-star" style="color: #FFD700; text-shadow:
+                             -0.7px -0.7px 0.7px #656565,
+                             0.7px -0.7px 0.7px #656565,
+                             -0.7px 0.7px 0.7px #656565,
+                             0.7px 0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
+                            <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" style="padding:0; margin-right:3vh;" class="btn btn-link link-imbd">
+                                <i class="fa fa-hand-point-right"></i> <span class="imbd-text">IMDb</span>
+                            </a>
                         </div>
                     `;
                     listContainer.appendChild(listItem);
