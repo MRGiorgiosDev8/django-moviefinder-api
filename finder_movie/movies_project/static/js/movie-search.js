@@ -1,34 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
     const randomMovieInfo = document.getElementById("random-movie-info");
 
-    const spinnerContainer = document.createElement("div");
-    spinnerContainer.id = "spinner-container";
-    randomMovieInfo.appendChild(spinnerContainer);
-
-    gsap.set("#spinner-container", { opacity: 1 });
-
-    gsap.to(".spinner", {
-        rotation: 360,
-        duration: 1,
-        ease: "power1.inOut",
-        repeat: -1
-    });
+    randomMovieInfo.innerHTML = `
+        <div id="spinner-container" class="d-flex justify-content-center my-5">
+            <div class="spinner-border custom-spinner" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    `;
 
     fetch(`/api/random-high-rated/`)
         .then(response => response.json())
         .then(data => {
             randomMovieInfo.innerHTML = "";
+
             const ratedTitle = document.createElement("h2");
             ratedTitle.classList.add("rated-h2");
             ratedTitle.textContent = "Top 20 Movies";
             randomMovieInfo.appendChild(ratedTitle);
 
-              gsap.fromTo(".rated-h2",
+            gsap.fromTo(
+                ".rated-h2",
                 { scale: 0, opacity: 0 },
                 { scale: 1, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.4 }
             );
-
-            gsap.to("#spinner-container", { opacity: 0, duration: 0.5 });
 
             if (data.movies && data.movies.length > 0) {
                 const carouselInner = document.createElement("div");
@@ -60,7 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         `;
                         cardGroup.appendChild(movieCard);
 
-                        gsap.fromTo(movieCard, { x: -100 }, { x: 0,  duration: 0.3, ease: "power1.inOut"  });
+                        gsap.fromTo(
+                            movieCard,
+                            { x: -100 },
+                            { x: 0, duration: 0.3, ease: "power1.inOut" }
+                        );
                     });
 
                     carouselItem.appendChild(cardGroup);
@@ -68,7 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 randomMovieInfo.appendChild(carouselInner);
-                randomMovieInfo.insertAdjacentHTML("beforeend", `
+                randomMovieInfo.insertAdjacentHTML(
+                    "beforeend",
+                    `
                     <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
@@ -77,15 +78,16 @@ document.addEventListener("DOMContentLoaded", function () {
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
-                `);
+                    `
+                );
 
                 randomMovieInfo.id = "movieCarousel";
             } else {
-                randomMovieInfo.innerHTML = `<p>No high-rated movies found.</p>`;
+                randomMovieInfo.innerHTML = `<p>Не найдено ни одного фильма.</p>`;
             }
         })
         .catch(error => {
-            randomMovieInfo.innerHTML = `<p>An error occurred: ${error}</p>`;
+            randomMovieInfo.innerHTML = `<p>Произошла ошибка: ${error}</p>`;
         });
 });
 
@@ -93,16 +95,19 @@ document.getElementById("movie-search-form").addEventListener("submit", function
     event.preventDefault();
     const query = document.getElementById("query").value;
 
-    const spinnerContainer = document.getElementById("spinner-container");
-    gsap.set(spinnerContainer, { opacity: 1 });
+    const movieInfo = document.getElementById("movie-info");
+    movieInfo.innerHTML = `
+        <div class="d-flex justify-content-center mt-3">
+            <div class="spinner-border custom-spinner" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    `;
 
     fetch(`/api/search/?query=${query}`)
         .then(response => response.json())
         .then(data => {
-            const movieInfo = document.getElementById("movie-info");
             movieInfo.innerHTML = "";
-
-            gsap.to(spinnerContainer, { opacity: 0, duration: 0.4, ease: "power1.inOut" });
 
             if (data.error) {
                 movieInfo.innerHTML = `<p>${data.error}</p>`;
@@ -119,11 +124,13 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                         <div>
                             <h5>${movie.Title}</h5>
                             <p style="margin-left:1px;" class="text-muted">${movie.Year}</p>
-                             <p style="padding:0; margin-right:3vh;"><i class="fa fa-star" style="color: #FFD700; text-shadow:
-                             -0.7px -0.7px 0.7px #656565,
-                             0.7px -0.7px 0.7px #656565,
-                             -0.7px 0.7px 0.7px #656565,
-                             0.7px 0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
+                            <p style="padding:0; margin-right:3vh;">
+                                <i class="fa fa-star" style="color: #FFD700; text-shadow:
+                                -0.7px -0.7px 0.7px #656565,
+                                0.7px -0.7px 0.7px #656565,
+                                -0.7px 0.7px 0.7px #656565,
+                                0.7px 0.7px 0.7px #656565;"></i> ${movie.imdbRating}
+                            </p>
                             <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" style="padding:0; margin-right:3vh;" class="btn btn-link link-imbd">
                                 <i class="fa fa-hand-point-right"></i> <span class="imbd-text">IMDb</span>
                             </a>
@@ -133,7 +140,7 @@ document.getElementById("movie-search-form").addEventListener("submit", function
 
                     if (index < data.movies.length - 1) {
                         const hr = document.createElement("hr");
-                        hr.style.border = "1px solid #ccc"; 
+                        hr.style.border = "1px solid #ccc";
                         listContainer.appendChild(hr);
                     }
 
@@ -144,6 +151,6 @@ document.getElementById("movie-search-form").addEventListener("submit", function
             }
         })
         .catch(error => {
-            document.getElementById("movie-info").innerHTML = `<p>An error occurred: ${error}</p>`;
+            movieInfo.innerHTML = `<p>Произошла ошибка: ${error}</p>`;
         });
 });

@@ -72,26 +72,29 @@ class RandomHighRatedMovies(APIView):
 
         return Response({"movies": movies_top}, status=status.HTTP_200_OK)
 
-class ActorSearch(APIView):
+class TopActors(APIView):
     def get(self, request):
-        query = request.query_params.get('query')
-        if not query:
-            return Response({"error": "Необходим параметр запроса"}, status=status.HTTP_400_BAD_REQUEST)
-
         api_key = 'e90ced8e264cab6fc8eea78db7a99128'
-        url = f'https://api.themoviedb.org/3/search/person?api_key={api_key}&query={query}&language=en-US'
-        response = requests.get(url)
-        data = response.json()
+        actors_top = []
 
-        if response.status_code != 200 or not data.get('results'):
-            return Response({"error": "Актеры не найдены или произошла ошибка API TMDB"}, status=status.HTTP_404_NOT_FOUND)
+        actor_names = [
+            "Cristin Milioti", "Margaret Qualley", "Colin Farrell", "Demi Moore", "Ryan Reynolds",
+            "Cailee Spaeny", "Kathryn Hahn", "Aubrey Plaza", "Robert Pattinson", "Anya Taylor-Joy",
+            "Zoë Kravitz", "Chris Hemsworth", "Joaquin Phoenix", "Lady Gaga", "Morfydd Clark",
+            "Antony Starr", "Erin Moriarty", "Tom Hiddleston", "Sophia Di Martino", "Winona Ryder"
+        ]
 
-        actors = []
-        for actor in data.get('results', []):
-            actors.append({
-                "Name": actor.get('name'),
-                "ProfileImage": f"https://image.tmdb.org/t/p/w500{actor.get('profile_path')}" if actor.get('profile_path') else None,
-                "KnownFor": [movie.get('title') or movie.get('name') for movie in actor.get('known_for', [])]
-            })
+        for name in actor_names:
+            url = f'https://api.themoviedb.org/3/search/person?api_key={api_key}&query={name}&language=en-US'
+            response = requests.get(url)
+            actor_data = response.json()
 
-        return Response({"actors": actors}, status=status.HTTP_200_OK)
+            if response.status_code == 200 and actor_data.get('results'):
+                actor = actor_data['results'][0]
+                actors_top.append({
+                    "Name": actor.get('name'),
+                    "ProfileImage": f"https://image.tmdb.org/t/p/w500{actor.get('profile_path')}" if actor.get('profile_path') else None,
+                    "KnownFor": [movie.get('title') or movie.get('name') for movie in actor.get('known_for', [])]
+                })
+
+        return Response({"actors": actors_top}, status=status.HTTP_200_OK)

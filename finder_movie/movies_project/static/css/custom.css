@@ -196,7 +196,6 @@ html {
     border-radius: 10px;
     overflow: hidden;
     background-image: linear-gradient(140deg, #f1f1f1, #ebebebe5);
-    /* background-color: whitesmoke; */
     margin: auto;
     color: black;
     border: 0.8px solid #777777;
@@ -417,4 +416,25 @@ html {
     font-weight: 500;
     color: rgb(59, 59, 59);
     opacity: 0.8;
+}
+
+.custom-spinner {
+    color: #9caa76;
+    width: 40px;
+    height: 40px;
+    opacity: 0.8;
+}
+
+.rounded-image-container {
+    display: inline-block; 
+    margin: 5px; 
+    text-align: center; 
+}
+
+.rounded-image {
+    width: 140px; 
+    height: 140px; 
+    object-fit: cover; 
+    border-radius: 50%;
+    /* object-position: center -20px;  */
 }
