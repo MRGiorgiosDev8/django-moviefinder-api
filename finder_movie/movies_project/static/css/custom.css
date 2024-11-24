@@ -255,7 +255,7 @@ html {
 
 .rated-actors {
     margin: 0 auto;
-    width: 14%;
+    width: 11%;
     /* padding: 3.1px; */
     font-size: 2em;
 }
@@ -456,8 +456,13 @@ html {
 .name-actors-p {
     font-weight: 500;
     font-family: "Roboto", sans-serif;
-    /* opacity: 0.73; */
+    opacity: 0.86;
     font-size: 17px;
     text-decoration: none;
-    color: #606060;
+    /* color: #3a3a3a; */
+    color: #333333;
+    padding: 3px;
+    background-color: #f8f8f8;
+    border-radius: 7px;
+    border: 0.3px solid #eaeaea;
 }
