@@ -78,10 +78,11 @@ class TopActors(APIView):
         actors_top = []
 
         actor_names = [
-            "Cristin Milioti", "Margaret Qualley", "Colin Farrell", "Demi Moore", "Ryan Reynolds",
+            "Cristin Milioti","Colin Farrell" ,"Margaret Qualley" , "Demi Moore", "Ryan Reynolds",
             "Cailee Spaeny", "Kathryn Hahn", "Aubrey Plaza", "Robert Pattinson", "Anya Taylor-Joy",
             "Zoë Kravitz", "Chris Hemsworth", "Joaquin Phoenix", "Lady Gaga", "Morfydd Clark",
-            "Antony Starr", "Erin Moriarty", "Tom Hiddleston", "Sophia Di Martino", "Winona Ryder"
+            "Antony Starr", "Erin Moriarty", "Tom Hiddleston", "Sophia Di Martino", "Winona Ryder",
+            "Monica Bellucci", "Willem Dafoe", "Sebastian Stan", "Millie Bobby Brown"
         ]
 
         for name in actor_names:

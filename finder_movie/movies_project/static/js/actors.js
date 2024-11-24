@@ -17,6 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
             if (data.error) {
                 actorsContainer.innerHTML = `<p class="text-danger">${data.error}</p>`;
             } else if (data.actors && data.actors.length > 0) {
+
+                const ratedTitle = document.createElement("h2");
+                ratedTitle.classList.add("rated-actors", "text-center", "mb-4");
+                ratedTitle.textContent = "Top Cast";
+                actorsContainer.before(ratedTitle);
+
                 const carousel = document.createElement("div");
                 carousel.id = "actorsCarousel";
                 carousel.classList.add("carousel", "slide");
@@ -41,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <img src="${actor.ProfileImage || '/static/images/placeholder.png'}" 
                                  alt="${actor.Name}" 
                                  class="rounded-image">
+                                 <p class="mt-2">${actor.Name}</p>
                         `;
                         row.appendChild(col);
                     });
