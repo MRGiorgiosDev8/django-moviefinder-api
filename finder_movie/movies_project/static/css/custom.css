@@ -440,15 +440,11 @@ html {
 }
 
 .rounded-image {
-    /* width: 140px; 
-    height: 140px;  */
     width: 147px;
     height: 160px;
     object-fit: cover;
-    padding: 1.4px;
-    border: 0.8px solid #9b9b9b;
     border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
-    background-color: rgba(245, 245, 245, 0.482)
-    /* object-position: center -20px;  */
+    border: 1px solid #ddd;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6), transparent 70%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 -3px 6px rgba(255, 255, 255, 0.2) inset;
 }
