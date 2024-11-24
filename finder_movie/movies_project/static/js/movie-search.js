@@ -132,7 +132,7 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                                 0.7px 0.7px 0.7px #656565;"></i> ${movie.imdbRating}
                             </p>
                             <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" style="padding:0; margin-right:3vh;" class="btn btn-link link-imbd">
-                                <i class="fa fa-hand-point-right"></i> <span class="imbd-text">IMDb</span>
+                                <span class="imbd-text">IMDb</span>
                             </a>
                         </div>
                     `;

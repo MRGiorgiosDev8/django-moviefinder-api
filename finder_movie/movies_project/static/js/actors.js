@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                  class="rounded-image">
                                  <p class="mt-2">${actor.Name}</p>
                                  <a href="${actor.IMDbLink}" target="_blank" class="btn btn-link link-imbd">
-                                    <i class="fa fa-hand-point-right"></i> <span class="imbd-text">IMDb</span>
+                                    <span class="imbd-text">IMDb</span>
                                 </a>
                         `;
                         row.appendChild(col);
