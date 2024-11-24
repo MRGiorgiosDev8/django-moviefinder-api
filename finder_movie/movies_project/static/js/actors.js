@@ -47,10 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
                             <img src="${actor.ProfileImage || '/static/images/placeholder.png'}" 
                                  alt="${actor.Name}" 
                                  class="rounded-image">
-                                 <p class="mt-2 name-actors-p">${actor.Name}</p>
-                                 <a href="${actor.IMDbLink}" target="_blank" class="btn btn-link link-imbd">
-                                    <span class="imbd-text">IMDb</span>
-                                </a>
+                                 <p class="mt-2">
+                                    <a href="${actor.IMDbLink}" class="name-actors-p" target="_blank">
+                                    ${actor.Name} 
+                                    </a>
+                                 </p>
                         `;
                         row.appendChild(col);
                     });

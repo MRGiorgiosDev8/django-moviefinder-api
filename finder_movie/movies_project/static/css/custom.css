@@ -456,6 +456,8 @@ html {
 .name-actors-p {
     font-weight: 500;
     font-family: "Roboto", sans-serif;
-    opacity: 0.73;
-    font-size: 18px;
+    /* opacity: 0.73; */
+    font-size: 17px;
+    text-decoration: none;
+    color: #606060;
 }
