@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <img src="${actor.ProfileImage || '/static/images/placeholder.png'}" 
                                  alt="${actor.Name}" 
                                  class="rounded-image">
-                                 <p class="mt-2">${actor.Name}</p>
+                                 <p class="mt-2 name-actors-p">${actor.Name}</p>
                                  <a href="${actor.IMDbLink}" target="_blank" class="btn btn-link link-imbd">
                                     <span class="imbd-text">IMDb</span>
                                 </a>
