@@ -78,7 +78,7 @@ class TopActors(APIView):
         actors_top = []
 
         actor_names = [
-            "Cristin Milioti","Colin Farrell" ,"Margaret Qualley" , "Demi Moore", "Ryan Reynolds",
+            "Cristin Milioti", "Colin Farrell", "Margaret Qualley", "Demi Moore", "Ryan Reynolds",
             "Cailee Spaeny", "Kathryn Hahn", "Aubrey Plaza", "Robert Pattinson", "Anya Taylor-Joy",
             "Zoë Kravitz", "Chris Hemsworth", "Joaquin Phoenix", "Lady Gaga", "Morfydd Clark",
             "Antony Starr", "Erin Moriarty", "Tom Hiddleston", "Sophia Di Martino", "Winona Ryder",
@@ -92,10 +92,19 @@ class TopActors(APIView):
 
             if response.status_code == 200 and actor_data.get('results'):
                 actor = actor_data['results'][0]
+                tmdb_actor_id = actor.get('id')
+
+                details_url = f'https://api.themoviedb.org/3/person/{tmdb_actor_id}?api_key={api_key}&language=en-US'
+                details_response = requests.get(details_url)
+                details_data = details_response.json()
+
+                imdb_id = details_data.get('imdb_id')
+
                 actors_top.append({
                     "Name": actor.get('name'),
                     "ProfileImage": f"https://image.tmdb.org/t/p/w500{actor.get('profile_path')}" if actor.get('profile_path') else None,
-                    "KnownFor": [movie.get('title') or movie.get('name') for movie in actor.get('known_for', [])]
+                    "KnownFor": [movie.get('title') or movie.get('name') for movie in actor.get('known_for', [])],
+                    "IMDbLink": f"https://www.imdb.com/name/{imdb_id}/" if imdb_id else None
                 })
 
         return Response({"actors": actors_top}, status=status.HTTP_200_OK)
