@@ -184,6 +184,7 @@ html {
     font-weight: 400;
     font-style: normal;
     border-radius: 0.3px;
+    font-size: 1.3em;
 }
 
 .movie-card {
@@ -254,7 +255,6 @@ html {
 }
 
 .rated-actors {
-    margin: 0 auto;
     width: 11%;
     /* padding: 3.1px; */
     font-size: 2em;
@@ -388,6 +388,7 @@ html {
 .content-urls a {
     font-size: 1.4em;
     font-family: "Play", sans-serif;
+    font-weight: 500;
     color: #607eb3;
     text-decoration: none;
 }
@@ -464,5 +465,15 @@ html {
     padding: 3px;
     background-color: #f8f8f8;
     border-radius: 7px;
-    border: 0.3px solid #eaeaea;
+    border: 0.3px solid #d7d7d7;
+    transition: all ease-in-out 0.3s;
+    text-shadow:
+        1px 1px 0px rgb(255, 255, 255),
+        -1px -1px 0px rgb(255, 255, 255),
+        1px -1px 0px rgb(255, 255, 255),
+        -1px 1px 1px rgb(255, 255, 255);
+}
+
+.name-actors-p:hover {
+ background-color: rgba(228, 228, 228, 0.608);
 }
