@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     gsap.fromTo(
                         col,
-                        { x: -100},
+                        { x: -100 },
                         { x: 0, duration: 0.3, ease: "power1.inOut" }
                     );
                 });
@@ -83,29 +83,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    actorsContainer.innerHTML = `
+        <div class="d-flex justify-content-center mt-3 mb-3">
+            <div class="spinner-border custom-spinner" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    `;
+
     const cachedActors = localStorage.getItem("cachedTopActors");
 
-    if (cachedActors) {
-        displayActors(JSON.parse(cachedActors));
-    } else {
-        actorsContainer.innerHTML = `
-            <div class="d-flex justify-content-center mt-3 mb-3">
-                <div class="spinner-border custom-spinner" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        `;
-
-        fetch("/api/top-actors/")
-            .then(response => response.json())
-            .then(data => {
-                if (data.actors && data.actors.length > 0) {
-                    localStorage.setItem("cachedTopActors", JSON.stringify(data));
-                }
-                displayActors(data);
-            })
-            .catch(error => {
-                actorsContainer.innerHTML = `<p class="text-danger">Произошла ошибка: ${error}</p>`;
-            });
-    }
+    setTimeout(() => {
+        if (cachedActors) {
+            displayActors(JSON.parse(cachedActors));
+        } else {
+            fetch("/api/top-actors/")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.actors && data.actors.length > 0) {
+                        localStorage.setItem("cachedTopActors", JSON.stringify(data));
+                    }
+                    displayActors(data);
+                })
+                .catch(error => {
+                    actorsContainer.innerHTML = `<p class="text-danger">Произошла ошибка: ${error}</p>`;
+                });
+        }
+    }, 1000); 
 });
