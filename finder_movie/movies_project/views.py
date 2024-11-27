@@ -72,39 +72,42 @@ class RandomHighRatedMovies(APIView):
 
         return Response({"movies": movies_top}, status=status.HTTP_200_OK)
 
+
 class TopActors(APIView):
     def get(self, request):
-        api_key = 'e90ced8e264cab6fc8eea78db7a99128'
         actors_top = []
 
         actor_names = [
             "Cristin Milioti", "Colin Farrell", "Margaret Qualley", "Demi Moore", "Ryan Reynolds",
             "Cailee Spaeny", "Kathryn Hahn", "Aubrey Plaza", "Robert Pattinson", "Anya Taylor-Joy",
             "Zoë Kravitz", "Chris Hemsworth", "Joaquin Phoenix", "Lady Gaga", "Morfydd Clark",
-            "Antony Starr", "Erin Moriarty", "Tom Hiddleston", "Sophia Di Martino", "Winona Ryder",
+            "Antony Starr", "Dakota Johnson", "Tom Hiddleston", "Sophia Di Martino", "Winona Ryder",
             "Monica Bellucci", "Willem Dafoe", "Sebastian Stan", "Millie Bobby Brown"
         ]
 
         for name in actor_names:
-            url = f'https://api.themoviedb.org/3/search/person?api_key={api_key}&query={name}&language=en-US'
-            response = requests.get(url)
-            actor_data = response.json()
+            url = f"https://en.wikipedia.org/w/api.php"
+            params = {
+                "action": "query",
+                "format": "json",
+                "titles": name,
+                "prop": "pageimages|extracts",
+                "exintro": True,
+                "explaintext": True,
+                "piprop": "original",
+            }
+            response = requests.get(url, params=params)
+            data = response.json()
 
-            if response.status_code == 200 and actor_data.get('results'):
-                actor = actor_data['results'][0]
-                tmdb_actor_id = actor.get('id')
-
-                details_url = f'https://api.themoviedb.org/3/person/{tmdb_actor_id}?api_key={api_key}&language=en-US'
-                details_response = requests.get(details_url)
-                details_data = details_response.json()
-
-                imdb_id = details_data.get('imdb_id')
-
-                actors_top.append({
-                    "Name": actor.get('name'),
-                    "ProfileImage": f"https://image.tmdb.org/t/p/w500{actor.get('profile_path')}" if actor.get('profile_path') else None,
-                    "KnownFor": [movie.get('title') or movie.get('name') for movie in actor.get('known_for', [])],
-                    "IMDbLink": f"https://www.imdb.com/name/{imdb_id}/" if imdb_id else None
-                })
+            if response.status_code == 200:
+                pages = data.get('query', {}).get('pages', {})
+                for page_id, page in pages.items():
+                    if page_id != "-1":
+                        actors_top.append({
+                            "Name": name,
+                            "ProfileImage": page.get("original", {}).get("source"),
+                            "Summary": page.get("extract"),
+                            "WikipediaLink": f"https://en.wikipedia.org/wiki/{name.replace(' ', '_')}"
+                        })
 
         return Response({"actors": actors_top}, status=status.HTTP_200_OK)
