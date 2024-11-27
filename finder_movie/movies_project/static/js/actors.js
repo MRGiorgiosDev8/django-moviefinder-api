@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (data.actors && data.actors.length > 0) {
             const ratedTitle = document.createElement("h2");
             ratedTitle.classList.add("rated-actors", "text-center", "mb-4");
-            ratedTitle.textContent = "Top Cast";
+            ratedTitle.textContent = "Top Actors";
             actorsContainer.before(ratedTitle);
 
             gsap.fromTo(

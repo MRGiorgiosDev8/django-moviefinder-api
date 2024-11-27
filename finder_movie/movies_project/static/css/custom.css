@@ -255,7 +255,8 @@ html {
 }
 
 .rated-actors {
-    width: 147px;
+    width: 14%;
+    margin-left: 1vh;
     /* padding: 3.1px; */
     font-size: 2em;
 }
