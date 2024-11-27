@@ -477,3 +477,10 @@ html {
 .name-actors-p:hover {
  background-color: rgba(228, 228, 228, 0.608);
 }
+
+.penguin-poster img {
+    border-radius: 11px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.205);
+    z-index: 1;
+    filter: brightness(1.1);
+}
