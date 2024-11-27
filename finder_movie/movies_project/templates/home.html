@@ -28,18 +28,6 @@ Home
     <a href="#movie-search-form" class="btn btn-link-search scroll-button">Search Movies</a>
 </div>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="ratio ratio-4x3" style="margin-top: 0;">
-                <iframe src="https://player.vimeo.com/video/1014531448" title="Трейлер 'Пингвина'" frameborder="0"
-                    allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="container col-md-12 mt-4">
     <div class="row justify-content-center link-urls mb-4">
 
@@ -77,6 +65,28 @@ Home
             </p>
         </div>
     </div>
+
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="{% static 'images/penguinlogoposter.png' %}"
+                 alt="The Penguin Poster"
+                 class="img-fluid"
+                 style="max-width:100%; height: auto;">
+        </div>
+
+        <div class="col-md-6">
+            <div class="ratio ratio-4x3">
+                <iframe src="https://player.vimeo.com/video/1014531448"
+                        title="Трейлер 'Пингвина'"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture;"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="container mt-5 col-md-12">
         <div class="row justify-content-center gx-1 gy-1 p-0" id="actors-container">
