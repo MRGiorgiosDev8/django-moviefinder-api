@@ -38,16 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     const col = document.createElement("span");
                     col.classList.add("rounded-image-container");
 
-                    col.innerHTML = `
-                        <img src="${actor.ProfileImage || '/static/images/placeholder.png'}" 
-                             alt="${actor.Name}" 
-                             class="rounded-image">
-                             <p class="mt-2">
-                                <a href="${actor.IMDbLink}" class="name-actors-p" target="_blank">
-                                ${actor.Name} 
-                                </a>
-                             </p>
-                    `;
+                   col.innerHTML = `
+                    <img src="${actor.ProfileImage || '/static/images/placeholder.png'}"
+                        alt="${actor.Name}"
+                        class="rounded-image">
+                        <p class="mt-2">
+                        <a href="${actor.IMDbLink}" class="name-actors-p" target="_blank">
+                        ${actor.Name}
+                         </a>
+                        </p>
+                        `;
                     row.appendChild(col);
 
                     gsap.fromTo(
@@ -109,5 +109,5 @@ document.addEventListener("DOMContentLoaded", function () {
                     actorsContainer.innerHTML = `<p class="text-danger">Произошла ошибка: ${error}</p>`;
                 });
         }
-    }, 1000); 
+    }, 1000);
 });
