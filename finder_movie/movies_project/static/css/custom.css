@@ -235,7 +235,7 @@ html {
     padding: 10px;
 }
 
-.rated-h2, .rated-actors {
+.rated-h2, .rated-actors, .new-release {
     margin-left: 3vh;
     font-family: "Rowdies", sans-serif;
     font-weight: 300;
@@ -259,6 +259,11 @@ html {
     margin-left: 1vh;
     /* padding: 3.1px; */
     font-size: 2em;
+}
+
+.new-release {
+    width: 17%;
+    margin: 0 auto;
 }
 
 .carousel-inner {
@@ -364,7 +369,7 @@ html {
 
 .link-urls {
     padding: 7px;
-    border: 1.4px solid #7e7e7e72;
+    border: 1.4px solid #adadad72;
     border-radius: 7px;
     margin-top: 7vh;
     background-color: rgba(245, 245, 245, 0.482);
@@ -484,4 +489,19 @@ html {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.205);
     z-index: 1;
     filter: brightness(1.1);
+}
+
+.penguin-container {
+    position: relative; 
+}
+
+.penguin-container::before {
+    content: '';
+    position: absolute;
+    left: -8px; 
+    top: 98px;
+    width: 8px; 
+    height: 360px; 
+    border-radius: 30%;
+    background-color: #fbdd76;
 }
