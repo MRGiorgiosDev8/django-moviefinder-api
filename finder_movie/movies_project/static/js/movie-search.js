@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         movieCard.classList.add("movie-card", "card", "text-center");
 
                         movieCard.innerHTML = `
-                            <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" style="height: 307px;">
+                            <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" style="height: 307px;" data-bs-toggle="modal" data-bs-target="#movieModal-${movie.imdbID}">
                             <p class="p-card"><strong>${movie.Title}</strong></p>
                             <p><i class="fa fa-star" style="color: #FFD700; text-shadow:
                             -0.7px -0.7px 0.7px #656565,
@@ -60,6 +60,41 @@ document.addEventListener("DOMContentLoaded", function () {
                             { x: -100 },
                             { x: 0, duration: 0.3, ease: "power1.inOut" }
                         );
+
+                        const modal = document.createElement("div");
+                        modal.classList.add("modal", "fade");
+                        modal.id = `movieModal-${movie.imdbID}`;
+                        modal.setAttribute("tabindex", "-1");
+                        modal.setAttribute("aria-labelledby", `movieModalLabel-${movie.imdbID}`);
+                        modal.setAttribute("aria-hidden", "true");
+                        modal.innerHTML = `
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="movieModalLabel-${movie.imdbID}">${movie.Title}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid">
+                                        <p><strong>IMDb Rating:</strong> ${movie.imdbRating}</p>
+                                        <p><strong>Year:</strong> ${movie.Year}</p>
+                                        <p><strong>Genre:</strong> ${movie.Genre}</p>
+                                        <p><strong>Cast:</strong> ${movie.Actors}</p>
+                                        <p><strong>Plot:</strong> ${movie.Plot}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        document.body.appendChild(modal);
+
+                        modal.addEventListener('show.bs.modal', function () {
+                            document.querySelector(`#movieModal-${movie.imdbID}`).style.display = "block";
+                            gsap.fromTo(
+                                modal,
+                                { opacity: 0, scale: 0.8 },
+                                { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }
+                            );
+                        });
                     });
 
                     carouselItem.appendChild(cardGroup);

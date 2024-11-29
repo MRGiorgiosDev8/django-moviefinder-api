@@ -67,7 +67,8 @@ class RandomHighRatedMovies(APIView):
                     "imdbRating": movie_data.get('imdbRating'),
                     "Genre": movie_data.get('Genre'),
                     "Plot": movie_data.get('Plot'),
-                    "imdbID": movie_data.get('imdbID')
+                    "imdbID": movie_data.get('imdbID'),
+                    "Actors": movie_data.get('Actors')
                 })
 
         return Response({"movies": movies_top}, status=status.HTTP_200_OK)
