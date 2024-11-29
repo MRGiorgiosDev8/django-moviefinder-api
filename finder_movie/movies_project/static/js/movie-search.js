@@ -91,8 +91,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.querySelector(`#movieModal-${movie.imdbID}`).style.display = "block";
                             gsap.fromTo(
                                 modal,
-                                { opacity: 0, scale: 0.8 },
-                                { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }
+                                { opacity: 0, scale: 0.8, x: -30},
+                                { opacity: 1, scale: 1, x: 0, duration: 0.3, ease: "power2.out" }
                             );
                         });
                     });
