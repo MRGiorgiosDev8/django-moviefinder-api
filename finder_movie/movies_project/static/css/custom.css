@@ -235,7 +235,9 @@ html {
     padding: 10px;
 }
 
-.rated-h2, .rated-actors, .new-release {
+.rated-h2,
+.rated-actors,
+.new-release {
     margin-left: 3vh;
     font-family: "Rowdies", sans-serif;
     font-weight: 300;
@@ -398,7 +400,7 @@ html {
     text-decoration: none;
 }
 
- .btn-link-url {
+.btn-link-url {
     transition: all ease-in-out;
     border-left: 1px solid #f9db76;
     border-radius: 0%;
@@ -408,7 +410,7 @@ html {
     white-space: nowrap;
 }
 
- .btn-link-url:hover {
+.btn-link-url:hover {
     color: #607eb3;
     border-left: 1px solid #f9db76;
     border-radius: 0%;
@@ -421,7 +423,7 @@ html {
     width: 36px;
     height: 20px;
     margin-left: 1px;
-    display: none; 
+    display: none;
     position: relative;
 }
 
@@ -439,8 +441,8 @@ html {
 }
 
 .rounded-image-container {
-    display: inline-block; 
-    margin: 5px; 
+    display: inline-block;
+    margin: 5px;
     text-align: center;
     margin-bottom: 3vh;
 }
@@ -455,8 +457,8 @@ html {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 -3px 6px rgba(255, 255, 255, 0.2) inset;
 }
 
-.rounded-image + p {
-    margin-bottom: 0; 
+.rounded-image+p {
+    margin-bottom: 0;
 }
 
 .name-actors-p {
@@ -480,7 +482,7 @@ html {
 }
 
 .name-actors-p:hover {
- background-color: rgba(228, 228, 228, 0.608);
+    background-color: rgba(228, 228, 228, 0.608);
 }
 
 .penguin-poster img {
@@ -491,16 +493,80 @@ html {
 }
 
 .penguin-container {
-    position: relative; 
+    position: relative;
 }
 
 .penguin-container::before {
     content: '';
     position: absolute;
-    left: -3px; 
+    left: -3px;
     top: 99px;
-    width: 8px; 
-    height: 360px; 
+    width: 8px;
+    height: 360px;
     border-radius: 30%;
     background-color: #fbdd76;
+}
+
+.modal-header {
+    background-color: #fbdd76;
+    border-bottom: 2px solid #ffffff;
+}
+
+.modal-title {
+    color: #ffffff;
+    font-family: "Rowdies", sans-serif;
+    font-weight: 300;
+    font-size: 2.1em;
+    text-shadow:
+        2px 2px 0px rgb(73, 73, 73),
+        -2px -2px 0px rgb(91, 91, 91),
+        2px -2px 0px rgb(111, 111, 111),
+        -2px 2px 0px rgb(116, 116, 116)
+}
+
+.modal-body {
+    padding: 0;
+    background-color: whitesmoke;
+    border: 2px solid #ffffff;
+    border-bottom: 3px solid #f6de85;
+}
+
+.modal-body p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+}
+
+.modal-body strong {
+    font-size: 1.1em;
+    font-weight: bold !important;
+    font-family: "Play", sans-serif;
+    opacity: 0.7;
+}
+
+.modal-body img {
+    width: 230px;
+    height: 340px;
+    /* height: auto; */
+    border-radius: 11px;
+    padding: 1px;
+    margin-top: 3px;
+    border: 1px solid #c0c1c2;
+}
+
+.btn-close {
+    background-color: transparent;
+    filter: brightness(1.5) contrast(1.5);
+    opacity: 1;
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.917);
+    transition: all ease-in-out 0.3s;
+}
+
+.btn-close:hover {
+    filter: invert(1) brightness(1.8) contrast(1.8);
+}
+
+.rating-modal {
+    font-size: 1.3em;
+    margin-left: 16%;
+    margin-top: 1px;
 }
