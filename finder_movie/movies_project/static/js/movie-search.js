@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             document.querySelector(`#movieModal-${movie.imdbID}`).style.display = "block";
                             gsap.fromTo(
                                 modal,
-                                { opacity: 0, scale: 0.8, x: -30},
+                                { opacity: 0, scale: 0.8, x: -30 },
                                 { opacity: 1, scale: 1, x: 0, duration: 0.3, ease: "power2.out" }
                             );
                         });
@@ -163,6 +163,7 @@ document.getElementById("movie-search-form").addEventListener("submit", function
 
                     listItem.innerHTML = `
                         <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-thumbnail me-3" style="width:100px; height:auto;">
+                        <div class="d-flex justify-content-between w-100">
                         <div>
                             <h5>${movie.Title}</h5>
                             <p style="margin-left:1px;" class="text-muted">${movie.Year}</p>
@@ -177,6 +178,8 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                                 <span class="imbd-text">IMDb</span>
                             </a>
                         </div>
+                            <i class="fa fa-info-circle info-icon" data-movie-title="${movie.Title}" style="font-size: 1.5em; color: #656565; opacity: 0.7; cursor: pointer; margin-left: 10px; align-self: center;"></i>
+                        </div>
                     `;
                     listContainer.appendChild(listItem);
 
@@ -190,6 +193,80 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                 });
 
                 movieInfo.appendChild(listContainer);
+
+                let modalOpen = false;
+
+                document.querySelectorAll(".info-icon").forEach(icon => {
+                    icon.addEventListener("click", function () {
+                        if (modalOpen) return;
+
+                        modalOpen = true;
+
+                        const movieTitle = this.dataset.movieTitle;
+
+                        fetch(`/api/search/?query=${movieTitle}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.movies && data.movies.length > 0) {
+                                    const movie = data.movies[0];
+
+                                    const modal = document.createElement("div");
+                                    modal.classList.add("modal", "fade");
+                                    modal.id = `movieModal-${movie.imdbID}`;
+                                    modal.setAttribute("tabindex", "-1");
+                                    modal.setAttribute("aria-labelledby", `movieModalLabel-${movie.imdbID}`);
+                                    modal.setAttribute("aria-hidden", "true");
+
+                                    modal.innerHTML = `
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="movieModalLabel-${movie.imdbID}">${movie.Title}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid" style="width: 230px; border-radius: 11px;">
+                                                    <p class="rating-modal"><i class="fa fa-star" style="color: #FFD700; text-shadow:
+                                                     -0.7px -0.7px 0.7px #656565,
+                                                     0.7px -0.7px 0.7px #656565,
+                                                    -0.7px  0.7px 0.7px #656565,
+                                                     0.7px  0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
+                                                    <p><strong>Year:</strong> ${movie.Year}</p>
+                                                    <hr>
+                                                    <p><strong>Genre:</strong> ${movie.Genre}</p>
+                                                    <hr>
+                                                    <p><strong>Cast:</strong> ${movie.Actors}</p>
+                                                    <hr>
+                                                    <p><strong>Plot:</strong> ${movie.Plot}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    document.body.appendChild(modal);
+
+                                    gsap.fromTo(
+                                        modal.querySelector(".modal-dialog"),
+                                        { opacity: 0, scale: 0.8, x: -200 },
+                                        { opacity: 1, scale: 1, x: 0, duration: 0.3, ease: "power2.out" }
+                                    );
+
+                                    const bootstrapModal = new bootstrap.Modal(modal);
+                                    bootstrapModal.show();
+
+                                    modal.addEventListener("hidden.bs.modal", function () {
+                                        modal.remove();
+                                        modalOpen = false;
+                                    });
+                                } else {
+                                    alert("Данные о фильме не найдены.");
+                                }
+                            })
+                            .catch(error => {
+                                alert(`Произошла ошибка: ${error}`);
+                            });
+                    });
+                });
             }
         })
         .catch(error => {
