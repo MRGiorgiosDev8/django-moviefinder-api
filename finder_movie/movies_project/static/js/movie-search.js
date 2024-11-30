@@ -178,7 +178,7 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                                 <span class="imbd-text">IMDb</span>
                             </a>
                         </div>
-                            <i class="fa fa-info-circle info-icon" data-movie-title="${movie.Title}" style="font-size: 1.5em; color: #656565; opacity: 0.7; cursor: pointer; margin-left: 10px; align-self: center;"></i>
+                            <i class="fa fa-info-circle info-icon" data-movie-title="${movie.Title}" style="font-size: 1.5em; color: #8d8d8d; opacity: 0.8; cursor: pointer; margin-left: 10px; align-self: center;"></i>
                         </div>
                     `;
                     listContainer.appendChild(listItem);
