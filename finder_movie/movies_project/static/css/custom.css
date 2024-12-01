@@ -510,7 +510,8 @@ html {
 
 .modal-header {
     background-color: #fbdd76;
-    border-bottom: 2px solid #ffffff;
+    border: 2px solid #d3d3d3;
+    border-radius: 3px;
 }
 
 .modal-title {
@@ -527,9 +528,10 @@ html {
 
 .modal-body {
     padding: 0;
-    background-color: whitesmoke;
+    background-color: #fffae85f;
     border: 2px solid #ffffff;
-    /* border-bottom: 3px solid #f6de85; */
+    border-radius: 11px;
+    border-bottom: 2px solid white;
 }
 
 .modal-body p {
@@ -538,10 +540,11 @@ html {
 }
 
 .modal-body strong {
-    font-size: 1.1em;
+    font-size: 18px;
     font-weight: bold !important;
     font-family: "Play", sans-serif;
     opacity: 0.7;
+    padding-right: 1.4px;
 }
 
 .modal-body img {
