@@ -3,6 +3,7 @@ import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from .serializers import MovieSerializer, ActorSerializer
 
 def home(request):
     return render(request, 'home.html')
@@ -39,7 +40,8 @@ class MovieSearch(APIView):
                     "Actors": movie_data.get('Actors')
                 })
 
-        return Response({"movies": movies}, status=status.HTTP_200_OK)
+        serializer = MovieSerializer(movies, many=True)
+        return Response({"movies": serializer.data}, status=status.HTTP_200_OK)
 
 
 class RandomHighRatedMovies(APIView):
@@ -72,7 +74,8 @@ class RandomHighRatedMovies(APIView):
                     "Actors": movie_data.get('Actors')
                 })
 
-        return Response({"movies": movies_top}, status=status.HTTP_200_OK)
+        serializer = MovieSerializer(movies_top, many=True)
+        return Response({"movies": serializer.data}, status=status.HTTP_200_OK)
 
 
 class TopActors(APIView):
@@ -105,13 +108,7 @@ class TopActors(APIView):
             "Millie Bobby Brown": "https://www.imdb.com/name/nm5611121/?ref_=nv_sr_srsg_0_tt_4_nm_2_in_0_q_Millie%2520Bobby%2520Brown"
         }
 
-        actor_names = [
-            "Cristin Milioti", "Colin Farrell", "Margaret Qualley", "Demi Moore", "Ryan Reynolds",
-            "Cailee Spaeny", "Kathryn Hahn", "Aubrey Plaza", "Robert Pattinson", "Anya Taylor-Joy",
-            "Zoë Kravitz", "Chris Hemsworth", "Joaquin Phoenix", "Lady Gaga", "Morfydd Clark",
-            "Antony Starr", "Dakota Johnson", "Tom Hiddleston", "Sophia Di Martino", "Winona Ryder",
-            "Monica Bellucci", "Willem Dafoe", "Sebastian Stan", "Millie Bobby Brown"
-        ]
+        actor_names = list(actor_imdb_links.keys())
 
         for name in actor_names:
             wiki_url = "https://en.wikipedia.org/w/api.php"
@@ -146,4 +143,5 @@ class TopActors(APIView):
                 "IMDbLink": imdb_link
             })
 
-        return Response({"actors": actors_top}, status=200)
+        serializer = ActorSerializer(actors_top, many=True)
+        return Response({"actors": serializer.data}, status=status.HTTP_200_OK)
