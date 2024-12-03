@@ -153,121 +153,118 @@ document.getElementById("movie-search-form").addEventListener("submit", function
 
             if (data.error) {
                 movieInfo.innerHTML = `<p>${data.error}</p>`;
-            } else {
-                const listContainer = document.createElement("ul");
-                listContainer.classList.add("list-group", "w-100");
+                return;
+            }
 
-                data.movies.forEach((movie, index) => {
-                    const listItem = document.createElement("li");
-                    listItem.classList.add("list-group-item", "d-flex", "align-items-center", "mb-2");
+            const listContainer = document.createElement("ul");
+            listContainer.classList.add("list-group", "w-100");
 
-                    listItem.innerHTML = `
-                        <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-thumbnail me-3" style="width:100px; height:auto;">
-                        <div class="d-flex justify-content-between w-100">
+            data.movies.forEach((movie, index) => {
+                const listItem = document.createElement("li");
+                listItem.classList.add("list-group-item", "d-flex", "align-items-center", "mb-2");
+
+                listItem.innerHTML = `
+                    <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-thumbnail me-3" style="width:100px; height:auto;">
+                    <div class="d-flex justify-content-between w-100">
                         <div>
                             <h5>${movie.Title}</h5>
                             <p style="margin-left:1px;" class="text-muted">${movie.Year}</p>
                             <p style="padding:0; margin-right:3vh;">
                                 <i class="fa fa-star" style="color: #FFD700; text-shadow:
-                                -0.7px -0.7px 0.7px #656565,
-                                0.7px -0.7px 0.7px #656565,
-                                -0.7px 0.7px 0.7px #656565,
-                                0.7px 0.7px 0.7px #656565;"></i> ${movie.imdbRating}
+                                    -0.7px -0.7px 0.7px #656565,
+                                    0.7px -0.7px 0.7px #656565,
+                                    -0.7px 0.7px 0.7px #656565,
+                                    0.7px 0.7px 0.7px #656565;"></i> ${movie.imdbRating}
                             </p>
                             <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" style="padding:0; margin-right:3vh;" class="btn btn-link link-imbd">
                                 <span class="imbd-text">IMDb</span>
                             </a>
                         </div>
-                            <i class="fa fa-info-circle info-icon" data-movie-title="${movie.Title}" style="font-size: 1.5em; color: #8d8d8d; opacity: 0.8; cursor: pointer; margin-left: 10px; align-self: center;"></i>
-                        </div>
-                    `;
-                    listContainer.appendChild(listItem);
+                        <i class="fa fa-info-circle info-icon" data-movie-title="${movie.Title}" style="font-size: 1.5em; color: #8d8d8d; opacity: 0.8; cursor: pointer; margin-left: 10px; align-self: center;"></i>
+                    </div>
+                `;
+                listContainer.appendChild(listItem);
 
-                    if (index < data.movies.length - 1) {
-                        const hr = document.createElement("hr");
-                        hr.style.border = "1px solid #ccc";
-                        listContainer.appendChild(hr);
-                    }
+                if (index < data.movies.length - 1) {
+                    const hr = document.createElement("hr");
+                    hr.style.border = "1px solid #ccc";
+                    listContainer.appendChild(hr);
+                }
 
-                    gsap.fromTo(listItem, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power1.inOut" });
-                });
+                gsap.fromTo(listItem, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power1.inOut" });
+            });
 
-                movieInfo.appendChild(listContainer);
+            movieInfo.appendChild(listContainer);
 
-                let modalOpen = false;
+            let modalOpen = false;
 
-                document.querySelectorAll(".info-icon").forEach(icon => {
-                    icon.addEventListener("click", function () {
-                        if (modalOpen) return;
+            document.querySelectorAll(".info-icon").forEach(icon => {
+                icon.addEventListener("click", function () {
+                    if (modalOpen) return;
 
-                        modalOpen = true;
+                    modalOpen = true;
 
-                        const movieTitle = this.dataset.movieTitle;
+                    const movieTitle = this.dataset.movieTitle;
 
-                        fetch(`/api/search/?query=${movieTitle}`)
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.movies && data.movies.length > 0) {
-                                    const movie = data.movies[0];
+                    fetch(`/api/search/?query=${movieTitle}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.movies && data.movies.length > 0) {
+                                const movie = data.movies[0];
 
-                                    const modal = document.createElement("div");
-                                    modal.classList.add("modal", "fade");
-                                    modal.id = `movieModal-${movie.imdbID}`;
-                                    modal.setAttribute("tabindex", "-1");
-                                    modal.setAttribute("aria-labelledby", `movieModalLabel-${movie.imdbID}`);
-                                    modal.setAttribute("aria-hidden", "true");
+                                const modal = document.createElement("div");
+                                modal.classList.add("modal", "fade");
+                                modal.id = `movieModal-${movie.imdbID}`;
+                                modal.setAttribute("tabindex", "-1");
+                                modal.setAttribute("aria-labelledby", `movieModalLabel-${movie.imdbID}`);
+                                modal.setAttribute("aria-hidden", "true");
 
-                                    modal.innerHTML = `
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="movieModalLabel-${movie.imdbID}">${movie.Title}</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid" style="width: 230px; border-radius: 11px;">
-                                                    <p class="rating-modal"><i class="fa fa-star" style="color: #FFD700; text-shadow:
-                                                     -0.7px -0.7px 0.7px #656565,
-                                                     0.7px -0.7px 0.7px #656565,
-                                                    -0.7px  0.7px 0.7px #656565,
-                                                     0.7px  0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
-                                                    <p><strong>Year:</strong> ${movie.Year}</p>
-                                                    <hr>
-                                                    <p><strong>Genre:</strong> ${movie.Genre}</p>
-                                                    <hr>
-                                                    <p><strong>Cast:</strong> ${movie.Actors}</p>
-                                                    <hr>
-                                                    <p><strong>Plot:</strong> ${movie.Plot}</p>
-                                                </div>
+                                modal.innerHTML = `
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="movieModalLabel-${movie.imdbID}">${movie.Title}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid" style="width: 230px; border-radius: 11px;">
+                                                <p class="rating-modal"><i class="fa fa-star" style="color: #FFD700; text-shadow:
+                                                 -0.7px -0.7px 0.7px #656565,
+                                                 0.7px -0.7px 0.7px #656565,
+                                                -0.7px  0.7px 0.7px #656565,
+                                                 0.7px  0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
+                                                <p><strong>Year:</strong> ${movie.Year}</p>
+                                                <hr>
+                                                <p><strong>Genre:</strong> ${movie.Genre}</p>
+                                                <hr>
+                                                <p><strong>Cast:</strong> ${movie.Actors}</p>
+                                                <hr>
+                                                <p><strong>Plot:</strong> ${movie.Plot}</p>
                                             </div>
                                         </div>
-                                    `;
+                                    </div>
+                                `;
 
-                                    document.body.appendChild(modal);
+                                document.body.appendChild(modal);
 
-                                    gsap.fromTo(
-                                        modal.querySelector(".modal-dialog"),
-                                        { opacity: 0, scale: 0.8, x: -200 },
-                                        { opacity: 1, scale: 1, x: 0, duration: 0.3, ease: "power2.out" }
-                                    );
+                                const bootstrapModal = new bootstrap.Modal(modal);
+                                bootstrapModal.show();
 
-                                    const bootstrapModal = new bootstrap.Modal(modal);
-                                    bootstrapModal.show();
+                                modal.addEventListener("hidden.bs.modal", function () {
+                                    modal.remove();
+                                    modalOpen = false;
+                                });
 
-                                    modal.addEventListener("hidden.bs.modal", function () {
-                                        modal.remove();
-                                        modalOpen = false;
-                                    });
-                                } else {
-                                    alert("Данные о фильме не найдены.");
-                                }
-                            })
-                            .catch(error => {
-                                alert(`Произошла ошибка: ${error}`);
-                            });
-                    });
+                                gsap.fromTo(modal, { opacity: 0, scale: 0.8, x: -30 }, { opacity: 1, scale: 1, x: 0, duration: 0.3, ease: "power2.out" });
+                            } else {
+                                alert("Данные о фильме не найдены.");
+                            }
+                        })
+                        .catch(error => {
+                            alert(`Произошла ошибка: ${error}`);
+                        });
                 });
-            }
+            });
         })
         .catch(error => {
             movieInfo.innerHTML = `<p>Произошла ошибка: ${error}</p>`;
