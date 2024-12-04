@@ -10,6 +10,18 @@ body {
     z-index: 1050;
 }
 
+.login-page .custom-navbar{
+    border-bottom: 0.3px solid #969696;
+}
+
+.login-page .custom-navbar a {
+    display: none;
+}
+
+.login-page .custom-footer {
+    display: none;
+}
+
 .custom-navbar .logo-font {
     color: #ffffff;
     transition: all 0.3s ease-in-out;
@@ -573,4 +585,62 @@ html {
     font-size: 1.3em;
     margin-left: 16%;
     margin-top: 1px;
+}
+
+.signup-container,
+.login-container {
+    margin-bottom: 7vh;
+    border-radius: 11px;
+}
+
+.auth-h2 {
+    font-family: "Black Ops One", system-ui;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 3.6em;
+    color: #9caa76;
+    margin-bottom: 3px;
+    scale: 0.98;
+    text-shadow:
+    0.6px 0.6px 0px rgb(255, 255, 255),
+    -0.6px -0.6px 0px rgb(255, 255, 255),
+    0.6px -0.6px 0px rgb(255, 255, 255),
+    -0.6px 0.6px 0px rgb(255, 255, 255)
+}
+
+.form-auth {
+    background-color: #303030;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #969696;
+}
+
+.login-page {
+    background-color: #303030;
+}
+
+.info-auth-p {
+    color: white;
+}
+
+.info-auth-p a {
+    color: #66dbfb;
+}
+
+.form-auth, .info-auth-p {
+    font-family: "Play", sans-serif;
+}
+
+.btn-auth {
+    padding: 6px;
+    background-color: #99ab70;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: ease-in-out 0.3s all;
+}
+
+.btn-auth:hover {
+    background-color: #808e60;
 }
