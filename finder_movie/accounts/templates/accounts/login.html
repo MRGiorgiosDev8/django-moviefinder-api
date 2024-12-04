@@ -10,7 +10,7 @@
 
 {% block content %}
     <div class="container mt-5 container-auth">
-        <h2 class="text-center auth-h2">Login</h2>
+        <h2 class="text-center auth-h2">Sign in</h2>
         <div class="row justify-content-center">
             <div class="col-md-4 login-container">
                 <form id="signup-form" method="POST" class="p-4 shadow-sm form-auth">
@@ -23,7 +23,7 @@
                         <label for="id_password" class="form-label">Password</label>
                         {{ form.password|add_class:"form-control" }}
                     </div>
-                    <button type="submit" class="btn btn-auth w-100">Login</button>
+                    <button type="submit" class="btn btn-auth w-100">Go</button>
                 </form>
                 <div class="text-center mt-3 info-auth-p">
                     <p>Don't have an account? <a href="{% url 'accounts:signup' %}">Sign up here</a></p>
