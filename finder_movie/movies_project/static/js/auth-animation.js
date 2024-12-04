@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("signup-form");
-    const heading = document.querySelector(".auth-h2");
+    const heading = document.getElementById("auth-h2");
 
     if (form) {
         gsap.set(form, {
