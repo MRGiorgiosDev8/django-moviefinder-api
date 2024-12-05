@@ -622,6 +622,14 @@ html {
     border: 1px solid #969696;
 }
 
+.form-auth-sign {
+    margin-bottom: 7vh;
+}
+
+.sign-h2  {
+    margin-top: -5vh;
+}
+
 .form-auth-sign, .info-auth-p {
     position: fixed;
 }
