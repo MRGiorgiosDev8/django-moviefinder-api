@@ -66,19 +66,32 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                                 <div class="modal-body">
                                     <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid">
-                                    <p class="rating-modal"><i class="fa fa-star" style="color: #FFD700;"></i> ${movie.imdbRating}</p>
-                                    <p><strong>Year:</strong> ${movie.Year}</p>
-                                    <hr>
-                                    <p><strong>Genre:</strong> ${movie.Genre}</p>
-                                    <hr>
-                                    <p><strong>Cast:</strong> ${movie.Actors}</p>
-                                    <hr>
-                                    <p><strong>Plot:</strong> ${movie.Plot}</p>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+                                     <p class="rating-modal"><i class="fa fa-star" style="color: #FFD700; text-shadow:
+                                     -0.7px -0.7px 0.7px #656565,
+                                      0.7px -0.7px 0.7px #656565,
+                                      -0.7px  0.7px 0.7px #656565,
+                                       0.7px  0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
+                                       <p><strong>Year:</strong> ${movie.Year}</p>
+                                       <hr>
+                                       <p><strong>Genre:</strong> ${movie.Genre}</p>
+                                       <hr>
+                                       <p><strong>Cast:</strong> ${movie.Actors}</p>
+                                       <hr>
+                                       <p><strong>Plot:</strong> ${movie.Plot}</p>
+                                   </div>
+                              </div>
+                          </div>
+                        `;
                     document.body.appendChild(modal);
+
+                    modal.addEventListener('show.bs.modal', function () {
+                        document.querySelector(`#movieModal-${movie.imdbID}`).style.display = "block";
+                        gsap.fromTo(
+                            modal,
+                            { opacity: 0, scale: 0.8, x: -30 },
+                            { opacity: 1, scale: 1, x: 0, duration: 0.3, ease: "power2.out" }
+                        );
+                    });
                 });
 
                 carouselItem.appendChild(cardGroup);
