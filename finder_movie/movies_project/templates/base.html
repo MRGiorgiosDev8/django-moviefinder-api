@@ -33,10 +33,16 @@
                 <div class="link-fontcollapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="link-font nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
+                            <a id="signup-link" class="link-font nav-link" href="{% url 'accounts:signup' %}">
+                                Sign Up
+                                <span class="nav-line"></span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="link-font nav-link" href="{% url 'accounts:login' %}">Login</a>
+                            <a id="login-link" class="link-font nav-link" href="{% url 'accounts:login' %}">
+                                Login
+                                <span class="nav-line"></span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -77,6 +83,7 @@
     <script src="{% static 'js/actors.js' %}"></script>
     <script src="{% static 'js/search-animation.js' %}"></script>
     <script src="{% static 'js/auth-animation.js' %}"></script>
+    <script src="{% static 'js/link-line-animation.js' %}"></script>
 </body>
 
 </html>

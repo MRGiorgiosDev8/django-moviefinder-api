@@ -151,6 +151,11 @@ html {
 .nav-link {
     color: white !important;
     text-decoration: none !important;
+    position: relative;
+    padding: 10px 15px;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 7px;
 }
 
 .github-icon,
@@ -664,4 +669,18 @@ html {
 
 .btn-auth:hover {
     background-color: #808e60;
+}
+
+.nav-line {
+    content: '';
+    position: absolute;
+    width: 0;  
+    height: 1.4px;
+    background-color: #c3d295; 
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease, left 0.3s ease;
+    box-shadow: 0 0 10px #f3f7e675;
+    --line-width: 80%;  
 }
