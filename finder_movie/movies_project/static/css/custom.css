@@ -686,6 +686,6 @@ html {
     left: 50%;
     transform: translateX(-50%);
     transition: width 0.3s ease, left 0.3s ease;
-    box-shadow: 0 0 6px #ffffff83;
+    box-shadow: 0 0 6px #ffffff23;
     --line-width: 83%;  
 }
