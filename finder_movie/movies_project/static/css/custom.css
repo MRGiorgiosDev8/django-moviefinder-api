@@ -10,7 +10,7 @@ body {
     z-index: 1050;
 }
 
-.login-page .custom-navbar{
+.login-page .custom-navbar {
     border-bottom: 0.3px solid #969696;
 }
 
@@ -603,7 +603,8 @@ html {
     border-radius: 11px;
 }
 
-.sign-h2, .login-h2 {
+.sign-h2,
+.login-h2 {
     font-family: "Black Ops One", system-ui;
     font-weight: 300;
     font-style: normal;
@@ -612,10 +613,10 @@ html {
     margin-bottom: 3px;
     scale: 0.98;
     text-shadow:
-    0.6px 0.6px 0px rgb(255, 255, 255),
-    -0.6px -0.6px 0px rgb(255, 255, 255),
-    0.6px -0.6px 0px rgb(255, 255, 255),
-    -0.6px 0.6px 0px rgb(255, 255, 255)
+        0.6px 0.6px 0px rgb(255, 255, 255),
+        -0.6px -0.6px 0px rgb(255, 255, 255),
+        0.6px -0.6px 0px rgb(255, 255, 255),
+        -0.6px 0.6px 0px rgb(255, 255, 255)
 }
 
 .login-h2 {
@@ -624,7 +625,8 @@ html {
     margin-bottom: 14px;
 }
 
-.form-auth-sign, .form-auth-login{
+.form-auth-sign,
+.form-auth-login {
     background-color: #303030;
     border-radius: 6px;
     color: white;
@@ -636,15 +638,17 @@ html {
     margin-bottom: 7vh;
 }
 
-.sign-h2  {
+.sign-h2 {
     margin-top: -5vh;
 }
 
-.form-auth-sign, .info-auth-p {
+.form-auth-sign,
+.info-auth-p {
     position: fixed;
 }
 
-.login-page, .info-auth-p {
+.login-page,
+.info-auth-p {
     background-color: #303030;
 }
 
@@ -659,7 +663,8 @@ html {
     color: #66dbfb;
 }
 
-.form-auth, .info-auth-p {
+.form-auth,
+.info-auth-p {
     font-family: "Play", sans-serif;
 }
 
@@ -679,15 +684,15 @@ html {
 .nav-line {
     content: '';
     position: absolute;
-    width: 0;  
+    width: 0;
     height: 1.8px;
-    background-color: #b7c48e; 
+    background-color: #b7c48e;
     bottom: 6px;
     left: 50%;
     transform: translateX(-50%);
     transition: width 0.3s ease, left 0.3s ease;
     box-shadow: 0 0 6px #ffffff23;
-    --line-width: 83%;  
+    --line-width: 80%;
 }
 
 .profile-card {
@@ -707,6 +712,18 @@ html {
     opacity: 0.8;
 }
 
-/* .profile-body {
-    line-height: 18px;
-} */
+.btn-url-edit {
+    font-size: 1.8em;
+    background-color: #ffffff;
+    padding: 3px;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    color: #1c71a6c0;
+    border: 1px solid #e3e3e3;
+    transition: all ease-in-out 0.3s;
+}
+
+.btn-url-edit:hover {
+    background-color: #ffffff;
+    color: #084f7bbc;
+}

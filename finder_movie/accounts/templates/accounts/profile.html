@@ -13,28 +13,31 @@
             <div class="card profile-card mb-4">
                 <div class="card-header text-center">
                     {% if user.profile.avatar %}
-                        <img src="{{ user.profile.avatar.url }}" class="rounded-circle" alt="User Avatar" width="150">
+                    <img src="{{ user.profile.avatar.url }}" class="rounded-circle" alt="User Avatar" width="150">
                     {% else %}
-                        <img src="{% static 'images/default-avatar.png' %}" class="rounded-circle" alt="Default Avatar" width="150">
+                    <img src="{% static 'images/default-avatar.png' %}" class="rounded-circle" alt="Default Avatar"
+                        width="150">
                     {% endif %}
                 </div>
                 <div class="card-body profile-body">
                     <p><strong>Username:</strong> {{ user.username }}</p>
                     <hr>
                     {% if user.profile.birth_date %}
-                        <p><strong>Birth Date:</strong> {{ user.profile.birth_date }}</p>
+                    <p><strong>Birth Date:</strong> {{ user.profile.birth_date }}</p>
                     {% else %}
-                        <p><strong>Birth Date:</strong> Not provided</p>
+                    <p><strong>Birth Date:</strong> Not provided</p>
                     {% endif %}
                     <hr>
                     {% if user.profile.location %}
-                        <p><strong>Location:</strong> {{ user.profile.location }}</p>
+                    <p><strong>Location:</strong> {{ user.profile.location }}</p>
                     {% else %}
-                        <p><strong>Location:</strong> Not provided</p>
+                    <p><strong>Location:</strong> Not provided</p>
                     {% endif %}
                 </div>
                 <div class="card-footer text-center">
-                    <a href="{% url 'accounts:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+                    <a href="{% url 'accounts:edit_profile' %}" class="btn btn-url-edit">
+                        <i class="fa fa-cog"></i>
+                    </a>
                 </div>
             </div>
         </div>
