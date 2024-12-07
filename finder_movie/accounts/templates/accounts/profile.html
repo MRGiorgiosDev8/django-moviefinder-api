@@ -8,10 +8,9 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-center">User Profile</h2>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
+    <div class="row justify-content-start">
+        <div class="col-md-3">
+            <div class="card profile-card mb-4">
                 <div class="card-header text-center">
                     {% if user.profile.avatar %}
                         <img src="{{ user.profile.avatar.url }}" class="rounded-circle" alt="User Avatar" width="150">
@@ -19,19 +18,23 @@
                         <img src="{% static 'images/default-avatar.png' %}" class="rounded-circle" alt="Default Avatar" width="150">
                     {% endif %}
                 </div>
-                <div class="card-body">
+                <div class="card-body profile-body">
                     <p><strong>Username:</strong> {{ user.username }}</p>
-                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <hr>
                     {% if user.profile.birth_date %}
                         <p><strong>Birth Date:</strong> {{ user.profile.birth_date }}</p>
                     {% else %}
                         <p><strong>Birth Date:</strong> Not provided</p>
                     {% endif %}
+                    <hr>
                     {% if user.profile.location %}
                         <p><strong>Location:</strong> {{ user.profile.location }}</p>
                     {% else %}
                         <p><strong>Location:</strong> Not provided</p>
                     {% endif %}
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'accounts:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
                 </div>
             </div>
         </div>
