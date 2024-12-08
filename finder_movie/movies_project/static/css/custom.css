@@ -702,10 +702,11 @@ html {
 .profile-body p {
     padding: 3vh;
     font-family: "Roboto", sans-serif;
+    font-size: 16px;
 }
 
 .profile-body strong {
-    font-size: 1.08em;
+    font-size: 18px;
     font-family: "Play", sans-serif;
     font-weight: bold;
     padding-right: 3px;

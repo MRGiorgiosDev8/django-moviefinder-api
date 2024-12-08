@@ -33,6 +33,20 @@
                 </button>
                 <div class="link-fontcollapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a id="profile-link" class="link-font nav-link" href="{% url 'accounts:profile' %}">
+                                Account
+                                <span class="nav-line"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="logout-link" class="link-font nav-link" href="{% url 'accounts:logout' %}">
+                                Logout
+                                <span class="nav-line"></span>
+                            </a>
+                        </li>
+                        {% else %}
                         <li class="nav-item">
                             <a id="signup-link" class="link-font nav-link" href="{% url 'accounts:signup' %}">
                                 Sign Up
@@ -45,6 +59,7 @@
                                 <span class="nav-line"></span>
                             </a>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
