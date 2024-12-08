@@ -15,7 +15,7 @@
                     {% if user.profile.avatar %}
                     <img src="{{ user.profile.avatar.url }}" class="rounded-circle" alt="User Avatar" width="150">
                     {% else %}
-                    <img src="{% static 'images/default-avatar.png' %}" class="rounded-circle" alt="Default Avatar"
+                    <img src="{% static 'images/default-avatar.png' %}" class="rounded-circle img-def-avatar" alt="Default Avatar"
                         width="150">
                     {% endif %}
                 </div>

@@ -738,16 +738,16 @@ html {
 }
 
 .btn-save {
-    background-color: #1c71a6b0;
+    background-color: #77a0e0;
 }
 
 .btn-save:hover {
-    background-color: #1c71a69e;
+    background-color: #779fe0cc;
     color: white;
 }
 
 .btn-back {
-    background-color: rgba(155, 154, 154, 0.609);
+    background-color: rgba(155, 154, 154, 0.743);
     color: white;
 }
 
@@ -781,4 +781,8 @@ input[type="file"]::-webkit-file-upload-button {
     border: 1px solid rgb(202, 202, 202);
     font: inherit;
     cursor: pointer;
+}
+
+.img-def-avatar {
+    opacity: 0.86;
 }
