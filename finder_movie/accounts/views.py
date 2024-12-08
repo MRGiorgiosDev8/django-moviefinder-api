@@ -33,7 +33,7 @@ def profile_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect('accounts:login')
+    return redirect('movies_project:home')
 
 @login_required
 def edit_profile(request):
