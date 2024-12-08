@@ -727,3 +727,58 @@ html {
     background-color: #ffffff;
     color: #084f7bbc;
 }
+
+.btn-save,
+.btn-back {
+    font-family: "Play", sans-serif;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    transition: all ease-in-out 0.3s;
+}
+
+.btn-save {
+    background-color: #1c71a6b0;
+}
+
+.btn-save:hover {
+    background-color: #1c71a69e;
+    color: white;
+}
+
+.btn-back {
+    background-color: rgba(155, 154, 154, 0.609);
+    color: white;
+}
+
+.btn-back:hover {
+    background-color: rgba(155, 154, 154, 0.519);
+    color: white;
+}
+
+.edit-card-body label  {
+    font-family: "Play", sans-serif;
+    font-size: 1.3em;
+    padding-right: 6px;
+    opacity: 0.8;
+}
+
+.edit-card-body input {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #c7c8c9;
+    border-radius: 3px;
+}
+
+.edit-card-body input[type="file"] {
+    background-color: whitesmoke;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    appearance: none;
+    background-color: white;
+    color: inherit;
+    border: 1px solid rgb(202, 202, 202);
+    font: inherit;
+    cursor: pointer;
+}
