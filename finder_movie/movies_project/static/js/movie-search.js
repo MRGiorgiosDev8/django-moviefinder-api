@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const randomMovieInfo = document.getElementById("random-movie-info");
-    const listContainer = document.getElementById("list-container");
 
     const displayMovies = (data) => {
         randomMovieInfo.innerHTML = "";
@@ -87,6 +86,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     movieCard.appendChild(addFavoriteButton);
                     cardGroup.appendChild(movieCard);
+
+                    const isAuthenticated = document.body.getAttribute("data-authenticated") === "true";
+
+                    const hideFavoritesForGuests = (parentNode) => {
+                        if (!isAuthenticated) {
+                            parentNode.querySelectorAll(".add-to-favorites").forEach(button => {
+                                button.style.display = "none";
+                            });
+                        }
+                    };
+
+                    const observer = new MutationObserver(mutations => {
+                        mutations.forEach(mutation => {
+                            if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+                                mutation.addedNodes.forEach(node => {
+                                    if (node.nodeType === Node.ELEMENT_NODE) {
+                                        hideFavoritesForGuests(node);
+                                    }
+                                });
+                            }
+                        });
+                    });
+
+                    observer.observe(document.body, { childList: true, subtree: true });
+
+                    hideFavoritesForGuests(document.body);
 
                     gsap.fromTo(
                         movieCard,

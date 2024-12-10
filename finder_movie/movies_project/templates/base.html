@@ -18,7 +18,8 @@
     <link rel="icon" type="image/x-icon" href="{% static 'images/logocinema-ico.ico' %}">
 </head>
 
-<body class="{% block body_class %}{% endblock %} d-flex flex-column min-vh-100">
+<body class="{% block body_class %}{% endblock %} d-flex flex-column min-vh-100"
+    data-authenticated="{{ user.is_authenticated|yesno:'true,false' }}">
     <header>
         <nav class="navbar-content navbar navbar-expand-lg custom-navbar fixed-top"
             aria-label="Social media navigation">
