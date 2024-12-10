@@ -849,5 +849,5 @@ input[type="file"]::-webkit-file-upload-button {
 
 .ul-profile {
     overflow-y: scroll;
-    height: 438px;
+    height: auto;
 }
