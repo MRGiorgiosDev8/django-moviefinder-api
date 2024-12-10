@@ -41,20 +41,21 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-9">
             <div class="card mb-4">
                 <div class="card-header">
-                    <h5>Favorite Movies</h5>
+                    <h5 class="h2-profile">Favorite Movies</h5>
                 </div>
                 <div class="card-body">
                     {% if favorite_movies %}
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled ul-profile">
                             {% for movie in favorite_movies %}
-                                <li class="media mb-3">
-                                    <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3" width="64">
-                                    <div class="media-body">
-                                        <h5 class="mt-0 mb-1">{{ movie.title }} ({{ movie.year }})</h5>
+                                <li class="media mb-3 content-favourites">
+                                     <div class="media-body">
+                                        <h5 class="mt-0 mb-1 h5-profile">{{ movie.title }} ({{ movie.year }})</h5>
                                     </div>
+                                    <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3 poster-movie-profile" width="64">
+                                    <hr>
                                 </li>
                             {% endfor %}
                         </ul>
