@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}MovieFinderApp{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +37,7 @@
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a id="profile-link" class="link-font nav-link" href="{% url 'accounts:profile' %}">
-                                Account
+                                Profile
                                 <span class="nav-line"></span>
                             </a>
                         </li>

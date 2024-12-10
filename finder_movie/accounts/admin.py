@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, UserProfile
+from .models import CustomUser, UserProfile, FavoriteMovie
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
@@ -40,5 +40,12 @@ class UserProfileAdmin(admin.ModelAdmin):
     search_fields = ('user__username', 'location')
     list_filter = ('birth_date',)
 
+class FavoriteMovieAdmin(admin.ModelAdmin):
+    model = FavoriteMovie
+    list_display = ('user', 'title', 'year', 'imdb_id', 'poster')
+    search_fields = ('title', 'imdb_id')
+    list_filter = ('year', 'user')
+
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(FavoriteMovie, FavoriteMovieAdmin)

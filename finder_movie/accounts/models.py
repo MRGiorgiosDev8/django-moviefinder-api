@@ -15,3 +15,14 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"Profile {self.user.username}"
+
+
+class FavoriteMovie(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    imdb_id = models.CharField(max_length=50, unique=True)
+    poster = models.URLField()
+    year = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.title

@@ -1,12 +1,13 @@
 from django.urls import path
-from . import views
+from .views import signup, login_view, profile_view, logout_view, edit_profile, AddToFavoritesAPIView
 
 app_name = 'accounts'
 
 urlpatterns = [
-    path('signup/', views.signup, name='signup'),
-    path('login/', views.login_view, name='login'),
-    path('profile/', views.profile_view, name='profile'),
-    path('logout/', views.logout_view, name='logout'),
-    path('profile/edit/', views.edit_profile, name='edit_profile'),
+    path('signup/', signup, name='signup'),
+    path('login/', login_view, name='login'),
+    path('profile/', profile_view, name='profile'),
+    path('logout/', logout_view, name='logout'),
+    path('profile/edit/', edit_profile, name='edit_profile'),
+    path('add-to-favorites/', AddToFavoritesAPIView.as_view(), name='add_to_favorites'),
 ]

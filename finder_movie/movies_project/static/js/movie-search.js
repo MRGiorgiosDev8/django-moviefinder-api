@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const randomMovieInfo = document.getElementById("random-movie-info");
+    const listContainer = document.getElementById("list-container");
 
     const displayMovies = (data) => {
         randomMovieInfo.innerHTML = "";
@@ -43,6 +44,48 @@ document.addEventListener("DOMContentLoaded", function () {
                             <i class="fa fa-hand-point-right"></i> <span class="imbd-text">IMDb</span>
                          </a>
                     `;
+
+                    const addFavoriteButton = document.createElement("i");
+                    addFavoriteButton.classList.add("fa", "fa-heart", "add-to-favorites", "random-add-favorites", "fs-5");
+
+                    addFavoriteButton.addEventListener("click", function () {
+                        const movieData = {
+                            title: movie.Title,
+                            imdb_id: movie.imdbID,
+                            poster: movie.Poster,
+                            year: movie.Year,
+                        };
+
+                        fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRFToken": getCookie("csrftoken"),
+                            },
+                            body: JSON.stringify(movieData),
+                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    return response.text().then(text => {
+                                        throw new Error(`Error: ${text}`);
+                                    });
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                if (data.message) {
+                                    alert(data.message);
+                                } else {
+                                    alert("Unexpected response");
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Fetch error:", error);
+                                alert(`Error: ${error.message}`);
+                            });
+                    });
+
+                    movieCard.appendChild(addFavoriteButton);
                     cardGroup.appendChild(movieCard);
 
                     gsap.fromTo(
@@ -146,6 +189,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         }
     }, 2000);
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+            const cookies = document.cookie.split(";");
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + "=")) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 });
 
 document.getElementById("movie-search-form").addEventListener("submit", function (event) {
@@ -198,6 +256,47 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                         <i class="fa fa-info-circle info-icon" data-movie-title="${movie.Title}" style="font-size: 1.5em; color: #8d8d8d; opacity: 0.8; cursor: pointer; margin-left: 10px; align-self: center;"></i>
                     </div>
                 `;
+
+                const addFavoriteButton = document.createElement("i");
+                addFavoriteButton.classList.add("fa", "fa-heart", "add-to-favorites", "search-add-favorites", "fs-5");
+
+                addFavoriteButton.addEventListener("click", function () {
+                    const movieData = {
+                        title: movie.Title,
+                        imdb_id: movie.imdbID,
+                        poster: movie.Poster,
+                        year: movie.Year,
+                    };
+
+                    fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRFToken": getCookie("csrftoken"),
+                        },
+                        body: JSON.stringify(movieData),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.message) {
+                                alert(data.message);
+                            } else {
+                                alert("Unexpected response");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Fetch error:", error);
+                            alert(`Error: ${error.message}`);
+                        });
+
+                    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+                    favorites.push(movieData);
+                    localStorage.setItem("favorites", JSON.stringify(favorites));
+
+                    alert(`${movie.Title} added to favorites.`);
+                });
+
+                listItem.appendChild(addFavoriteButton);
                 listContainer.appendChild(listItem);
 
                 if (index < data.movies.length - 1) {
@@ -272,7 +371,7 @@ document.getElementById("movie-search-form").addEventListener("submit", function
 
                                 gsap.fromTo(modal, { opacity: 0, scale: 0.8, x: -30 }, { opacity: 1, scale: 1, x: 0, duration: 0.3, ease: "power2.out" });
                             } else {
-                                alert("Данные о фильме не найдены.");
+                                alert("No film data was found.");
                             }
                         })
                         .catch(error => {
@@ -285,3 +384,18 @@ document.getElementById("movie-search-form").addEventListener("submit", function
             movieInfo.innerHTML = `<p>Произошла ошибка: ${error}</p>`;
         });
 });
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + "=")) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}

@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from .forms import CustomUserCreationForm, AuthenticationForm, UserProfileForm
-from .models import UserProfile
+from .models import UserProfile, FavoriteMovie
 
 def signup(request):
     if request.method == 'POST':
@@ -27,8 +31,9 @@ def login_view(request):
 
 @login_required
 def profile_view(request):
-    user_profile = UserProfile.objects.get(user=request.user)
-    return render(request, 'accounts/profile.html', {'profile': user_profile})
+    favorite_movies = FavoriteMovie.objects.filter(user=request.user)
+
+    return render(request, 'accounts/profile.html', {'favorite_movies': favorite_movies})
 
 @login_required
 def logout_view(request):
@@ -48,3 +53,34 @@ def edit_profile(request):
         form = UserProfileForm(instance=user_profile)
 
     return render(request, 'accounts/edit_profile.html', {'form': form})
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+class AddToFavoritesAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        title = request.data.get('title')
+        imdb_id = request.data.get('imdb_id')
+        poster = request.data.get('poster')
+        year = request.data.get('year')
+
+        if not all([title, imdb_id, poster, year]):
+            return Response({"error": "Все поля обязательны"}, status=status.HTTP_400_BAD_REQUEST)
+
+        print(f"Received data: {request.data}")
+
+        if FavoriteMovie.objects.filter(user=request.user, imdb_id=imdb_id).exists():
+            return Response({"message": "Фильм уже в избранном"}, status=status.HTTP_400_BAD_REQUEST)
+
+        FavoriteMovie.objects.create(
+            user=request.user,
+            title=title,
+            imdb_id=imdb_id,
+            poster=poster,
+            year=year
+        )
+
+        return Response({"message": "Фильм добавлен в избранное"}, status=status.HTTP_201_CREATED)

@@ -757,7 +757,7 @@ html {
     color: white;
 }
 
-.edit-card-body label  {
+.edit-card-body label {
     font-family: "Play", sans-serif;
     font-size: 1.3em;
     padding-right: 6px;
@@ -786,4 +786,39 @@ input[type="file"]::-webkit-file-upload-button {
 
 .img-def-avatar {
     opacity: 0.86;
+}
+
+.random-add-favorites, .search-add-favorites {
+    color: rgb(255, 182, 182);
+    background-color: white;
+    border-radius: 50%;
+    padding: 6px;
+    cursor: pointer;
+    transition: all ease-in-out 0.1s; 
+    text-shadow:
+        0.6px 0.6px 0px rgb(131, 131, 131),
+        -0.6px -0.6px 0px rgb(132, 132, 132),
+        0.6px -0.6px 0px rgb(132, 132, 132),
+        -0.6px 0.6px 0px rgb(135, 135, 135)
+}
+
+.random-add-favorites {
+    order: -1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.random-add-favorites:hover {
+    color: rgb(254, 107, 107);
+    scale: 1.1;
+}
+
+.search-add-favorites {
+    margin-left: 8px;
+}
+
+.search-add-favorites:hover {
+    color: rgb(254, 107, 107);
+    scale: 1.1;
 }

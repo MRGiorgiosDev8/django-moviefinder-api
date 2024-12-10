@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
 {% load form_tags %}
 
 {% block title %}User Profile{% endblock %}
@@ -38,6 +37,30 @@
                     <a href="{% url 'accounts:edit_profile' %}" class="btn btn-url-edit">
                         <i class="fa fa-cog"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Favorite Movies</h5>
+                </div>
+                <div class="card-body">
+                    {% if favorite_movies %}
+                        <ul class="list-unstyled">
+                            {% for movie in favorite_movies %}
+                                <li class="media mb-3">
+                                    <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3" width="64">
+                                    <div class="media-body">
+                                        <h5 class="mt-0 mb-1">{{ movie.title }} ({{ movie.year }})</h5>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No favorite movies added yet.</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
