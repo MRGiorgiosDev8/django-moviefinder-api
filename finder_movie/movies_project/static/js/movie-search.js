@@ -87,6 +87,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     movieCard.appendChild(addFavoriteButton);
                     cardGroup.appendChild(movieCard);
 
+                    gsap.fromTo(addFavoriteButton,
+                        {
+                            scale: 0,
+                        },
+                        {
+                            scale: 1,
+                            duration: 0.5,
+                            ease: "back.out(1.7)",
+                            delay: 0.6,
+                        }
+                    );
+
                     const isAuthenticated = document.body.getAttribute("data-authenticated") === "true";
 
                     const hideFavoritesForGuests = (parentNode) => {
@@ -284,6 +296,18 @@ document.getElementById("movie-search-form").addEventListener("submit", function
 
                 const addFavoriteButton = document.createElement("i");
                 addFavoriteButton.classList.add("fa", "fa-heart", "add-to-favorites", "search-add-favorites", "fs-5");
+
+                 gsap.fromTo(addFavoriteButton,
+                        {
+                            scale: 0,
+                        },
+                        {
+                            scale: 1,
+                            duration: 0.5,
+                            ease: "back.out(1.7)",
+                            delay: 0.6,
+                        }
+                    );
 
                 addFavoriteButton.addEventListener("click", function () {
                     const movieData = {

@@ -794,7 +794,7 @@ input[type="file"]::-webkit-file-upload-button {
     border-radius: 50%;
     padding: 6px;
     cursor: pointer;
-    transition: all ease-in-out 0.1s; 
+    /* transition: all ease-in-out 0.1s;  */
     text-shadow:
         0.6px 0.6px 0px rgb(131, 131, 131),
         -0.6px -0.6px 0px rgb(132, 132, 132),
