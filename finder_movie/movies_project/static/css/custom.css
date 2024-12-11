@@ -866,7 +866,7 @@ input[type="file"]::-webkit-file-upload-button {
     margin-left: 3vh;
 }
 
-.profile-card {
+.profile-card, .edit-profile-card {
     position: sticky;
     top: 11vh;
     z-index: 11;
