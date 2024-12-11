@@ -27,6 +27,7 @@ class FavoriteMovie(models.Model):
     genre = models.TextField(null=True, blank=True)
     plot = models.TextField(null=True, blank=True)
     actors = models.TextField(null=True, blank=True)
+    movie_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.title

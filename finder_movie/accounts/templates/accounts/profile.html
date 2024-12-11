@@ -14,8 +14,8 @@
                     {% if user.profile.avatar %}
                     <img src="{{ user.profile.avatar.url }}" class="rounded-circle" alt="User Avatar" width="150">
                     {% else %}
-                    <img src="{% static 'images/default-avatar.png' %}" class="rounded-circle img-def-avatar" alt="Default Avatar"
-                        width="150">
+                    <img src="{% static 'images/default-avatar.png' %}" class="rounded-circle img-def-avatar"
+                        alt="Default Avatar" width="150">
                     {% endif %}
                 </div>
                 <div class="card-body profile-body">
@@ -48,24 +48,26 @@
                 </div>
                 <div class="card-body">
                     {% if favorite_movies %}
-                        <ul class="list-unstyled ul-profile">
-                            {% for movie in favorite_movies %}
-                                <li class="media mb-3 content-favourites">
-                                     <div class="media-body">
-                                        <h5 class="mt-0 mb-1 h5-profile">{{ movie.title }} ({{ movie.year }})</h5>
-                                    </div>
-                                    <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3 poster-movie-profile" width="64">
-                                    <p class="profile-rating"> <i class="fa fa-star" style="color: #FFD700; text-shadow:
+                    <ul class="list-unstyled ul-profile">
+                        {% for movie in favorite_movies %}
+                        <li class="media mb-3 content-favourites">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1 h5-profile">{{ movie.title }} ({{ movie.year }})</h5>
+                            </div>
+                            <a href="{{ movie.movie_url }}" target="_blank">
+                                <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3 poster-movie-profile">
+                            </a>
+                            <p class="profile-rating"> <i class="fa fa-star" style="color: #FFD700; text-shadow:
                                      -0.7px -0.7px 0.7px #656565,
                                       0.7px -0.7px 0.7px #656565,
                                       -0.7px  0.7px 0.7px #656565,
                                        0.7px  0.7px 0.7px #656565;"></i> {{ movie.imdb_rating }}</p>
-                                    <hr>
-                                </li>
-                            {% endfor %}
-                        </ul>
+                            <hr>
+                        </li>
+                        {% endfor %}
+                    </ul>
                     {% else %}
-                        <p>No favorite movies added yet.</p>
+                    <p>No favorite movies added yet.</p>
                     {% endif %}
                 </div>
             </div>

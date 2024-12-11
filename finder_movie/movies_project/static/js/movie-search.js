@@ -56,7 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             genre: movie.Genre,
                             actors: movie.Actors,
                             imdb_rating: movie.imdbRating,
-                            plot: movie.Plot
+                            plot: movie.Plot,
+                            movie_url: `https://www.imdb.com/title/${movie.imdbID}/`
                         };
 
                         fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
@@ -322,7 +323,8 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                         genre: movie.Genre,
                         actors: movie.Actors,
                         imdb_rating: movie.imdbRating,
-                        plot: movie.Plot
+                        plot: movie.Plot,
+                        movie_url: `https://www.imdb.com/title/${movie.imdbID}/`
                     };
 
                     fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {

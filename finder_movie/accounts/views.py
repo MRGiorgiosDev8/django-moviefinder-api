@@ -74,6 +74,7 @@ class AddToFavoritesAPIView(APIView):
         genre = request.data.get('genre')
         plot = request.data.get('plot')
         actors = request.data.get('actors')
+        movie_url = f"https://www.imdb.com/title/{imdb_id}/"
 
         FavoriteMovie.objects.create(
             user=request.user,
@@ -84,7 +85,8 @@ class AddToFavoritesAPIView(APIView):
             imdb_rating=imdb_rating,
             genre=genre,
             plot=plot,
-            actors=actors
+            actors=actors,
+            movie_url = movie_url
         )
 
         return Response({"message": "Movie added to favorites"}, status=status.HTTP_201_CREATED)
