@@ -57,6 +57,11 @@
                             <a href="{{ movie.movie_url }}" target="_blank">
                                 <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3 poster-movie-profile">
                             </a>
+                            <div class="movie-profile-info">
+                                <p><strong>Genre:</strong> {{ movie.genre }}</p>
+                                <p><strong>Actors:</strong> {{ movie.actors }}</p>
+                                <p><strong>Plot:</strong> {{ movie.plot }}</p>
+                            </div>
                             <p class="profile-rating"> <i class="fa fa-star" style="color: #FFD700; text-shadow:
                                      -0.7px -0.7px 0.7px #656565,
                                       0.7px -0.7px 0.7px #656565,

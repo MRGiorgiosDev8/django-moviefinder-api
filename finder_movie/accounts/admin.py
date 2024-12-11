@@ -42,8 +42,8 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 class FavoriteMovieAdmin(admin.ModelAdmin):
     model = FavoriteMovie
-    list_display = ('user', 'title', 'year', 'imdb_id', 'poster', 'imdb_rating', 'genre', 'actors')
-    search_fields = ('title', 'imdb_id', 'genre', 'actors')
+    list_display = ('user', 'title', 'year', 'imdb_id', 'poster', 'imdb_rating', 'genre', 'actors', 'movie_url')
+    search_fields = ('title', 'imdb_id', 'genre', 'actors', 'movie_url')
     list_filter = ('year', 'user', 'genre')
     readonly_fields = ('imdb_id',)
 
@@ -52,7 +52,7 @@ class FavoriteMovieAdmin(admin.ModelAdmin):
             'fields': ('user', 'title', 'year', 'imdb_id', 'poster')
         }),
         ('Additional Info', {
-            'fields': ('imdb_rating', 'genre', 'plot', 'actors')
+            'fields': ('imdb_rating', 'genre', 'plot', 'actors', 'movie_url')
         }),
     )
 

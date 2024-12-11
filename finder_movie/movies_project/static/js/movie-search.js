@@ -334,20 +334,8 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                             "X-CSRFToken": getCookie("csrftoken"),
                         },
                         body: JSON.stringify(movieData),
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.message) {
-                                alert(data.message);
-                            } else {
-                                alert("Unexpected response");
-                            }
-                        })
-                        .catch(error => {
-                            console.error("Fetch error:", error);
-                            alert(`Error: ${error.message}`);
-                        });
-
+                    });
+                      
                     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
                     favorites.push(movieData);
                     localStorage.setItem("favorites", JSON.stringify(favorites));

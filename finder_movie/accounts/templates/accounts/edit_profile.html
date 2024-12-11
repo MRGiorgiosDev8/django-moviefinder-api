@@ -62,10 +62,10 @@
                     {% for movie in favorite_movies %}
                         <li class="media mb-3 content-favourites">
                              <div class="media-body">
-                                <h5 class="mt-0 mb-1 h5-profile">{{ movie.title }} ({{ movie.year }})</h5>
+                                <h5 class="mt-0 mb-1 h5-delete">{{ movie.title }} ({{ movie.year }})</h5>
                             </div>
                               <a href="{{ movie.movie_url }}" target="_blank">
-                                <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3 poster-movie-profile">
+                                <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3 poster-movie-delete">
                               </a>
                             <form method="POST" action="{% url 'accounts:remove_favorite' movie.id %}" class="d-inline">
                                 {% csrf_token %}

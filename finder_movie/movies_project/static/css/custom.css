@@ -296,7 +296,8 @@ html {
     margin: 0 auto;
 }
 
-.h2-profile, .h2-delete {
+.h2-profile,
+.h2-delete {
     font-size: 2.6em;
     margin: 0 auto;
     box-shadow: 0px 4px 6px rgba(130, 130, 130, 0.3);
@@ -850,15 +851,34 @@ input[type="file"]::-webkit-file-upload-button {
     margin-left: 3vh;
 }
 
-.poster-movie-profile {
+.poster-movie-profile,
+.poster-movie-delete {
     width: 100px;
     height: 148px;
     border-radius: 6px;
-    border: 1px solid #c7c8c9;
+    border: 0.8px solid whitesmoke;
+    box-shadow: 0 4px 8px rgba(83, 83, 83, 0.3), 0 1px 3px rgba(93, 93, 93, 0.1);
+}
+
+.poster-movie-profile {
+    float: left;
+    margin-right: 15px;
+}
+
+.h5-profile,
+.h5-delete {
+    font-size: 1.3em;
+    font-family: "Play", sans-serif;
+    font-weight: bold;
+    opacity: 0.8;
 }
 
 .h5-profile {
-    font-size: 1.3em;
+    text-align: center;
+}
+
+.h5-delete {
+    text-align: start;
 }
 
 .ul-profile {
@@ -867,10 +887,11 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .profile-rating {
-    margin-left: 3vh;
+    margin-left: 16vh;
 }
 
-.profile-card, .edit-profile-card {
+.profile-card,
+.edit-profile-card {
     position: sticky;
     top: 11vh;
     z-index: 11;
@@ -881,4 +902,21 @@ input[type="file"]::-webkit-file-upload-button {
     background-color: #ff6a63;
     border: none;
     vertical-align: -58px;
+}
+
+.movie-profile-info {
+    overflow: hidden;
+    margin-top: 1vh;
+}
+
+.movie-profile-info p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+}
+
+.movie-profile-info p strong {
+    font-family: "Play", sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    opacity: 0.8;
 }
