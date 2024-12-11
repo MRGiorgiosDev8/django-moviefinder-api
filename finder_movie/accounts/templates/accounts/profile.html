@@ -55,6 +55,11 @@
                                         <h5 class="mt-0 mb-1 h5-profile">{{ movie.title }} ({{ movie.year }})</h5>
                                     </div>
                                     <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3 poster-movie-profile" width="64">
+                                    <p class="profile-rating"> <i class="fa fa-star" style="color: #FFD700; text-shadow:
+                                     -0.7px -0.7px 0.7px #656565,
+                                      0.7px -0.7px 0.7px #656565,
+                                      -0.7px  0.7px 0.7px #656565,
+                                       0.7px  0.7px 0.7px #656565;"></i> {{ movie.imdb_rating }}</p>
                                     <hr>
                                 </li>
                             {% endfor %}

@@ -43,6 +43,7 @@ def logout_view(request):
 @login_required
 def edit_profile(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+    favorite_movies = FavoriteMovie.objects.filter(user=request.user)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
@@ -52,7 +53,10 @@ def edit_profile(request):
     else:
         form = UserProfileForm(instance=user_profile)
 
-    return render(request, 'accounts/edit_profile.html', {'form': form})
+    return render(request, 'accounts/edit_profile.html', {
+        'form': form,
+        'favorite_movies': favorite_movies
+    })
 
 import logging
 
@@ -66,21 +70,31 @@ class AddToFavoritesAPIView(APIView):
         imdb_id = request.data.get('imdb_id')
         poster = request.data.get('poster')
         year = request.data.get('year')
-
-        if not all([title, imdb_id, poster, year]):
-            return Response({"error": "Все поля обязательны"}, status=status.HTTP_400_BAD_REQUEST)
-
-        print(f"Received data: {request.data}")
-
-        if FavoriteMovie.objects.filter(user=request.user, imdb_id=imdb_id).exists():
-            return Response({"message": "Фильм уже в избранном"}, status=status.HTTP_400_BAD_REQUEST)
+        imdb_rating = request.data.get('imdb_rating')
+        genre = request.data.get('genre')
+        plot = request.data.get('plot')
+        actors = request.data.get('actors')
 
         FavoriteMovie.objects.create(
             user=request.user,
             title=title,
             imdb_id=imdb_id,
             poster=poster,
-            year=year
+            year=year,
+            imdb_rating=imdb_rating,
+            genre=genre,
+            plot=plot,
+            actors=actors
         )
 
-        return Response({"message": "Фильм добавлен в избранное"}, status=status.HTTP_201_CREATED)
+        return Response({"message": "Movie added to favorites"}, status=status.HTTP_201_CREATED)
+
+@login_required
+def remove_favorite(request, movie_id):
+    try:
+        favorite_movie = FavoriteMovie.objects.get(id=movie_id, user=request.user)
+        favorite_movie.delete()
+    except FavoriteMovie.DoesNotExist:
+        pass
+
+    return redirect('accounts:edit_profile')

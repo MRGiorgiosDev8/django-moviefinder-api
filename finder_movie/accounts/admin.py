@@ -42,9 +42,19 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 class FavoriteMovieAdmin(admin.ModelAdmin):
     model = FavoriteMovie
-    list_display = ('user', 'title', 'year', 'imdb_id', 'poster')
-    search_fields = ('title', 'imdb_id')
-    list_filter = ('year', 'user')
+    list_display = ('user', 'title', 'year', 'imdb_id', 'poster', 'imdb_rating', 'genre', 'actors')
+    search_fields = ('title', 'imdb_id', 'genre', 'actors')
+    list_filter = ('year', 'user', 'genre')
+    readonly_fields = ('imdb_id',)
+
+    fieldsets = (
+        (None, {
+            'fields': ('user', 'title', 'year', 'imdb_id', 'poster')
+        }),
+        ('Additional Info', {
+            'fields': ('imdb_rating', 'genre', 'plot', 'actors')
+        }),
+    )
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)

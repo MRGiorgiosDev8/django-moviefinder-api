@@ -53,6 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             imdb_id: movie.imdbID,
                             poster: movie.Poster,
                             year: movie.Year,
+                            genre: movie.Genre,
+                            actors: movie.Actors,
+                            imdb_rating: movie.imdbRating,
+                            plot: movie.Plot
                         };
 
                         fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
@@ -297,17 +301,17 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                 const addFavoriteButton = document.createElement("i");
                 addFavoriteButton.classList.add("fa", "fa-heart", "add-to-favorites", "search-add-favorites", "fs-5");
 
-                 gsap.fromTo(addFavoriteButton,
-                        {
-                            scale: 0,
-                        },
-                        {
-                            scale: 1,
-                            duration: 0.5,
-                            ease: "back.out(1.7)",
-                            delay: 0.6,
-                        }
-                    );
+                gsap.fromTo(addFavoriteButton,
+                    {
+                        scale: 0,
+                    },
+                    {
+                        scale: 1,
+                        duration: 0.5,
+                        ease: "back.out(1.7)",
+                        delay: 0.6,
+                    }
+                );
 
                 addFavoriteButton.addEventListener("click", function () {
                     const movieData = {
@@ -315,6 +319,10 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                         imdb_id: movie.imdbID,
                         poster: movie.Poster,
                         year: movie.Year,
+                        genre: movie.Genre,
+                        actors: movie.Actors,
+                        imdb_rating: movie.imdbRating,
+                        plot: movie.Plot
                     };
 
                     fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {

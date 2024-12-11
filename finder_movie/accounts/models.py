@@ -23,6 +23,10 @@ class FavoriteMovie(models.Model):
     imdb_id = models.CharField(max_length=50, unique=True)
     poster = models.URLField()
     year = models.CharField(max_length=10)
+    imdb_rating = models.CharField(max_length=10, null=True, blank=True)
+    genre = models.TextField(null=True, blank=True)
+    plot = models.TextField(null=True, blank=True)
+    actors = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.title
