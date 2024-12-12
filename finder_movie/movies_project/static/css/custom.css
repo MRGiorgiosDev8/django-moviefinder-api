@@ -901,6 +901,11 @@ input[type="file"]::-webkit-file-upload-button {
     background-color: #ff6a63;
     border: none;
     vertical-align: -58px;
+    transition: all ease-in-out;
+}
+
+.btn-delete:hover {
+    background-color: #ff6b63d0;
 }
 
 .movie-profile-info {
