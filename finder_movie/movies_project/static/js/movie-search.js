@@ -335,7 +335,7 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                         },
                         body: JSON.stringify(movieData),
                     });
-                      
+
                     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
                     favorites.push(movieData);
                     localStorage.setItem("favorites", JSON.stringify(favorites));

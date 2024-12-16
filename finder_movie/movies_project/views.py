@@ -77,6 +77,68 @@ class RandomHighRatedMovies(APIView):
         serializer = MovieSerializer(movies_top, many=True)
         return Response({"movies": serializer.data}, status=status.HTTP_200_OK)
 
+class MostPopularMovies(APIView):
+    def get(self, request):
+        api_key = 'caf8f515'
+        most_popular_titles = [
+            "Kraven the Hunter", "Moana 2", "Nutcrackers", "Peter Pan's Neverland Nightmare",
+            "Megalopolis", "The Lord of the Rings: The War of the Rohirrim", "Thunderbolts*", "Heretic",
+            "Captain America: Brave New World",  "Venom: The Last Dance"
+        ]
+
+        movies_popular = []
+
+        for title in most_popular_titles:
+            url = f'http://www.omdbapi.com/?t={title}&apikey={api_key}'
+            response = requests.get(url)
+            movie_data = response.json()
+
+            if response.status_code == 200 and movie_data.get('Response') != 'False':
+                movies_popular.append({
+                    "Title": movie_data.get('Title'),
+                    "Year": movie_data.get('Year'),
+                    "Poster": movie_data.get('Poster'),
+                    "imdbRating": movie_data.get('imdbRating'),
+                    "Genre": movie_data.get('Genre'),
+                    "Plot": movie_data.get('Plot'),
+                    "imdbID": movie_data.get('imdbID'),
+                    "Actors": movie_data.get('Actors')
+                })
+
+        serializer = MovieSerializer(movies_popular, many=True)
+        return Response({"movies": serializer.data}, status=status.HTTP_200_OK)
+
+
+def fetch_wikipedia_data(actor_name):
+    wiki_url = "https://en.wikipedia.org/w/api.php"
+    wiki_params = {
+        "action": "query",
+        "format": "json",
+        "titles": actor_name,
+        "prop": "pageimages|extracts",
+        "exintro": True,
+        "explaintext": True,
+        "piprop": "original",
+    }
+    wiki_response = requests.get(wiki_url, params=wiki_params)
+    wiki_data = wiki_response.json()
+
+    profile_image = None
+    summary = None
+    wikipedia_link = f"https://en.wikipedia.org/wiki/{actor_name.replace(' ', '_')}"
+
+    if wiki_response.status_code == 200:
+        pages = wiki_data.get('query', {}).get('pages', {})
+        for page_id, page in pages.items():
+            if page_id != "-1":
+                profile_image = page.get("original", {}).get("source")
+                summary = page.get("extract")
+
+    return {
+        "ProfileImage": profile_image,
+        "Summary": summary,
+        "WikipediaLink": wikipedia_link
+    }
 
 class TopActors(APIView):
     def get(self, request):
@@ -96,7 +158,7 @@ class TopActors(APIView):
             "Chris Hemsworth": "https://www.imdb.com/name/nm1165110/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_Chris%2520Hemsworth",
             "Joaquin Phoenix": "https://www.imdb.com/name/nm0001618/?ref_=nv_sr_srsg_0_tt_4_nm_1_in_0_q_Joaquin%2520Phoenix",
             "Lady Gaga": "https://www.imdb.com/name/nm3078932/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_Lady%2520Gaga",
-            "Morfydd Clark": "https://www.imdb.com/name/nm6077056/?ref_=nv_sr_srsg_0_tt_0_nm_1_in_0_q_Morfydd%2520Clark",
+            "Ella Purnell": "https://www.imdb.com/name/nm3480246/",
             "Antony Starr": "https://www.imdb.com/name/nm1102278/?ref_=fn_al_nm_1",
             "Dakota Johnson": "https://www.imdb.com/name/nm0424848/?ref_=nv_sr_srsg_0_tt_0_nm_8_in_0_q_Dakota%2520Johnson",
             "Tom Hiddleston": "https://www.imdb.com/name/nm1089991/?ref_=nv_sr_srsg_0_tt_2_nm_6_in_0_q_Tom%2520Hiddleston",
@@ -105,43 +167,52 @@ class TopActors(APIView):
             "Monica Bellucci": "https://www.imdb.com/name/nm0000899/?ref_=nv_sr_srsg_0_tt_4_nm_4_in_0_q_Monica%2520Bellucci",
             "Willem Dafoe": "https://www.imdb.com/name/nm0000353/?ref_=nv_sr_srsg_0_tt_5_nm_3_in_0_q_Willem%2520Dafoe",
             "Sebastian Stan": "https://www.imdb.com/name/nm1659221/?ref_=nv_sr_srsg_0_tt_1_nm_7_in_0_q_Sebastian%2520Stan",
-            "Millie Bobby Brown": "https://www.imdb.com/name/nm5611121/?ref_=nv_sr_srsg_0_tt_4_nm_2_in_0_q_Millie%2520Bobby%2520Brown"
+            "Morfydd Clark": "https://www.imdb.com/name/nm6077056/"
         }
 
-        actor_names = list(actor_imdb_links.keys())
-
-        for name in actor_names:
-            wiki_url = "https://en.wikipedia.org/w/api.php"
-            wiki_params = {
-                "action": "query",
-                "format": "json",
-                "titles": name,
-                "prop": "pageimages|extracts",
-                "exintro": True,
-                "explaintext": True,
-                "piprop": "original",
-            }
-            wiki_response = requests.get(wiki_url, params=wiki_params)
-            wiki_data = wiki_response.json()
-
-            profile_image = None
-            summary = None
-            if wiki_response.status_code == 200:
-                pages = wiki_data.get('query', {}).get('pages', {})
-                for page_id, page in pages.items():
-                    if page_id != "-1":
-                        profile_image = page.get("original", {}).get("source")
-                        summary = page.get("extract")
-
-            imdb_link = actor_imdb_links.get(name)
-
+        for name, imdb_link in actor_imdb_links.items():
+            wiki_data = fetch_wikipedia_data(name)
             actors_top.append({
                 "Name": name,
-                "ProfileImage": profile_image,
-                "Summary": summary,
-                "WikipediaLink": f"https://en.wikipedia.org/wiki/{name.replace(' ', '_')}",
+                "ProfileImage": wiki_data.get("ProfileImage"),
+                "Summary": wiki_data.get("Summary"),
+                "WikipediaLink": wiki_data.get("WikipediaLink"),
                 "IMDbLink": imdb_link
             })
 
         serializer = ActorSerializer(actors_top, many=True)
         return Response({"actors": serializer.data}, status=status.HTTP_200_OK)
+
+class PopularReleasesActors(APIView):
+    def get(self, request):
+        actors_data = []
+        actor_imdb_links = {
+            "Aaron Taylor-Johnson": "https://www.imdb.com/name/nm1093951/?ref_=tt_cst_t_1",
+            "Dwayne Johnson": "https://www.imdb.com/name/nm0425005/?ref_=tt_cst_t_2",
+            "Ben Stiller": "https://www.imdb.com/name/nm0001774/?ref_=tt_cst_t_1",
+            "Linda Cardellini": "https://www.imdb.com/name/nm0004802/?ref_=tt_cst_t_6",
+            "Adam Driver": "https://www.imdb.com/name/nm3485845/?ref_=tt_cst_t_1",
+            "Shia LaBeouf": "https://www.imdb.com/name/nm0479471/?ref_=tt_cst_t_5",
+            "Laurence Fishburne": "https://www.imdb.com/name/nm0000401/?ref_=tt_cst_t_7",
+            "Florence Pugh": "https://www.imdb.com/name/nm6073955/?ref_=tt_cst_t_1",
+            "David Harbour": "https://www.imdb.com/name/nm1092086/?ref_=tt_cst_t_4",
+            "Rachel Weisz": "https://www.imdb.com/name/nm0001838/?ref_=tt_cst_t_3",
+            "Hugh Grant": "https://www.imdb.com/name/nm0000424/?ref_=tt_cst_t_1",
+            "Harrison Ford": "https://www.imdb.com/name/nm0000148/?ref_=tt_cst_t_1",
+            "Liv Tyler": "https://www.imdb.com/name/nm0000239/?ref_=tt_cst_t_3",
+            "Anthony Mackie": "https://www.imdb.com/name/nm1107001/?ref_=tt_cst_t_5",
+            "Tom Hardy": "https://www.imdb.com/name/nm0362766/?ref_=tt_cst_t_1",
+            "Juno Temple": "https://www.imdb.com/name/nm1017334/?ref_=tt_cst_t_3"
+        }
+
+        for name, imdb_link in actor_imdb_links.items():
+            wiki_data = fetch_wikipedia_data(name)
+            actors_data.append({
+                "Name": name,
+                "ProfileImage": wiki_data.get("ProfileImage"),
+                "Summary": wiki_data.get("Summary"),
+                "WikipediaLink": wiki_data.get("WikipediaLink"),
+                "IMDbLink": imdb_link
+            })
+
+        return Response({"actors": actors_data}, status=status.HTTP_200_OK)

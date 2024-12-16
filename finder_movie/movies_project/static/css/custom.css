@@ -265,7 +265,9 @@ html {
 .rated-actors,
 .new-release,
 .h2-profile,
-.h2-delete {
+.h2-delete,
+.popular-h2,
+.world-premiere {
     margin-left: 3vh;
     font-family: "Rowdies", sans-serif;
     font-weight: 300;
@@ -285,7 +287,7 @@ html {
 }
 
 .rated-actors {
-    width: 14%;
+    width: 11%;
     margin-left: 1vh;
     /* padding: 3.1px; */
     font-size: 2em;
@@ -312,6 +314,15 @@ html {
 .h2-delete {
     background-color: rgba(255, 81, 81, 0.957);
     width: 29%;
+}
+
+.popular-h2 {
+    width: 250px;
+}
+
+.world-premiere {
+    width: 20%; 
+    margin: 0 auto;
 }
 
 .carousel-inner {
@@ -512,7 +523,7 @@ html {
     font-weight: 500;
     font-family: "Roboto", sans-serif;
     opacity: 0.86;
-    font-size: 17px;
+    font-size: 16px;
     text-decoration: none;
     /* color: #3a3a3a; */
     color: #333333;
@@ -520,7 +531,7 @@ html {
     background-color: #f8f8f8;
     border-radius: 7px;
     border: 0.3px solid #d7d7d7;
-    transition: all ease-in-out 0.3s;
+    transition: all ease-in-out 0.1s;
     text-shadow:
         1px 1px 0px rgb(255, 255, 255),
         -1px -1px 0px rgb(255, 255, 255),
@@ -532,18 +543,18 @@ html {
     background-color: rgba(228, 228, 228, 0.608);
 }
 
-.penguin-poster img {
+.film-poster img {
     border-radius: 3px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.205);
     z-index: 1;
     filter: brightness(1.1);
 }
 
-.penguin-container {
+.film-container {
     position: relative;
 }
 
-.penguin-container::before {
+.film-container::before {
     content: '';
     position: absolute;
     left: -3px;

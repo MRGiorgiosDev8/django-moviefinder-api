@@ -59,34 +59,31 @@ Home
                 <img src="/static/images/arrowstyle.png" alt="Arrow Style" class="arrow-icon" style="display: none;">
             </a>
             <p class="mt-2">
-                <span class="bold-text">IMDb Developer</span> —  is a tool for integrating data from IMDb into apps and websites.
+                <span class="bold-text">IMDb Developer</span> — is a tool for integrating data from IMDb into apps and
+                websites.
 
             </p>
         </div>
     </div>
 
- <div class="container mt-5 penguin-container">
-     <h2 class="mt-4 text-center new-release"> New Release</h2>
-    <div class="row">
-        <div class="col-md-6 d-flex justify-content-center align-items-center penguin-poster">
-            <img src="{% static 'images/penguinlogoposter.png' %}"
-                 alt="The Penguin Poster"
-                 class="img-fluid"
-                 style="max-width:100%; height: auto;">
-        </div>
+    <div class="container mt-5 film-container">
+        <h2 class="mt-4 text-center new-release">New Release</h2>
+        <div class="row">
+            <div class="col-md-6 d-flex justify-content-center align-items-center film-poster">
+                <img src="{% static 'images/penguinlogoposter.png' %}" alt="The Penguin Poster" class="img-fluid"
+                    style="max-width:100%; height: auto;">
+            </div>
 
-        <div class="col-md-6">
-            <div class="ratio ratio-4x3 video-penguin">
-                <iframe src="https://player.vimeo.com/video/1014531448?autoplay=1&muted=1"
-                        title="Трейлер 'Пингвина'"
-                        frameborder="0"
-                        allow="autoplay; fullscreen; picture-in-picture;"
+            <div class="col-md-6">
+                <div class="ratio ratio-4x3 trailer-poster">
+                    <iframe src="https://player.vimeo.com/video/1014531448?autoplay=1&muted=1"
+                        title="The Penguin" frameborder="0" allow="autoplay; fullscreen; picture-in-picture;"
                         allowfullscreen>
-                </iframe>
+                    </iframe>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <div class="container mt-5 col-md-12">
         <div class="row justify-content-center gx-1 gy-1 p-0" id="actors-container">
@@ -101,40 +98,57 @@ Home
             </div>
         </div>
     </div>
-</div>
 
-<!--<div class="container mt-5 thunderbolts-container">-->
-<!--        <div class="col-md-6">-->
-<!--            <div class="ratio ratio-4x3 video-thunderbolts">-->
-<!--                <iframe src="https://player.vimeo.com/video/1028420698?autoplay=1&muted=1"-->
-<!--                        title="Трейлер 'Громовержцы'"-->
-<!--                        frameborder="0"-->
-<!--                        allow="autoplay; fullscreen; picture-in-picture;"-->
-<!--                        allowfullscreen>-->
-<!--                </iframe>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="info-search col-md-8">
-            <div class="camera-movie text-center mb-3">
-                <img src="{% static 'images/clapperboard.gif' %}" alt="Movie Camera" class="img-fluid"
-                    style="width: 200px; height: 200px; border-radius: 30px; opacity: 0.8;">
+      <div class="container mt-5 film-container">
+        <h2 class="mt-4 text-center world-premiere">World Premiere </h2>
+        <div class="row">
+            <div class="col-md-6 d-flex justify-content-center align-items-center film-poster">
+                <img src="{% static 'images/kraven-poster.png' %}" alt="Kraven The Hunter" class="img-fluid"
+                    style="max-width:100%; height: 350px;">
             </div>
-            <form id="movie-search-form" class="my-3">
-                <div class="input-group input-custom-width">
-                    <input type="text" id="query" name="query" class="form-control input-radius"
-                        placeholder="Enter movie title" required>
-                    <div class="input-group-append ms-2">
-                        <button type="submit" class="btn btn-custom">Search</button>
-                    </div>
+
+            <div class="col-md-6">
+                <div class="ratio ratio-4x3 trailer-poster">
+                    <iframe src="https://player.vimeo.com/video/1003447006"
+                        title="Kraven The Hunter Trailer'" frameborder="0" allow="autoplay; fullscreen; picture-in-picture;"
+                        allowfullscreen>
+                    </iframe>
                 </div>
-            </form>
-            <div id="movie-info" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 col-md-12">
+        <div class="row justify-content-center gx-1 gy-1 p-0" id="popular-actors-container">
+
+        </div>
+    </div>
+
+    <div id="moviePopularCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="most-popular-movies" class="carousel-inner">
+
         </div>
     </div>
 </div>
-{% endblock %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="info-search col-md-8">
+                <div class="camera-movie text-center mb-3">
+                    <img src="{% static 'images/clapperboard.gif' %}" alt="Movie Camera" class="img-fluid"
+                        style="width: 200px; height: 200px; border-radius: 30px; opacity: 0.8;">
+                </div>
+                <form id="movie-search-form" class="my-3">
+                    <div class="input-group input-custom-width">
+                        <input type="text" id="query" name="query" class="form-control input-radius"
+                            placeholder="Enter movie title" required>
+                        <div class="input-group-append ms-2">
+                            <button type="submit" class="btn btn-custom">Search</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="movie-info" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
