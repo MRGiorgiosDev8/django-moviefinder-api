@@ -71,23 +71,24 @@ a {
 }
 
 .form-control:focus {
-    border-color: #656565;
+    border-color: #738845;
     box-shadow: 0 0 0 0.1rem #656565;
     outline: none;
 }
 
 .btn-custom {
-    background-color: #99ab70;
+    background-color: #738845;
     color: white;
     border: none;
-    border: 0.3px solid white;
+    opacity: 1;
+    border: 0.1px solid #636363;
     box-shadow: 0px 4px 8px rgba(82, 82, 82, 0.3);
     font-weight: bold;
     border-radius: 5px;
 }
 
 .btn-custom:hover {
-    background-color: #a5b978d2;
+    background-color: #8e9f68;
     color: #fff;
 }
 
@@ -401,6 +402,8 @@ html {
 #movie-info ul {
     padding: 0;
     margin: 0;
+    margin-bottom: 6vh;
+    margin-top: -8vh;
     list-style-type: none;
     padding: 3px;
     border: 1.4px solid #dcdcdc;
@@ -430,7 +433,7 @@ html {
     padding: 7px;
     border: 1.4px solid #adadad72;
     border-radius: 3px;
-    margin-top: 7vh;
+    margin-top: -4vh;
     background-color: rgba(245, 245, 245, 0.482);
     box-shadow: 1px 1px 7px rgba(58, 58, 58, 0.2);
 }
@@ -496,6 +499,7 @@ html {
     width: 40px;
     height: 40px;
     opacity: 0.8;
+    margin-bottom: 11vh;
 }
 
 .rounded-image-container {
@@ -934,4 +938,8 @@ input[type="file"]::-webkit-file-upload-button {
     font-size: 1.1em;
     font-weight: bold;
     opacity: 0.8;
+}
+
+.most-popular-container {
+    margin-bottom: 20vh;
 }
