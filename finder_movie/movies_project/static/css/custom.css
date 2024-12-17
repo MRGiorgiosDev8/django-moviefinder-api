@@ -6,6 +6,13 @@ body {
     background-color: #ffffff;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; 
+}
+
 a {
     text-decoration: none;
 }
@@ -54,10 +61,8 @@ a {
 }
 
 .custom-footer {
-    padding-top: 1px;
-    padding-bottom: 1px;
     border-top: 2px solid rgb(150, 150, 150);
-
+    width: 100%;
 }
 
 .custom-footer p {
@@ -109,10 +114,6 @@ a {
 
 main {
     padding-top: 60px;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 .text-overlay {
@@ -322,7 +323,7 @@ html {
 }
 
 .world-premiere {
-    width: 20%; 
+    width: 20%;
     margin: 0 auto;
 }
 
