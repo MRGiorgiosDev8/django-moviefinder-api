@@ -10,7 +10,8 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; 
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 a {
@@ -909,9 +910,7 @@ input[type="file"]::-webkit-file-upload-button {
 
 .profile-card,
 .edit-profile-card {
-    position: sticky;
-    top: 11vh;
-    z-index: 11;
+    width: 311px;
 }
 
 .btn-delete {
