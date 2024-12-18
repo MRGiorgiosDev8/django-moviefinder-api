@@ -248,37 +248,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-document.getElementById("movie-search-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const query = document.getElementById("query").value;
+document.querySelectorAll(".movie-search-form").forEach(form => {
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    const movieInfo = document.getElementById("movie-info");
-    movieInfo.innerHTML = `
-        <div class="d-flex justify-content-center mt-3">
-            <div class="spinner-border custom-spinner" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-    `;
-
-    fetch(`/api/search/?query=${query}`)
-        .then(response => response.json())
-        .then(data => {
-            movieInfo.innerHTML = "";
-
-            if (data.error) {
-                movieInfo.innerHTML = `<p>${data.error}</p>`;
-                return;
+        const inputs = form.querySelectorAll("input");
+        let query = "";
+        inputs.forEach(input => {
+            if (input.name === "query") {
+                query = input.value;
             }
+        });
 
-            const listContainer = document.createElement("ul");
-            listContainer.classList.add("list-group", "w-100");
+        console.log(query); 
 
-            data.movies.forEach((movie, index) => {
-                const listItem = document.createElement("li");
-                listItem.classList.add("list-group-item", "d-flex", "align-items-center", "mb-2");
+        if (!query.trim()) {
+            alert("Please enter a movie title.");
+            return;
+        }
 
-                listItem.innerHTML = `
+        const movieInfo = document.getElementById("movie-info");
+        movieInfo.innerHTML = `
+            <div class="d-flex justify-content-center mt-3">
+                <div class="spinner-border custom-spinner" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        `;
+
+        fetch(`/api/search/?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                movieInfo.innerHTML = "";
+
+                if (data.error) {
+                    movieInfo.innerHTML = `<p>${data.error}</p>`;
+                    return;
+                }
+
+                const listContainer = document.createElement("ul");
+                listContainer.classList.add("list-group", "w-100");
+
+                data.movies.forEach((movie, index) => {
+                    const listItem = document.createElement("li");
+                    listItem.classList.add("list-group-item", "d-flex", "align-items-center", "mb-2");
+
+                    listItem.innerHTML = `
                     <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-thumbnail me-3" style="width:100px; height:auto;">
                     <div class="d-flex justify-content-between w-100">
                         <div>
@@ -299,88 +314,88 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                     </div>
                 `;
 
-                const addFavoriteButton = document.createElement("i");
-                addFavoriteButton.classList.add("fa", "fa-heart", "add-to-favorites", "search-add-favorites", "fs-5");
+                    const addFavoriteButton = document.createElement("i");
+                    addFavoriteButton.classList.add("fa", "fa-heart", "add-to-favorites", "search-add-favorites", "fs-5");
 
-                gsap.fromTo(addFavoriteButton,
-                    {
-                        scale: 0,
-                    },
-                    {
-                        scale: 1,
-                        duration: 0.5,
-                        ease: "back.out(1.7)",
-                        delay: 0.6,
-                    }
-                );
-
-                addFavoriteButton.addEventListener("click", function () {
-                    const movieData = {
-                        title: movie.Title,
-                        imdb_id: movie.imdbID,
-                        poster: movie.Poster,
-                        year: movie.Year,
-                        genre: movie.Genre,
-                        actors: movie.Actors,
-                        imdb_rating: movie.imdbRating,
-                        plot: movie.Plot,
-                        movie_url: `https://www.imdb.com/title/${movie.imdbID}/`
-                    };
-
-                    fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "X-CSRFToken": getCookie("csrftoken"),
+                    gsap.fromTo(addFavoriteButton,
+                        {
+                            scale: 0,
                         },
-                        body: JSON.stringify(movieData),
+                        {
+                            scale: 1,
+                            duration: 0.5,
+                            ease: "back.out(1.7)",
+                            delay: 0.6,
+                        }
+                    );
+
+                    addFavoriteButton.addEventListener("click", function () {
+                        const movieData = {
+                            title: movie.Title,
+                            imdb_id: movie.imdbID,
+                            poster: movie.Poster,
+                            year: movie.Year,
+                            genre: movie.Genre,
+                            actors: movie.Actors,
+                            imdb_rating: movie.imdbRating,
+                            plot: movie.Plot,
+                            movie_url: `https://www.imdb.com/title/${movie.imdbID}/`
+                        };
+
+                        fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRFToken": getCookie("csrftoken"),
+                            },
+                            body: JSON.stringify(movieData),
+                        });
+
+                        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+                        favorites.push(movieData);
+                        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+                        alert(`${movie.Title} added to favorites.`);
                     });
 
-                    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-                    favorites.push(movieData);
-                    localStorage.setItem("favorites", JSON.stringify(favorites));
+                    listItem.appendChild(addFavoriteButton);
+                    listContainer.appendChild(listItem);
 
-                    alert(`${movie.Title} added to favorites.`);
+                    if (index < data.movies.length - 1) {
+                        const hr = document.createElement("hr");
+                        hr.style.border = "1px solid #ccc";
+                        listContainer.appendChild(hr);
+                    }
+
+                    gsap.fromTo(listItem, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power1.inOut" });
                 });
 
-                listItem.appendChild(addFavoriteButton);
-                listContainer.appendChild(listItem);
+                movieInfo.appendChild(listContainer);
 
-                if (index < data.movies.length - 1) {
-                    const hr = document.createElement("hr");
-                    hr.style.border = "1px solid #ccc";
-                    listContainer.appendChild(hr);
-                }
+                let modalOpen = false;
 
-                gsap.fromTo(listItem, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power1.inOut" });
-            });
+                document.querySelectorAll(".info-icon").forEach(icon => {
+                    icon.addEventListener("click", function () {
+                        if (modalOpen) return;
 
-            movieInfo.appendChild(listContainer);
+                        modalOpen = true;
 
-            let modalOpen = false;
+                        const movieTitle = this.dataset.movieTitle;
 
-            document.querySelectorAll(".info-icon").forEach(icon => {
-                icon.addEventListener("click", function () {
-                    if (modalOpen) return;
+                        fetch(`/api/search/?query=${movieTitle}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.movies && data.movies.length > 0) {
+                                    const movie = data.movies[0];
 
-                    modalOpen = true;
+                                    const modal = document.createElement("div");
+                                    modal.classList.add("modal", "fade");
+                                    modal.id = `movieModal-${movie.imdbID}`;
+                                    modal.setAttribute("tabindex", "-1");
+                                    modal.setAttribute("aria-labelledby", `movieModalLabel-${movie.imdbID}`);
+                                    modal.setAttribute("aria-hidden", "true");
 
-                    const movieTitle = this.dataset.movieTitle;
-
-                    fetch(`/api/search/?query=${movieTitle}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.movies && data.movies.length > 0) {
-                                const movie = data.movies[0];
-
-                                const modal = document.createElement("div");
-                                modal.classList.add("modal", "fade");
-                                modal.id = `movieModal-${movie.imdbID}`;
-                                modal.setAttribute("tabindex", "-1");
-                                modal.setAttribute("aria-labelledby", `movieModalLabel-${movie.imdbID}`);
-                                modal.setAttribute("aria-hidden", "true");
-
-                                modal.innerHTML = `
+                                    modal.innerHTML = `
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -406,32 +421,34 @@ document.getElementById("movie-search-form").addEventListener("submit", function
                                     </div>
                                 `;
 
-                                document.body.appendChild(modal);
+                                    document.body.appendChild(modal);
 
-                                const bootstrapModal = new bootstrap.Modal(modal);
-                                bootstrapModal.show();
+                                    const bootstrapModal = new bootstrap.Modal(modal);
+                                    bootstrapModal.show();
 
-                                modal.addEventListener("hidden.bs.modal", function () {
-                                    modal.remove();
-                                    modalOpen = false;
-                                });
+                                    modal.addEventListener("hidden.bs.modal", function () {
+                                        modal.remove();
+                                        modalOpen = false;
+                                    });
 
-                                gsap.fromTo(modal, { opacity: 0, scale: 0.8, x: -30 }, { opacity: 1, scale: 1, x: 0, duration: 0.3, ease: "power2.out" });
-                            } else {
-                                alert("No film data was found.");
-                            }
-                        })
-                        .catch(error => {
-                            alert(`Произошла ошибка: ${error}`);
-                        });
+                                    gsap.fromTo(modal, { opacity: 0, scale: 0.8, x: -30 }, { opacity: 1, scale: 1, x: 0, duration: 0.3, ease: "power2.out" });
+                                } else {
+                                    alert("No film data was found.");
+                                }
+                            })
+                            .catch(error => {
+                                alert(`Произошла ошибка: ${error}`);
+                            });
+                    });
                 });
+            })
+            .catch(error => {
+                movieInfo.innerHTML = `<p>Произошла ошибка: ${error}</p>`;
             });
-        })
-        .catch(error => {
-            movieInfo.innerHTML = `<p>Произошла ошибка: ${error}</p>`;
-        });
+    });
 });
 
+// Здесь начинается ваша функция getCookie
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== "") {
