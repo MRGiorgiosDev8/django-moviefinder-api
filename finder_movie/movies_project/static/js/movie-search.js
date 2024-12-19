@@ -294,7 +294,7 @@ document.querySelectorAll(".movie-search-form").forEach(form => {
                     listItem.classList.add("list-group-item", "d-flex", "align-items-center", "mb-2");
 
                     listItem.innerHTML = `
-                    <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-thumbnail me-3" style="width:100px; height:auto;">
+                    <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-thumbnail me-3 search-movie-img" style="width:100px; height:auto;">
                     <div class="d-flex justify-content-between w-100">
                         <div>
                             <h5>${movie.Title}</h5>
@@ -448,7 +448,6 @@ document.querySelectorAll(".movie-search-form").forEach(form => {
     });
 });
 
-// Здесь начинается ваша функция getCookie
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== "") {

@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (logoutLink && logoutLine) {
         logoutLink.addEventListener('mouseenter', () => {
+            logoutLine.style.backgroundColor = '#ff6a63';
             const lineWidth = getLineWidth(logoutLine);
             gsap.to(logoutLine, {
                 duration: 0.1,

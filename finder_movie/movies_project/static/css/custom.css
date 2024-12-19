@@ -945,3 +945,7 @@ input[type="file"]::-webkit-file-upload-button {
 .most-popular-container {
     margin-bottom: 20vh;
 }
+
+.search-movie-img  {
+    box-shadow: 0 4px 8px rgba(83, 83, 83, 0.3), 0 1px 3px rgba(93, 93, 93, 0.1);
+}

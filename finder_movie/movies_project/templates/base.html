@@ -38,6 +38,13 @@
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a id="profile-link" class="link-font nav-link" href="{% url 'accounts:profile' %}">
+                                {% if user.profile.avatar %}
+                                <img src="{{ user.profile.avatar.url }}" class="rounded-circle" alt="User Avatar"
+                                    width="30" height="30">
+                                {% else %}
+                                <img src="{% static 'images/default-avatar.png' %}"
+                                    class="rounded-circle img-def-avatar" style="margin-right: 8px; margin-bottom: 4px; opacity: 0.86;" alt="Default Avatar" width="22" height="22">
+                                {% endif %}
                                 Profile
                                 <span class="nav-line"></span>
                             </a>
