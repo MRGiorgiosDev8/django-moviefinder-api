@@ -6,12 +6,12 @@ body {
     background-color: #ffffff;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-    min-height: 100vh;
 }
 
 a {
@@ -565,7 +565,7 @@ main {
 .film-container::before {
     content: '';
     position: absolute;
-    left: -3px;
+    left: -8px;
     top: 99px;
     width: 8px;
     height: 360px;
