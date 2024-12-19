@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (profileLink && profileLine) {
         profileLink.addEventListener('mouseenter', () => {
+            profileLine.style.backgroundColor = '#aacbff';
             const lineWidth = getLineWidth(profileLine);
             gsap.to(profileLine, {
                 duration: 0.1,
