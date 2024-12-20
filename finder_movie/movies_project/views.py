@@ -6,9 +6,30 @@ from rest_framework import status
 from .serializers import MovieSerializer, ActorSerializer
 
 def home(request):
+    """
+    Обрабатывает запрос на главную страницу и возвращает HTML-шаблон 'home.html'.
+
+    Args:
+        request: Объект запроса, содержащий данные о запросе от клиента.
+
+    Returns:
+        HttpResponse: Ответ с отрендеренным HTML-шаблоном 'home.html'.
+    """
     return render(request, 'home.html')
 
 class MovieSearch(APIView):
+    """
+    Класс MovieSearch, наследующий APIView, предоставляет метод для поиска фильмов по запросу.
+
+    Методы:
+        get(self, request):
+            Обрабатывает GET-запрос для поиска фильмов по заданному параметру запроса 'query'.
+            Если параметр запроса отсутствует, возвращает ошибку 400.
+            Выполняет запрос к API OMDb для поиска фильмов по названию.
+            Если фильмы не найдены или произошла ошибка API, возвращает ошибку 404.
+            Для каждого найденного фильма выполняет дополнительный запрос для получения подробной информации.
+            Возвращает список фильмов в формате JSON с подробной информацией о каждом фильме.
+    """
     def get(self, request):
         query = request.query_params.get('query')
         if not query:
@@ -45,6 +66,19 @@ class MovieSearch(APIView):
 
 
 class RandomHighRatedMovies(APIView):
+    """
+    Класс представления фильмов.
+
+    Методы:
+    get(self, request):
+        Обрабатывает GET-запрос для получения информации о фильмах с использованием OMDB API.
+        Возвращает JSON-ответ с данными о фильмах.
+
+    Атрибуты:
+    api_key (str): Ключ API для доступа к OMDB API.
+    movies_top (list): Список для хранения информации о фильмах.
+    movie_titles (list): Список названий фильмов для запроса к OMDB API.
+    """
     def get(self, request):
         api_key = 'caf8f515'
         movies_top = []
@@ -78,6 +112,9 @@ class RandomHighRatedMovies(APIView):
         return Response({"movies": serializer.data}, status=status.HTTP_200_OK)
 
 class MostPopularMovies(APIView):
+    """
+        Аналогичный класс представления фильмов, но для популярных фильмов.
+    """
     def get(self, request):
         api_key = 'caf8f515'
         most_popular_titles = [
@@ -110,6 +147,18 @@ class MostPopularMovies(APIView):
 
 
 def fetch_wikipedia_data(actor_name):
+    """
+    Получает данные из Википедии для указанного актера.
+
+    Аргументы:
+    actor_name (str): Имя актера, для которого нужно получить данные.
+
+    Возвращает:
+    dict: Словарь с ключами "ProfileImage", "Summary" и "WikipediaLink".
+        - "ProfileImage" (str или None): URL изображения профиля актера, если доступно.
+        - "Summary" (str или None): Краткое описание актера из Википедии.
+        - "WikipediaLink" (str): Ссылка на страницу актера в Википедии.
+    """
     wiki_url = "https://en.wikipedia.org/w/api.php"
     wiki_params = {
         "action": "query",
@@ -141,6 +190,12 @@ def fetch_wikipedia_data(actor_name):
     }
 
 class TopActors(APIView):
+    """
+    Представление для получения списка актеров с информацией из IMDb и Wikipedia.
+
+    Методы:
+    get(self, request) -- Обрабатывает GET-запрос и возвращает список актеров с их профилями, краткой информацией и ссылками на IMDb и Wikipedia.
+    """
     def get(self, request):
         actors_top = []
         actor_imdb_links = {
@@ -184,6 +239,9 @@ class TopActors(APIView):
         return Response({"actors": serializer.data}, status=status.HTTP_200_OK)
 
 class PopularReleasesActors(APIView):
+    """
+    Аналогичный класс представления для актеров.
+    """
     def get(self, request):
         actors_data = []
         actor_imdb_links = {
