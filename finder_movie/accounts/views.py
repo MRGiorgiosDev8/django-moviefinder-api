@@ -1,3 +1,18 @@
+"""
+Этот модуль содержит представления для управления учетными записями пользователей и их любимыми фильмами.
+
+Функции:
+- signup(request): Обрабатывает регистрацию нового пользователя.
+- login_view(request): Обрабатывает вход пользователя в систему.
+- profile_view(request): Отображает профиль пользователя с его любимыми фильмами.
+- logout_view(request): Обрабатывает выход пользователя из системы.
+- edit_profile(request): Обрабатывает редактирование профиля пользователя.
+- remove_favorite(request, movie_id): Удаляет фильм из списка любимых фильмов пользователя.
+
+Классы:
+- AddToFavoritesAPIView(APIView): Обрабатывает добавление фильма в список любимых фильмов пользователя через API.
+
+"""
 from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -57,10 +72,6 @@ def edit_profile(request):
         'form': form,
         'favorite_movies': favorite_movies
     })
-
-import logging
-
-logger = logging.getLogger(__name__)
 
 class AddToFavoritesAPIView(APIView):
     permission_classes = [IsAuthenticated]

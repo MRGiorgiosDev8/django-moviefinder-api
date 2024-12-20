@@ -3,6 +3,9 @@ from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser, UserProfile, FavoriteMovie
 
 class CustomUserAdmin(UserAdmin):
+    """
+    Админ-панель для модели CustomUser.
+    """
     model = CustomUser
     list_display = ('username', 'email', 'is_staff', 'is_active', 'date_joined')
     list_filter = ('is_staff', 'is_active')
@@ -11,9 +14,9 @@ class CustomUserAdmin(UserAdmin):
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'email')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
-        ('Important dates', {'fields': ('last_login', 'date_joined')}),
+        ('Личная информация', {'fields': ('first_name', 'last_name', 'email')}),
+        ('Права доступа', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+        ('Важные даты', {'fields': ('last_login', 'date_joined')}),
     )
     add_fieldsets = (
         (None, {
@@ -23,11 +26,18 @@ class CustomUserAdmin(UserAdmin):
     )
 
     def get_inline_instances(self, request, obj=None):
+        """
+        Получает встроенные экземпляры для модели UserProfile.
+        """
         if obj:
             return [UserProfileInline(self.model, self.admin_site)]
         return []
 
+
 class UserProfileInline(admin.StackedInline):
+    """
+    Встроенная модель для профиля пользователя.
+    """
     model = UserProfile
     can_delete = False
     verbose_name_plural = 'Profile'
@@ -35,12 +45,18 @@ class UserProfileInline(admin.StackedInline):
     readonly_fields = ('avatar',)
 
 class UserProfileAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для модели UserProfile.
+    """
     model = UserProfile
     list_display = ('user', 'avatar', 'birth_date', 'location')
     search_fields = ('user__username', 'location')
     list_filter = ('birth_date',)
 
 class FavoriteMovieAdmin(admin.ModelAdmin):
+    """
+    Админ-панель для модели FavoriteMovie.
+    """
     model = FavoriteMovie
     list_display = ('user', 'title', 'year', 'imdb_id', 'poster', 'imdb_rating', 'genre', 'actors', 'movie_url')
     search_fields = ('title', 'imdb_id', 'genre', 'actors', 'movie_url')
@@ -51,7 +67,7 @@ class FavoriteMovieAdmin(admin.ModelAdmin):
         (None, {
             'fields': ('user', 'title', 'year', 'imdb_id', 'poster')
         }),
-        ('Additional Info', {
+        ('Дополнительная информация', {
             'fields': ('imdb_rating', 'genre', 'plot', 'actors', 'movie_url')
         }),
     )
