@@ -1,3 +1,32 @@
+<!-- 
+finder-movie-api/finder_movie/accounts/templates/accounts/profile.html
+
+Описание:
+Этот шаблон отображает профиль пользователя, включая его аватар, имя пользователя, дату рождения, местоположение и список любимых фильмов.
+
+Шаблон расширяет базовый шаблон 'base.html' и использует теги 'static' и 'form_tags'.
+
+Блоки:
+1. title: Заголовок страницы - "User Profile".
+2. content: Основное содержимое страницы.
+
+Содержимое:
+- Контейнер с информацией о профиле пользователя:
+    - Аватар пользователя (если не задан, используется аватар по умолчанию).
+    - Имя пользователя.
+    - Дата рождения (если не указана, отображается "Not provided").
+    - Местоположение (если не указано, отображается "Not provided").
+    - Ссылка на редактирование профиля.
+
+- Контейнер с любимыми фильмами пользователя:
+    - Заголовок "Favorite Movies".
+    - Список фильмов (если нет любимых фильмов, отображается сообщение "No favorite movies added yet").
+    - Для каждого фильма отображается:
+        - Название фильма и год выпуска.
+        - Постер фильма с ссылкой на страницу фильма.
+        - Жанр, актеры и сюжет фильма.
+        - Рейтинг IMDb с иконкой звезды.
+-->
 {% extends 'base.html' %}
 
 {% load static %}
@@ -12,7 +41,8 @@
             <div class="card profile-card mb-5" style="box-shadow: 1px 1px 7px rgba(58, 58, 58, 0.2);">
                 <div class="card-header text-center">
                     {% if user.profile.avatar %}
-                    <img src="{{ user.profile.avatar.url }}" class="rounded-circle img-avatar-cover" alt="User Avatar" width="150">
+                    <img src="{{ user.profile.avatar.url }}" class="rounded-circle img-avatar-cover" alt="User Avatar"
+                        width="150">
                     {% else %}
                     <img src="{% static 'images/default-avatar.png' %}" class="rounded-circle img-def-avatar"
                         alt="Default Avatar" width="150">
@@ -55,7 +85,8 @@
                                 <h5 class="mt-0 mb-1 h5-profile">{{ movie.title }} ({{ movie.year }})</h5>
                             </div>
                             <a href="{{ movie.movie_url }}" target="_blank">
-                                <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3 img-thumbnail poster-movie-profile">
+                                <img src="{{ movie.poster }}" alt="{{ movie.title }}"
+                                    class="mr-3 img-thumbnail poster-movie-profile">
                             </a>
                             <div class="movie-profile-info">
                                 <p><strong>Genre:</strong> {{ movie.genre }}</p>

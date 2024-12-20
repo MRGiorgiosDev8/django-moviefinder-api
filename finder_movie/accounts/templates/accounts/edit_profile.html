@@ -1,3 +1,29 @@
+<!--
+finder-movie-api/finder_movie/accounts/templates/accounts/edit_profile.html
+
+Описание:
+Этот шаблон используется для редактирования профиля пользователя и удаления избранных фильмов.
+
+Шаблон расширяет базовый шаблон 'base.html' и загружает статические файлы.
+
+Блоки:
+ - title: Устанавливает заголовок страницы как "Edit Profile".
+ - content: Основное содержимое страницы, включающее форму редактирования профиля и список избранных фильмов для удаления.
+
+Форма редактирования профиля:
+ - Используется метод POST и поддержка загрузки файлов (enctype="multipart/form-data").
+ - Включает поля для редактирования местоположения (location), даты рождения (birth_date) и аватара (avatar).
+ - Каждое поле имеет проверку ошибок и отображение сообщений об ошибках.
+
+Список избранных фильмов:
+ - Отображает список избранных фильмов пользователя.
+ - Для каждого фильма отображается название, год выпуска и постер.
+ - Включает кнопку для удаления фильма из избранного с подтверждением через POST запрос.
+
+Примечания:
+ - Используется CSRF токен для защиты формы.
+ - Если у пользователя нет избранных фильмов, отображается сообщение "No favorite movies added yet."
+-->
 {% extends 'base.html' %}
 
 {% load static %}
@@ -12,35 +38,38 @@
                     <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                         {% csrf_token %}
 
-                         <div class="mb-4">
-                            <label for="{{ form.location.id_for_label }}" class="form-label">{{ form.location.label }}</label>
+                        <div class="mb-4">
+                            <label for="{{ form.location.id_for_label }}" class="form-label">{{ form.location.label
+                                }}</label>
                             {{ form.location }}
                             {% if form.location.errors %}
-                                <div class="text-danger">
-                                    {{ form.location.errors|striptags }}
-                                </div>
+                            <div class="text-danger">
+                                {{ form.location.errors|striptags }}
+                            </div>
                             {% endif %}
                         </div>
 
                         <div class="mb-5">
-                            <label for="{{ form.birth_date.id_for_label }}" class="form-label">{{ form.birth_date.label }}</label>
+                            <label for="{{ form.birth_date.id_for_label }}" class="form-label">{{ form.birth_date.label
+                                }}</label>
                             {{ form.birth_date }}
                             {% if form.birth_date.errors %}
-                                <div class="text-danger">
-                                    {{ form.birth_date.errors|striptags }}
-                                </div>
+                            <div class="text-danger">
+                                {{ form.birth_date.errors|striptags }}
+                            </div>
                             {% endif %}
                         </div>
 
                         <hr>
 
                         <div class="mb-4">
-                            <label for="{{ form.avatar.id_for_label }}" class="form-label">{{ form.avatar.label }}</label>
+                            <label for="{{ form.avatar.id_for_label }}" class="form-label">{{ form.avatar.label
+                                }}</label>
                             {{ form.avatar }}
                             {% if form.avatar.errors %}
-                                <div class="text-danger">
-                                    {{ form.avatar.errors|striptags }}
-                                </div>
+                            <div class="text-danger">
+                                {{ form.avatar.errors|striptags }}
+                            </div>
                             {% endif %}
                         </div>
 
@@ -52,21 +81,21 @@
             </div>
         </div>
         <div class="col-md-9">
-    <div class="card mb-4">
-        <div class="card-header header-profile">
-            <h5 class="h2-delete">Delete Movies</h5>
-        </div>
-        <div class="card-body" style="box-shadow: 1px 1px 7px rgba(58, 58, 58, 0.2);">
-            {% if favorite_movies %}
-                <ul class="list-unstyled ul-profile">
-                    {% for movie in favorite_movies %}
+            <div class="card mb-4">
+                <div class="card-header header-profile">
+                    <h5 class="h2-delete">Delete Movies</h5>
+                </div>
+                <div class="card-body" style="box-shadow: 1px 1px 7px rgba(58, 58, 58, 0.2);">
+                    {% if favorite_movies %}
+                    <ul class="list-unstyled ul-profile">
+                        {% for movie in favorite_movies %}
                         <li class="media mb-3 content-favourites">
-                             <div class="media-body">
+                            <div class="media-body">
                                 <h5 class="mt-0 mb-1 h5-delete">{{ movie.title }} ({{ movie.year }})</h5>
                             </div>
-                              <a href="{{ movie.movie_url }}" target="_blank">
+                            <a href="{{ movie.movie_url }}" target="_blank">
                                 <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="mr-3 poster-movie-delete">
-                              </a>
+                            </a>
                             <form method="POST" action="{% url 'accounts:remove_favorite' movie.id %}" class="d-inline">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-danger btn-sm btn-delete">
@@ -75,14 +104,14 @@
                             </form>
                             <hr>
                         </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No favorite movies added yet.</p>
-            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p>No favorite movies added yet.</p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-    </div>
-</div>
     </div>
 </div>
 {% endblock %}
