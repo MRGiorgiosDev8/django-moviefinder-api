@@ -39,8 +39,7 @@ finder-movie-api/finder_movie/accounts/templates/accounts/edit_profile.html
                         {% csrf_token %}
 
                         <div class="mb-4">
-                            <label for="{{ form.location.id_for_label }}" class="form-label">{{ form.location.label
-                                }}</label>
+                            <label for="{{ form.location.id }}" class="form-label">{{ form.location.label }}</label>
                             {{ form.location }}
                             {% if form.location.errors %}
                             <div class="text-danger">
@@ -50,8 +49,7 @@ finder-movie-api/finder_movie/accounts/templates/accounts/edit_profile.html
                         </div>
 
                         <div class="mb-5">
-                            <label for="{{ form.birth_date.id_for_label }}" class="form-label">{{ form.birth_date.label
-                                }}</label>
+                            <label for="{{ form.birth_date.id }}" class="form-label">{{ form.birth_date.label }}</label>
                             {{ form.birth_date }}
                             {% if form.birth_date.errors %}
                             <div class="text-danger">
@@ -63,8 +61,7 @@ finder-movie-api/finder_movie/accounts/templates/accounts/edit_profile.html
                         <hr>
 
                         <div class="mb-4">
-                            <label for="{{ form.avatar.id_for_label }}" class="form-label">{{ form.avatar.label
-                                }}</label>
+                            <label for="{{ form.avatar.id }}" class="form-label">{{ form.avatar.label }}</label>
                             {{ form.avatar }}
                             {% if form.avatar.errors %}
                             <div class="text-danger">
