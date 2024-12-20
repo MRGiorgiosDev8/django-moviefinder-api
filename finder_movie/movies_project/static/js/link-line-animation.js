@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (profileLink && profileLine) {
         profileLink.addEventListener('mouseenter', () => {
-            profileLine.style.backgroundColor = '#aacbff';
             const lineWidth = getLineWidth(profileLine);
             gsap.to(profileLine, {
                 duration: 0.1,
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (logoutLink && logoutLine) {
         logoutLink.addEventListener('mouseenter', () => {
-            logoutLine.style.backgroundColor = '#ff6a63';
             const lineWidth = getLineWidth(logoutLine);
             gsap.to(logoutLine, {
                 duration: 0.1,

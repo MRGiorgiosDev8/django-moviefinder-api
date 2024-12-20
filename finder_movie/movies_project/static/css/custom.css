@@ -752,6 +752,7 @@ main {
     border-radius: 2%;
     padding-right: 1vh;
     line-height: 11px;
+    box-shadow: 0 0 6px #86868623;
 }
 
 .profile-body strong {
@@ -955,4 +956,12 @@ input[type="file"]::-webkit-file-upload-button {
 
 .search-movie-img  {
     box-shadow: 0 4px 8px rgba(83, 83, 83, 0.3), 0 1px 3px rgba(93, 93, 93, 0.1);
+}
+
+.img-avatar-cover{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid white;
 }
