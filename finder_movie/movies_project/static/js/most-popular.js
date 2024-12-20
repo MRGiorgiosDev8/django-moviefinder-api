@@ -1,6 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     const popularMovieInfo = document.getElementById("most-popular-movies");
 
+    /**
+     * Отображает список популярных фильмов на странице.
+     *
+     * @param {Object} data - Объект данных, содержащий информацию о фильмах.
+     * @param {Array} data.movies - Массив объектов фильмов.
+     * @param {string} data.movies[].Title - Название фильма.
+     * @param {string} data.movies[].Poster - URL постера фильма.
+     * @param {string} data.movies[].imdbID - ID фильма на IMDb.
+     * @param {string} data.movies[].Year - Год выпуска фильма.
+     * @param {string} data.movies[].Genre - Жанр фильма.
+     * @param {string} data.movies[].Actors - Актеры фильма.
+     * @param {string} data.movies[].imdbRating - Рейтинг фильма на IMDb.
+     * @param {string} data.movies[].Plot - Краткое описание сюжета фильма.
+     */
     const displayMovies = (data) => {
         popularMovieInfo.innerHTML = "";
 

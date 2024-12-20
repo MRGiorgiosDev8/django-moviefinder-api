@@ -1,6 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
     const randomMovieInfo = document.getElementById("random-movie-info");
 
+    /**
+     * Отображает список фильмов в формате карусели.
+     * 
+     * @param {Object} data - Объект данных, содержащий информацию о фильмах.
+     * @param {Array} data.movies - Массив объектов фильмов.
+     * @param {string} data.movies[].Title - Название фильма.
+     * @param {string} data.movies[].Poster - URL постера фильма.
+     * @param {string} data.movies[].imdbID - IMDb ID фильма.
+     * @param {string} data.movies[].imdbRating - Рейтинг IMDb фильма.
+     * @param {string} data.movies[].Year - Год выпуска фильма.
+     * @param {string} data.movies[].Genre - Жанр фильма.
+     * @param {string} data.movies[].Actors - Главные актеры в фильме.
+     * @param {string} data.movies[].Plot - Краткое содержание фильма.
+     * 
+     * Эта функция очищает существующее содержимое элемента `randomMovieInfo` и создает новую
+     * карусель для отображения Top20 фильмов. Каждый фильм отображается в виде карточки с постером,
+     * названием, рейтингом IMDb и ссылкой на страницу IMDb. Пользователи могут добавлять фильмы в
+     * избранное, нажимая на иконку сердца, что отправляет POST-запрос на сервер с данными фильма.
+     * 
+     * Функция также обрабатывает отображение модальных окон для каждого фильма, показывая подробную
+     * информацию, такую как постер фильма, рейтинг, год, жанр, актерский состав и сюжет. Анимации
+     * применяются к различным элементам с использованием GSAP для плавного пользовательского опыта.
+     * 
+     * Если пользователь не аутентифицирован, кнопки "добавить в избранное" скрываются.
+     * 
+     * Карусель включает навигационные кнопки для перемещения между различными наборами фильмов.
+     */
     const displayMovies = (data) => {
         randomMovieInfo.innerHTML = "";
 
@@ -251,7 +278,20 @@ document.addEventListener("DOMContentLoaded", function () {
 document.querySelectorAll(".movie-search-form").forEach(form => {
     form.addEventListener("submit", function (event) {
         event.preventDefault();
-
+        /**
+         * Объект, содержащий данные поиска фильма с той же структурой, что и данные избранного фильма.
+         * Используется для поиска и получения информации о фильмах из базы данных IMDB.
+         * @typedef {Object} MovieSearchData
+         * @property {string} title - Название фильма
+         * @property {string} imdb_id - Уникальный идентификатор IMDB для фильма
+         * @property {string} poster - URL-адрес постера фильма
+         * @property {string} year - Год выпуска фильма
+         * @property {string} genre - Жанры фильма в виде строки, разделенной запятыми
+         * @property {string} actors - Список главных актеров в виде строки, разделенной запятыми
+         * @property {string} imdb_rating - Рейтинг IMDB фильма
+         * @property {string} plot - Краткое содержание фильма
+         * @property {string} movie_url - Полный URL-адрес страницы фильма на IMDB
+         */
         const inputs = form.querySelectorAll("input");
         let query = "";
         inputs.forEach(input => {
@@ -260,7 +300,7 @@ document.querySelectorAll(".movie-search-form").forEach(form => {
             }
         });
 
-        console.log(query); 
+        console.log(query);
 
         if (!query.trim()) {
             alert("Please enter a movie title.");
