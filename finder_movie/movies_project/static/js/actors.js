@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
     const actorsContainer = document.getElementById("actors-container");
 
-        /**
-     * Отображает список актеров в контейнере actorsContainer.
-     * 
-     * @param {Object} data - Объект данных, содержащий информацию об актерах.
-     * @param {string} [data.error] - Сообщение об ошибке, если есть.
-     * @param {Array} [data.actors] - Массив объектов актеров.
-     * @param {string} data.actors[].Name - Имя актера.
-     * @param {string} [data.actors[].ProfileImage] - URL изображения профиля актера.
-     * @param {string} data.actors[].IMDbLink - Ссылка на страницу актера на IMDb.
-     */
+    /**
+ * Отображает список актеров в контейнере actorsContainer.
+ * 
+ * @param {Object} data - Объект данных, содержащий информацию об актерах.
+ * @param {string} [data.error] - Сообщение об ошибке, если есть.
+ * @param {Array} [data.actors] - Массив объектов актеров.
+ * @param {string} data.actors[].Name - Имя актера.
+ * @param {string} [data.actors[].ProfileImage] - URL изображения профиля актера.
+ * @param {string} data.actors[].IMDbLink - Ссылка на страницу актера на IMDb.
+ */
 
     const displayActors = (data) => {
         actorsContainer.innerHTML = "";
