@@ -73,11 +73,14 @@
                         <li class="nav-item">
                             <a id="profile-link" class="link-font nav-link" href="{% url 'accounts:profile' %}">
                                 {% if user.profile.avatar %}
-                                <img src="{{ user.profile.avatar.url }}" class="rounded-circle" style="margin-right: 6px; margin-bottom: 4px; opacity: 0.88;" alt="User Avatar"
+                                <img src="{{ user.profile.avatar.url }}" class="rounded-circle"
+                                    style="margin-right: 6px; margin-bottom: 4px; opacity: 0.88;" alt="User Avatar"
                                     width="22" height="22">
                                 {% else %}
                                 <img src="{% static 'images/default-avatar.png' %}"
-                                    class="rounded-circle img-def-avatar" style="margin-right: 6px; margin-bottom: 4px; opacity: 0.88;" alt="Default Avatar" width="22" height="22">
+                                    class="rounded-circle img-def-avatar"
+                                    style="margin-right: 6px; margin-bottom: 4px; opacity: 0.88;" alt="Default Avatar"
+                                    width="22" height="22">
                                 {% endif %}
                                 Profile
                                 <span class="nav-line"></span>
@@ -115,7 +118,7 @@
     </main>
 
     <footer class="custom-footer text-center py-2 py-sm-0  mt-auto">
-        <div class="container">
+        <div class="container-fluid">
             <nav class="nav justify-content-center m-0" aria-label="Social media navigation">
                 <a class="nav-link px-2  p-1" href="https://github.com/MRGiorgiosDev8" target="_blank" title="GitHub"
                     aria-label="GitHub">

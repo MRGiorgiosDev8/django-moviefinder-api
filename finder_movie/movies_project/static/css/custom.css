@@ -1018,6 +1018,9 @@ input[type="file"]::-webkit-file-upload-button {
     .container {
         padding: 3px;
         max-width: 100%;
+        width: 100vw;
+        margin: 0 auto;
+        box-sizing: border-box; 
     }
 
     .rated-h2,
@@ -1039,14 +1042,23 @@ input[type="file"]::-webkit-file-upload-button {
         padding-right: 3px;
     }
 
-    .custom-footer .container{
-        max-width: 100% !important;
-        background-color: #303030;
+    .custom-footer {
+        width: 100vw !important;
+        overflow-x: hidden;
+        margin: 0; 
+        padding: 0;
+    }
+
+    .container-fluid {
+        width: 100%;
+        max-width: 100%; 
+        padding-right: 3vh;
+        outline: #303030 30px solid; 
     }
 
     .navbar-toggler {
         background-color: whitesmoke;
         outline: none !important;
-        box-shadow: none !important;        
+        box-shadow: none !important;
     }
 }
