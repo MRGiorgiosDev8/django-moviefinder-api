@@ -974,15 +974,17 @@ input[type="file"]::-webkit-file-upload-button {
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
+        scroll-padding: 0 30px;
     }
 
     .carousel-item {
         flex: 0 0 auto;
+        scroll-snap-align: start;
     }
 
     .carousel-control-prev,
     .carousel-control-next {
-        display: none;
+        display: flex;
     }
 
     .movie-card {
@@ -1016,5 +1018,12 @@ input[type="file"]::-webkit-file-upload-button {
     .container {
         padding: 3px;
         max-width: 100%;
+    }
+
+    .rated-h2, .rated-actors, .new-release, .popular-h2, .world-premiere {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 1.8em;
     }
 }
