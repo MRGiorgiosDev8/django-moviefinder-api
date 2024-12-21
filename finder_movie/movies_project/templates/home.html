@@ -1,5 +1,5 @@
 <!-- 
-finder-movie-api/finder_movie/movies_project/templates/home.html
+/finder-movie-api/finder_movie/movies_project/templates/home.html
 
 Описание:
 Этот шаблон HTML расширяет базовый шаблон 'base.html' и загружает статические файлы. 
@@ -22,7 +22,7 @@ content: Основной контент страницы, включающий:
 - Форма поиска фильмов с текстовым полем и кнопкой отправки.
 
 Изображения:
-- Используются статические изображения, загружаемые через тег  static .
+- Используются статические изображения, загружаемые через тег static.
 
 Видео:
 - Встраивание видео с помощью iframe для трейлеров фильмов.
@@ -101,7 +101,7 @@ Home
 </div>
 
 <div class="container col-md-12 mt-4">
-    <div class="row justify-content-center link-urls mb-4">
+    <div class="row justify-content-center link-urls d-none d-md-flex  mb-4">
 
         <div class="col-md-4 mb-4 content-urls">
             <a href="https://www.imdb.com" target="_blank" class="btn btn-link-url d-flex align-items-center">
@@ -139,39 +139,39 @@ Home
         </div>
     </div>
 
-    <div class="container mt-5 film-container">
+    <div class="container mt-5 film-container d-none d-md-block">
         <h2 class="mt-4 text-center new-release">New Release</h2>
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center align-items-center film-poster">
                 <img src="{% static 'images/penguinlogoposter.png' %}" alt="The Penguin Poster" class="img-fluid"
-                    style="max-width:100%; height: auto;">
+                    style="max-width:100%; height: auto;" loading="lazy">
             </div>
 
             <div class="col-md-6">
                 <div class="ratio ratio-4x3 trailer-poster">
                     <iframe src="https://player.vimeo.com/video/1014531448?autoplay=1&muted=1" title="The Penguin"
-                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture;" allowfullscreen>
+                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
                     </iframe>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container mt-5 col-md-12">
+    <div class="container mt-5 col-md-12 p-0">
         <div class="row justify-content-center gx-1 gy-1 p-0" id="actors-container">
 
         </div>
     </div>
 
     <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner" id="random-movie-info">
+        <div class="carousel-inner p-0" id="random-movie-info">
             <div id="spinner-container">
                 <div class="spinner"></div>
             </div>
         </div>
     </div>
 
-    <div class="container mt-5 film-container">
+    <div class="container mt-5 film-container d-none d-md-block">
         <h2 class="mt-4 text-center world-premiere">World Premiere </h2>
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center align-items-center film-poster">
@@ -181,21 +181,21 @@ Home
 
             <div class="col-md-6">
                 <div class="ratio ratio-4x3 trailer-poster">
-                    <iframe src="https://player.vimeo.com/video/1003447006" title="Kraven The Hunter Trailer'"
-                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture;" allowfullscreen>
+                    <iframe src="https://player.vimeo.com/video/1003447006" title="Kraven The Hunter Trailer"
+                        allow="autoplay; fullscreen; picture-in-picture;" allowfullscreen>
                     </iframe>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container mt-5 col-md-12">
-        <div class="row justify-content-center gx-1 gy-1 p-0" id="popular-actors-container">
+    <div class="container mt-5 col-md-12 p-0">
+        <div class="row justify-content-center gx-1 gy-1" id="popular-actors-container">
 
         </div>
     </div>
 
-    <div class="container most-popular-container">
+    <div class="container most-popular-container p-0">
         <div id="moviePopularCarousel" class="carousel slide" data-bs-ride="carousel">
             <div id="most-popular-movies" class="carousel-inner">
 

@@ -37,17 +37,25 @@ document.addEventListener("DOMContentLoaded", function () {
             const carouselInner = document.createElement("div");
             carouselInner.classList.add("carousel-inner");
 
-            for (let i = 0; i < data.actors.length; i += 8) {
+            const itemsPerSlide = window.innerWidth <= 768 ? 2 : 8;
+
+            for (let i = 0; i < data.actors.length; i += itemsPerSlide) {
                 const carouselItem = document.createElement("div");
                 carouselItem.classList.add("carousel-item");
                 if (i === 0) carouselItem.classList.add("active");
 
                 const row = document.createElement("div");
-                row.style.textAlign = "center";
 
-                data.actors.slice(i, i + 8).forEach(actor => {
+                if (window.innerWidth <= 768) {
+                    row.classList.add("d-flex", "justify-content-center");
+                    row.style.textAlign = "center";
+                } else {
+                    row.classList.add("justify-content-center");
+                }
+
+                data.actors.slice(i, i + itemsPerSlide).forEach(actor => {
                     const col = document.createElement("span");
-                    col.classList.add("rounded-image-container");
+                    col.classList.add("rounded-image-container", "text-center");
 
                     col.innerHTML = `
                     <img src="${actor.ProfileImage || '/static/images/placeholder.png'}"
@@ -143,24 +151,32 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             const carousel = document.createElement("div");
-            carousel.id = "actorsPopularCarousel";
+            carousel.id = "actorsCarousel";
             carousel.classList.add("carousel", "slide");
             carousel.setAttribute("data-bs-ride", "carousel");
 
             const carouselInner = document.createElement("div");
             carouselInner.classList.add("carousel-inner");
 
-            for (let i = 0; i < data.actors.length; i += 8) {
+            const itemsPerSlide = window.innerWidth <= 768 ? 2 : 8;
+
+            for (let i = 0; i < data.actors.length; i += itemsPerSlide) {
                 const carouselItem = document.createElement("div");
                 carouselItem.classList.add("carousel-item");
                 if (i === 0) carouselItem.classList.add("active");
 
                 const row = document.createElement("div");
-                row.style.textAlign = "center";
 
-                data.actors.slice(i, i + 8).forEach(actor => {
+                if (window.innerWidth <= 768) {
+                    row.classList.add("d-flex", "justify-content-center");
+                    row.style.textAlign = "center";
+                } else {
+                    row.classList.add("justify-content-center");
+                }
+
+                data.actors.slice(i, i + itemsPerSlide).forEach(actor => {
                     const col = document.createElement("span");
-                    col.classList.add("rounded-image-container");
+                    col.classList.add("rounded-image-container", "text-center");
 
                     col.innerHTML = `
                     <img src="${actor.ProfileImage || '/static/images/placeholder.png'}"

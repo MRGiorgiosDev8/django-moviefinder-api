@@ -33,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const carouselInner = document.createElement("div");
             carouselInner.classList.add("carousel-inner");
 
-            for (let i = 0; i < data.movies.length; i += 5) {
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            const moviesPerCarouselItem = isMobile ? 2 : 5;
+
+            for (let i = 0; i < data.movies.length; i += moviesPerCarouselItem) {
                 const carouselItem = document.createElement("div");
                 carouselItem.classList.add("carousel-item");
                 if (i === 0) carouselItem.classList.add("active");
@@ -41,12 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 const cardGroup = document.createElement("div");
                 cardGroup.classList.add("d-flex", "justify-content-center");
 
-                data.movies.slice(i, i + 5).forEach(movie => {
+                data.movies.slice(i, i + moviesPerCarouselItem).forEach(movie => {
                     const movieCard = document.createElement("div");
-                    movieCard.classList.add("movie-card", "card", "text-center");
+                    movieCard.classList.add("movie-card", "card", "text-center", "col-sm-12");
 
                     movieCard.innerHTML = `
-                        <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" style="height: 307px;" data-bs-toggle="modal" data-bs-target="#movieModal-${movie.imdbID}">
+                        <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" data-bs-toggle="modal" data-bs-target="#movieModal-${movie.imdbID}">
                         <p class="p-card"><strong>${movie.Title}</strong></p>
                         <p><i class="fa fa-star" style="color: #FFD700; text-shadow:
                         -0.7px -0.7px 0.7px #656565,

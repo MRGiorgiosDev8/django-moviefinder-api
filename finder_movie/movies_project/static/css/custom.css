@@ -249,6 +249,7 @@ main {
 .movie-card img {
     border-radius: 8px;
     margin-bottom: 7px;
+    height: 307px;
 }
 
 .carousel .carousel-control-prev,
@@ -954,14 +955,66 @@ input[type="file"]::-webkit-file-upload-button {
     margin-bottom: 20vh;
 }
 
-.search-movie-img  {
+.search-movie-img {
     box-shadow: 0 4px 8px rgba(83, 83, 83, 0.3), 0 1px 3px rgba(93, 93, 93, 0.1);
 }
 
-.img-avatar-cover{
+.img-avatar-cover {
     width: 160px;
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
     border: 8px solid white;
+}
+
+/* Для мобильных экранов */
+@media (max-width: 768px) {
+    .carousel-inner {
+        display: inline;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+    }
+
+    .carousel-item {
+        flex: 0 0 auto;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
+    }
+
+    .movie-card {
+        max-width: 100%;
+        margin: 4.6px;
+        border-radius: 3px;
+    }
+
+    .movie-card img {
+        height: 220px;
+    }
+
+    .link-imbd {
+        margin-bottom: 6px;
+        padding: 0;
+    }
+
+    #actors-container {
+        justify-content: center;
+    }
+
+    .rounded-image {
+        width: 146px;
+        height: 154px;
+    }
+
+    .rounded-image-container {
+        margin: 14px;
+    }
+
+    .container {
+        padding: 3px;
+        max-width: 100%;
+    }
 }
