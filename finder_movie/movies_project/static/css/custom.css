@@ -1020,10 +1020,33 @@ input[type="file"]::-webkit-file-upload-button {
         max-width: 100%;
     }
 
-    .rated-h2, .rated-actors, .new-release, .popular-h2, .world-premiere {
+    .rated-h2,
+    .rated-actors,
+    .new-release,
+    .popular-h2,
+    .world-premiere {
         margin-left: 0;
         width: 100%;
         text-align: center;
         font-size: 1.8em;
+    }
+
+    .btn-custom {
+        font-size: 1.04em;
+    }
+
+    .custom-navbar {
+        padding-right: 3px;
+    }
+
+    .custom-footer .container{
+        max-width: 100% !important;
+        background-color: #303030;
+    }
+
+    .navbar-toggler {
+        background-color: whitesmoke;
+        outline: none !important;
+        box-shadow: none !important;        
     }
 }
