@@ -1020,7 +1020,7 @@ input[type="file"]::-webkit-file-upload-button {
         max-width: 100%;
         width: 100vw;
         margin: 0 auto;
-        box-sizing: border-box; 
+        box-sizing: border-box;
     }
 
     .rated-h2,
@@ -1040,25 +1040,52 @@ input[type="file"]::-webkit-file-upload-button {
 
     .custom-navbar {
         padding-right: 3px;
+        border-bottom: 6px solid #fbdd76;
     }
 
     .custom-footer {
         width: 100vw !important;
         overflow-x: hidden;
-        margin: 0; 
+        margin: 0;
         padding: 0;
+        border-top: 6px solid #fbdd76;
     }
 
-    .container-fluid {
-        width: 100%;
-        max-width: 100%; 
-        padding-right: 3vh;
-        outline: #303030 30px solid; 
+    .custom-footer p {
+        font-size: 1em;
     }
 
     .navbar-toggler {
         background-color: whitesmoke;
         outline: none !important;
         box-shadow: none !important;
+        font-size: 1.1em;
+    }
+
+    .github-icon,
+    .telegram-icon,
+    .gmail-icon {
+        font-size: 1.8em;
+    }
+
+    .mobile-search {
+        margin-bottom: -6vh;
+    }
+
+    .film-container {
+        margin-bottom: -3vh;
+        padding: 0;
+    }
+
+    .film-container::before {
+        display: none;
+    }
+
+    #movie-info ul li {
+        padding-left: 0;
+    }
+
+    #movie-info ul p:first-of-type {
+        font-size: 0.8em;
     }
 }

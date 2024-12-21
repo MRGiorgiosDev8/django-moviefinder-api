@@ -65,8 +65,8 @@ Home
         </div>
         <form class="movie-search-form query my-3" style="margin: 0 auto; padding: 0; width: 500px;">
             <div class="input-group input-custom-width">
-                <input type="text" name="query" class="form-control input-radius"
-                    placeholder="Enter movie title" required>
+                <input type="text" name="query" class="form-control input-radius" placeholder="Enter movie title"
+                    required>
                 <div class="input-group-append ms-2">
                     <button type="submit" class="btn btn-custom">Search</button>
                 </div>
@@ -76,15 +76,14 @@ Home
     </div>
 </div>
 
-<div class="container d-block d-md-none mt-3">
+<div class="container mobile-search d-block d-md-none mt-3">
     <div class="camera-movie text-center mb-3" style="margin: 0; padding: 0;">
         <img src="{% static 'images/clapperboard.gif' %}" alt="Movie Camera" class="img-fluid"
-            style="width: 188px; height: 188px; border-radius: 30px; opacity: 0.8;">
+            style="width: 198px; height: 198px; border-radius: 30px; opacity: 0.8;">
     </div>
     <form class="movie-search-form query my-3" style="margin: 0; padding: 0;">
         <div class="input-group input-custom-width">
-            <input type="text" name="query" class="form-control input-radius"
-                placeholder="Enter movie title" required>
+            <input type="text" name="query" class="form-control input-radius" placeholder="Enter movie title" required>
             <div class="input-group-append ms-2">
                 <button type="submit" class="btn btn-custom">Search</button>
             </div>
@@ -139,18 +138,18 @@ Home
         </div>
     </div>
 
-    <div class="container mt-5 film-container d-none d-md-block">
+    <div class="container mt-5 film-container">
         <h2 class="mt-4 text-center new-release">New Release</h2>
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center align-items-center film-poster">
-                <img src="{% static 'images/penguinlogoposter.png' %}" alt="The Penguin Poster" class="img-fluid"
-                    style="max-width:100%; height: auto;" loading="lazy">
+                <img src="{% static 'images/penguinlogoposter.png' %}" alt="The Penguin Poster"
+                    class="img-fluid d-none d-md-block " style="max-width:100%; height: auto;" loading="lazy">
             </div>
 
             <div class="col-md-6">
                 <div class="ratio ratio-4x3 trailer-poster">
                     <iframe src="https://player.vimeo.com/video/1014531448?autoplay=1&muted=1" title="The Penguin"
-                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
                     </iframe>
                 </div>
             </div>
@@ -171,12 +170,12 @@ Home
         </div>
     </div>
 
-    <div class="container mt-5 film-container d-none d-md-block">
+    <div class="container mt-5 film-container">
         <h2 class="mt-4 text-center world-premiere">World Premiere </h2>
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center align-items-center film-poster">
-                <img src="{% static 'images/kraven-poster.png' %}" alt="Kraven The Hunter" class="img-fluid"
-                    style="max-width:100%; height: 350px;">
+                <img src="{% static 'images/kraven-poster.png' %}" alt="Kraven The Hunter"
+                    class="img-fluid d-none d-md-block" style="max-width:100%; height: 350px;">
             </div>
 
             <div class="col-md-6">
