@@ -1113,6 +1113,10 @@ input[type="file"]::-webkit-file-upload-button {
         margin-bottom: 11vh;
     }
 
+    .header-profile {
+        background-color: white;
+    }
+
     .sign-h2 {
         font-size: 3em;
     }
@@ -1198,7 +1202,7 @@ input[type="file"]::-webkit-file-upload-button {
         order: 4;
     }
 
-    hr {
+    .hr-profile {
         order: 5;
     }
 
@@ -1211,6 +1215,8 @@ input[type="file"]::-webkit-file-upload-button {
         margin-top: -11vh;
         font-size: 1.5em;
         transform: translateY(-3vh);
+        padding-right: 13px;
+        padding-left: 13px;
     }
 
     .edit-profile-mobile {
@@ -1220,5 +1226,9 @@ input[type="file"]::-webkit-file-upload-button {
     .img-avatar-cover,
     .img-def-avatar {
         margin-bottom: 3vh;
+    }
+
+    .mobile-poster {
+        margin-top: -3vh;
     }
 }
