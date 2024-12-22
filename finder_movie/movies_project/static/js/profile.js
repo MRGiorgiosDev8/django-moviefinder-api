@@ -3,26 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.container');
     const offsetTop = 11 * window.innerHeight / 100;
 
-    stickySelectors.forEach((selector) => {
-        const stickyElement = document.querySelector(selector);
+    if (window.innerWidth > 768) {
+        stickySelectors.forEach((selector) => {
+            const stickyElement = document.querySelector(selector);
 
-        if (stickyElement) {
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.boundingClientRect.top < offsetTop) {
-                        stickyElement.style.position = 'fixed';
-                        stickyElement.style.top = `${offsetTop}px`;
-                    } else {
-                        stickyElement.style.position = 'static';
+            if (stickyElement) {
+                const observer = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.boundingClientRect.top < offsetTop) {
+                            stickyElement.style.position = 'fixed';
+                            stickyElement.style.top = `${offsetTop}px`;
+                        } else {
+                            stickyElement.style.position = 'static';
+                        }
+                    },
+                    {
+                        root: null,
+                        threshold: 0,
                     }
-                },
-                {
-                    root: null,
-                    threshold: 0,
-                }
-            );
+                );
 
-            observer.observe(container);
-        }
-    });
+                observer.observe(container);
+            }
+        });
+    }
 });

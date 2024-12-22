@@ -252,6 +252,22 @@ main {
     height: 307px;
 }
 
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 1.6vh;
+}
+
+.carousel-item {
+    transition: transform 0.8s ease-out;
+}
+
+.carousel-inner {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
 .carousel .carousel-control-prev,
 .carousel .carousel-control-next {
     width: 3%;
@@ -271,8 +287,9 @@ main {
 .h2-profile,
 .h2-delete,
 .popular-h2,
-.world-premiere {
-    margin-left: 3vh;
+.world-premiere,
+.search-mobile {
+    margin-left: 2.6vh;
     font-family: "Rowdies", sans-serif;
     font-weight: 300;
     color: white;
@@ -332,11 +349,11 @@ main {
 }
 
 .carousel-inner {
-    padding-top: 6px;
-    padding-bottom: 14px;
-    padding-left: 4px;
-    padding-right: 4px;
-    border-radius: 20px;
+    display: inline;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding: 0 30px;
 }
 
 .link-imbd {
@@ -971,9 +988,6 @@ input[type="file"]::-webkit-file-upload-button {
 @media (max-width: 768px) {
     .carousel-inner {
         display: inline;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
         scroll-padding: 0 30px;
     }
 
@@ -1027,11 +1041,19 @@ input[type="file"]::-webkit-file-upload-button {
     .rated-actors,
     .new-release,
     .popular-h2,
-    .world-premiere {
+    .world-premiere,
+    .search-mobile,
+    .h2-profile,
+    .h2-delete {
         margin-left: 0;
         width: 100%;
         text-align: center;
         font-size: 1.8em;
+    }
+
+    .h2-profile,
+    .h2-delete {
+        margin-top: 1vh;
     }
 
     .btn-custom {
@@ -1040,7 +1062,6 @@ input[type="file"]::-webkit-file-upload-button {
 
     .custom-navbar {
         padding-right: 3px;
-        border-bottom: 6px solid #fbdd76;
     }
 
     .custom-footer {
@@ -1048,7 +1069,6 @@ input[type="file"]::-webkit-file-upload-button {
         overflow-x: hidden;
         margin: 0;
         padding: 0;
-        border-top: 6px solid #fbdd76;
     }
 
     .custom-footer p {
@@ -1087,5 +1107,118 @@ input[type="file"]::-webkit-file-upload-button {
 
     #movie-info ul p:first-of-type {
         font-size: 0.8em;
+    }
+
+    .most-popular-container {
+        margin-bottom: 11vh;
+    }
+
+    .sign-h2 {
+        font-size: 3em;
+    }
+
+    .login-h2 {
+        font-size: 3.1em;
+    }
+
+    .form-auth-sign {
+        scale: 0.88;
+        margin-top: -4vh;
+    }
+
+    .form-auth-login {
+        scale: 0.88;
+        width: 318px;
+        transform: translateX(-7.3%);
+    }
+
+    body.login-page .navbar-toggler {
+        display: none !important;
+    }
+
+    .poster {
+        width: 100%;
+        height: 20vh;
+    }
+
+    .modal-dialog {
+        margin: 1.75rem auto;
+    }
+
+    .modal-content {
+        border-radius: 8px;
+    }
+
+    .profile-card {
+        width: 100%;
+        margin-top: -2.3vh;
+    }
+
+    .profile-body {
+        display: none;
+    }
+
+    .profile-conatiner-mobile {
+        margin-top: -6vh;
+    }
+
+    .card-body {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .card-body li {
+        padding-left: -3vh;
+    }
+
+    .profile-rating {
+        padding: 0;
+        margin-top: 1vh;
+        margin-left: 4vh;
+    }
+
+    .content-favourites {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .h2-profile {
+        order: 1;
+    }
+
+    .poster-movie-profile {
+        order: 2;
+    }
+
+    .profile-rating {
+        order: 3;
+    }
+
+    .movie-profile-info {
+        order: 4;
+    }
+
+    hr {
+        order: 5;
+    }
+
+    .edit-profile-card {
+        display: none;
+    }
+
+    .btn-delete {
+        text-align: center;
+        margin-top: -11vh;
+        font-size: 1.5em;
+        transform: translateY(-3vh);
+    }
+
+    .edit-profile-mobile {
+        margin-top: -2.3vh;
+    }
+
+    .img-avatar-cover,
+    .img-def-avatar {
+        margin-bottom: 3vh;
     }
 }

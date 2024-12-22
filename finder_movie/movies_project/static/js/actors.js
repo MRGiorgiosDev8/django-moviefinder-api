@@ -47,10 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 const row = document.createElement("div");
 
                 if (window.innerWidth <= 768) {
-                    row.classList.add("d-flex", "justify-content-center");
+                    row.classList.add("d-flex", "justify-content-center", "p-2");
                     row.style.textAlign = "center";
                 } else {
-                    row.classList.add("justify-content-center");
+                    row.classList.add("justify-content-center", "p-2");
                 }
 
                 data.actors.slice(i, i + itemsPerSlide).forEach(actor => {
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             const carousel = document.createElement("div");
-            carousel.id = "actorsCarousel";
+            carousel.id = "actorsPopularCarousel";
             carousel.classList.add("carousel", "slide");
             carousel.setAttribute("data-bs-ride", "carousel");
 
@@ -168,10 +168,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 const row = document.createElement("div");
 
                 if (window.innerWidth <= 768) {
-                    row.classList.add("d-flex", "justify-content-center");
+                    row.classList.add("d-flex", "justify-content-center", "p-2");
                     row.style.textAlign = "center";
                 } else {
-                    row.classList.add("justify-content-center");
+                    row.classList.add("justify-content-center", "p-2");
                 }
 
                 data.actors.slice(i, i + itemsPerSlide).forEach(actor => {
