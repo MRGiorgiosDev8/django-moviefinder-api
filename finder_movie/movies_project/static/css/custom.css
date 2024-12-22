@@ -1119,20 +1119,23 @@ input[type="file"]::-webkit-file-upload-button {
 
     .sign-h2 {
         font-size: 3em;
+        margin-left: 4.4px;
     }
 
     .login-h2 {
+        margin-top: 6vh;
         font-size: 3.1em;
     }
 
     .form-auth-sign {
         scale: 0.88;
-        margin-top: -4vh;
+        margin-top: -4.3vh;
     }
 
     .form-auth-login {
         scale: 0.88;
         width: 318px;
+        margin-top: -2vh;
         transform: translateX(-7.3%);
     }
 
