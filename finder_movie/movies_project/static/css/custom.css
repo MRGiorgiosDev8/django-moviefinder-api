@@ -1008,7 +1008,7 @@ input[type="file"]::-webkit-file-upload-button {
     }
 
     .movie-card img {
-        height: 220px;
+        height: 250px;
     }
 
     .link-imbd {
@@ -1021,8 +1021,9 @@ input[type="file"]::-webkit-file-upload-button {
     }
 
     .rounded-image {
-        width: 146px;
-        height: 154px;
+        width: 160px;
+        height: 170px;
+        margin-top: -3vh;
     }
 
     .rounded-image-container {
@@ -1030,9 +1031,9 @@ input[type="file"]::-webkit-file-upload-button {
     }
 
     .container {
-        padding: 3px;
+        padding: 0;
         max-width: 100%;
-        width: 100vw;
+        width: 100%;
         margin: 0 auto;
         box-sizing: border-box;
     }
@@ -1051,6 +1052,10 @@ input[type="file"]::-webkit-file-upload-button {
         font-size: 1.8em;
     }
 
+    .rated-actors {
+        margin-top: -6vh;
+    }
+
     .h2-profile,
     .h2-delete {
         margin-top: 1vh;
@@ -1061,14 +1066,16 @@ input[type="file"]::-webkit-file-upload-button {
     }
 
     .custom-navbar {
-        padding-right: 3px;
+        padding-right: 0;
+        padding-left: 0;
+        width: 100%;
     }
 
     .custom-footer {
-        width: 100vw !important;
-        overflow-x: hidden;
-        margin: 0;
-        padding: 0;
+        width: 100% !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .custom-footer p {
@@ -1080,6 +1087,7 @@ input[type="file"]::-webkit-file-upload-button {
         outline: none !important;
         box-shadow: none !important;
         font-size: 1.1em;
+        margin-right: 3px;
     }
 
     .github-icon,
@@ -1119,23 +1127,20 @@ input[type="file"]::-webkit-file-upload-button {
 
     .sign-h2 {
         font-size: 3em;
-        margin-left: 4.4px;
     }
 
     .login-h2 {
-        margin-top: 6vh;
         font-size: 3.1em;
     }
 
     .form-auth-sign {
         scale: 0.88;
-        margin-top: -4.3vh;
+        margin-top: -4vh;
     }
 
     .form-auth-login {
         scale: 0.88;
         width: 318px;
-        margin-top: -2vh;
         transform: translateX(-7.3%);
     }
 
