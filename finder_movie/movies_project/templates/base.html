@@ -60,8 +60,7 @@
             aria-label="Social media navigation">
             <div class="container">
                 <a class="d-flex logo-font align-items-center navbar-brand" href="{% url 'movies_project:home' %}">
-                    <img src="{% static 'images/logocinema1.png' %}" alt="Logo"
-                        style="width: 36px; height: 36px; margin-right: 8px;">
+                    <img src="{% static 'images/logocinema1.png' %}" alt="Logo">
                     <span class="logo-text">MovieFinderApp</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -119,21 +118,21 @@
     </main>
 
     <footer class="custom-footer  text-center py-2 py-sm-0">
-            <nav class="nav justify-content-center mt-1" aria-label="Social media navigation">
-                <a class="nav-link px-2  p-1" href="https://github.com/MRGiorgiosDev8" target="_blank" title="GitHub"
-                    aria-label="GitHub">
-                    <i class="fab fa-github github-icon"></i>
-                </a>
-                <a class="nav-link px-2  p-1" href="https://t.me/mrgiorgio8" target="_blank" title="Telegram"
-                    aria-label="Telegram">
-                    <i class="fab fa-telegram telegram-icon"></i>
-                </a>
-                <a class="nav-link px-2 p-1" href="mailto:gerorge.oblivantsev8@gmail.com" target="_blank" title="Gmail"
-                    aria-label="Gmail">
-                    <i class="fas fa-envelope gmail-icon"></i>
-                </a>
-            </nav>
-            <p class="m-0 ms-2 mb-1">&copy; 2024 MovieFinderApp</p>
+        <nav class="nav justify-content-center mt-1" aria-label="Social media navigation">
+            <a class="nav-link px-2  p-1" href="https://github.com/MRGiorgiosDev8" target="_blank" title="GitHub"
+                aria-label="GitHub">
+                <i class="fab fa-github github-icon"></i>
+            </a>
+            <a class="nav-link px-2  p-1" href="https://t.me/mrgiorgio8" target="_blank" title="Telegram"
+                aria-label="Telegram">
+                <i class="fab fa-telegram telegram-icon"></i>
+            </a>
+            <a class="nav-link px-2 p-1" href="mailto:gerorge.oblivantsev8@gmail.com" target="_blank" title="Gmail"
+                aria-label="Gmail">
+                <i class="fas fa-envelope gmail-icon"></i>
+            </a>
+        </nav>
+        <p class="m-0 ms-2 mb-1">&copy; 2024 MovieFinderApp</p>
     </footer>
 
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -147,4 +146,5 @@
     <script src="{% static 'js/most-popular.js' %}"></script>
     <script src="{% static 'js/profile.js' %}"></script>
 </body>
+
 </html>

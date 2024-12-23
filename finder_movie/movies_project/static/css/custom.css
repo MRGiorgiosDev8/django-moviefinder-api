@@ -47,6 +47,12 @@ a {
     font-size: 1.4rem;
 }
 
+.logo-font img {
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+}
+
 .custom-footer p {
     font-weight: 400;
     color: white;
@@ -394,6 +400,11 @@ main {
         -1px -1px 0px rgb(255, 255, 255),
         1px -1px 0px rgb(255, 255, 255),
         -1px 1px 1px rgb(255, 255, 255);
+}
+
+.text-overlay img {
+    width: 80px;
+    height: auto;
 }
 
 #spinner-container {
@@ -1238,5 +1249,34 @@ input[type="file"]::-webkit-file-upload-button {
 
     .mobile-poster {
         margin-top: -3vh;
+    }
+
+    .logo-font {
+        margin-left: 3px;
+    }
+}
+
+/* Для декстоп экранов  */
+@media (min-width: 1500px) {
+    .logo-font img {
+        width: 43px;
+        height: 43px;
+    }
+
+    .logo-text {
+        font-size: 1.3em;
+    }
+
+    .nav-item a {
+        font-size: 19px;
+    }
+
+    .text-overlay h1 {
+        font-size: 6em;
+    }
+
+    .text-overlay img {
+        width: 100px;
+        height: auto;
     }
 }
