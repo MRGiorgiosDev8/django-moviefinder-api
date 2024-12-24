@@ -51,11 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     movieCard.innerHTML = `
                         <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid w-100" data-bs-toggle="modal" data-bs-target="#movieModal-${movie.imdbID}">
                         <p class="p-card"><strong>${movie.Title}</strong></p>
-                        <p><i class="fa fa-star" style="color: #FFD700; text-shadow:
-                        -0.7px -0.7px 0.7px #656565,
-                        0.7px -0.7px 0.7px #656565,
-                        -0.7px  0.7px 0.7px #656565,
-                        0.7px  0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
+                        <p><i class="fa fa-star" style="color: #FFD700; -webkit-text-stroke: 1px #656565;"></i> ${movie.imdbRating}</p>
                          <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-link link-imbd">
                             <i class="fa fa-hand-point-right"></i> <span class="imbd-text">IMDb</span>
                          </a>
@@ -168,22 +164,18 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                                 <div class="modal-body">
                                     <img src="${movie.Poster}" alt="${movie.Title} Poster" class="img-fluid">
-                                     <p class="rating-modal"><i class="fa fa-star" style="color: #FFD700; text-shadow:
-                                     -0.7px -0.7px 0.7px #656565,
-                                      0.7px -0.7px 0.7px #656565,
-                                      -0.7px  0.7px 0.7px #656565,
-                                       0.7px  0.7px 0.7px #656565;"></i> ${movie.imdbRating}</p>
-                                       <p><strong>Year:</strong> ${movie.Year}</p>
-                                       <hr>
-                                       <p><strong>Genre:</strong> ${movie.Genre}</p>
-                                       <hr>
-                                       <p><strong>Cast:</strong> ${movie.Actors}</p>
-                                       <hr>
-                                       <p><strong>Plot:</strong> ${movie.Plot}</p>
-                                   </div>
-                              </div>
-                          </div>
-                        `;
+                                    <p class="rating-modal"><i class="fa fa-star" style="color: #FFD700; -webkit-text-stroke: 1px #656565;"></i> ${movie.imdbRating}</p>
+                                    <p><strong>Year:</strong> ${movie.Year}</p>
+                                    <hr>
+                                    <p><strong>Genre:</strong> ${movie.Genre}</p>
+                                    <hr>
+                                    <p><strong>Cast:</strong> ${movie.Actors}</p>
+                                    <hr>
+                                    <p><strong>Plot:</strong> ${movie.Plot}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
                     document.body.appendChild(modal);
 
                     modal.addEventListener('show.bs.modal', function () {
