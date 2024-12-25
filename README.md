@@ -35,7 +35,7 @@ MovieFinderApp позволяет пользователям искать фил
 
 Вы можете ознакомиться с развернутой версией приложения на хостинге по следующей ссылке:
 
-[MovieFinderApp](https://moviefinderapp-4vjn.onrender.com)
+<a href="https://moviefinderapp-4vjn.onrender.com" target="_blank">MovieFinderApp</a>
 
 Здесь вы можете протестировать приложение.
 
