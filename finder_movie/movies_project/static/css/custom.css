@@ -1319,7 +1319,7 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 /* Для десктопных устроиств */
-@media (min-width: 1500px) {
+/* @media (min-width: 1500px) {
     body {
         zoom: 1;
     }
@@ -1337,17 +1337,11 @@ input[type="file"]::-webkit-file-upload-button {
     }
 }
 
-@media (min-width: 1700px) {
-    body {
-        zoom: 1.26;
-    }
-}
-
 @media (min-width: 1900px) {
     body {
         zoom: 1.30;
     }
-}
+} */
 
 /* @media (min-height: 1080px) {
     .sign-h2 {
