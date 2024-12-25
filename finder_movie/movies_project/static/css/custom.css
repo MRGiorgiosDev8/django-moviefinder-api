@@ -355,7 +355,7 @@ main {
     color: white;
     background-color: #e0c15e;
     width: 17%;
-    border: 1px solid #ffffff;
+    /* border: 1px solid #ffffff; */
     padding: 3px;
     border-radius: 3px;
     filter: contrast(1.1) brightness(1.1);
