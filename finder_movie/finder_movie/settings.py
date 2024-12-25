@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-du6+%ir)!bqu#p5gan4la9wcn-e6-m5=cfjwje3^y1&8by))=y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = ['moviefinderapp-4vjn.onrender.com', 'localhost']
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
