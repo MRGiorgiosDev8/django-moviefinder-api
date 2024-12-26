@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             movie_url: `https://www.imdb.com/title/${movie.imdbID}/`
                         };
 
-                        fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
+                        fetch("/accounts/add-to-favorites/", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -374,7 +374,7 @@ document.querySelectorAll(".movie-search-form").forEach(form => {
                             movie_url: `https://www.imdb.com/title/${movie.imdbID}/`
                         };
 
-                        fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
+                        fetch("/accounts/add-to-favorites/", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
