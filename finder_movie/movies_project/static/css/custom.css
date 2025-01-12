@@ -81,7 +81,7 @@ a {
 }
 
 .custom-navbar,
-.custom-footer {
+.custom-footer  {
     background-color: rgb(48, 48, 48);
 }
 
@@ -261,27 +261,27 @@ main {
 }
 
 .movie-search-form {
-    width: 100%; 
-    box-sizing: border-box; 
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .input-group {
-    display: flex; 
-    flex-wrap: nowrap; 
-    max-width: 100%; 
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
 }
 
 .input-group-append {
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .form-control {
-    flex: 1; 
-    min-width: 0; 
+    flex: 1;
+    min-width: 0;
 }
 
 .btn-custom {
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .movie-card:hover {
@@ -517,7 +517,7 @@ main {
     background-color: #a0b669 !important;
     color: white !important;
     border-color: #a7be6d !important;
-    box-shadow: none !important; 
+    box-shadow: none !important;
 }
 
 .btn-link-search:hover {
@@ -762,7 +762,7 @@ main {
 
 .form-auth-sign,
 .form-auth-login {
-    background-color: #303030;
+    background-color: rgb(48, 48, 48);
     border-radius: 6px;
     color: white;
     font-weight: bold;
@@ -784,7 +784,7 @@ main {
 
 .login-page,
 .info-auth-p {
-    background-color: #303030;
+    background-color: rgb(48, 48, 48);
 }
 
 .info-auth-p {
@@ -820,13 +820,13 @@ main {
     content: '';
     position: absolute;
     width: 0;
-    height: 1.8px;
+    height: 2.3px;
     background-color: #b7c48e;
     bottom: 6px;
     left: 50%;
     transform: translateX(-50%);
     transition: width 0.3s ease, left 0.3s ease;
-    box-shadow: 0 0 6px #ffffff23;
+    box-shadow: 0 0 6px #ffffffd3;
     --line-width: 80%;
 }
 
@@ -1061,7 +1061,7 @@ input[type="file"]::-webkit-file-upload-button {
 @media (max-width: 768px) {
     .carousel-inner {
         display: inline;
-        scroll-padding: 0 30px;
+        scroll-padding: 0 20px;
     }
 
     .carousel-item {
@@ -1159,13 +1159,13 @@ input[type="file"]::-webkit-file-upload-button {
     }
 
     .movie-search-form {
-        width: 98%; 
+        width: 98%;
     }
-    
+
     .input-group {
         padding-left: 1.1vh;
     }
-       
+
     .btn-custom {
         margin-left: 3px;
         scale: 0.96;

@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (form) {
         form.style.visibility = "hidden";
+        form.style.opacity = "0";
+
         gsap.set(form, {
             clipPath: "inset(100% 0 50% 0)",
-            opacity: 0,
         });
 
         gsap.to(form, {
@@ -22,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (heading) {
         heading.style.visibility = "hidden";
+        heading.style.opacity = "0";
+
         gsap.fromTo(
             heading,
             { y: 40, opacity: 0 },
