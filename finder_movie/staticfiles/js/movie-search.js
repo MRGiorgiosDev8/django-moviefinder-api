@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Отображает список фильмов в формате карусели.
-     * 
+     *
      * @param {Object} data - Объект данных, содержащий информацию о фильмах.
      * @param {Array} data.movies - Массив объектов фильмов.
      * @param {string} data.movies[].Title - Название фильма.
@@ -14,18 +14,18 @@ document.addEventListener("DOMContentLoaded", function () {
      * @param {string} data.movies[].Genre - Жанр фильма.
      * @param {string} data.movies[].Actors - Главные актеры в фильме.
      * @param {string} data.movies[].Plot - Краткое содержание фильма.
-     * 
+     *
      * Эта функция очищает существующее содержимое элемента `randomMovieInfo` и создает новую
      * карусель для отображения Top20 фильмов. Каждый фильм отображается в виде карточки с постером,
      * названием, рейтингом IMDb и ссылкой на страницу IMDb. Пользователи могут добавлять фильмы в
      * избранное, нажимая на иконку сердца, что отправляет POST-запрос на сервер с данными фильма.
-     * 
+     *
      * Функция также обрабатывает отображение модальных окон для каждого фильма, показывая подробную
      * информацию, такую как постер фильма, рейтинг, год, жанр, актерский состав и сюжет. Анимации
      * применяются к различным элементам с использованием GSAP для плавного пользовательского опыта.
-     * 
+     *
      * Если пользователь не аутентифицирован, кнопки "добавить в избранное" скрываются.
-     * 
+     *
      * Карусель включает навигационные кнопки для перемещения между различными наборами фильмов.
      */
     const displayMovies = (data) => {
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             movie_url: `https://www.imdb.com/title/${movie.imdbID}/`
                         };
 
-                        fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
+                        fetch("/accounts/add-to-favorites/", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -374,7 +374,7 @@ document.querySelectorAll(".movie-search-form").forEach(form => {
                             movie_url: `https://www.imdb.com/title/${movie.imdbID}/`
                         };
 
-                        fetch("http://127.0.0.1:8000/accounts/add-to-favorites/", {
+                        fetch("/accounts/add-to-favorites/", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
