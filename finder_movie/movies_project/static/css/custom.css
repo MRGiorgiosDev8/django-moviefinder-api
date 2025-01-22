@@ -312,6 +312,16 @@ main {
     overflow: hidden;
 }
 
+body.modal-open {
+    overflow: hidden !important; 
+    padding-right: 0 !important; 
+}
+
+/* body.modal-backdrop ::-webkit-scrollbar {
+    width: 0 !important; 
+    height: 0 !important; 
+} */
+
 /* .modal-backdrop::-webkit-scrollbar {
     display: none;
 }
@@ -1170,6 +1180,7 @@ input[type="file"]::-webkit-file-upload-button {
     .btn-custom {
         margin-left: 3px;
         scale: 0.96;
+        color: #8fa856;
     }
 
     .navbar-toggler {
@@ -1224,7 +1235,7 @@ input[type="file"]::-webkit-file-upload-button {
     }
 
     .form-auth-sign {
-        scale: 0.88;
+        /* scale: 0.88; */
         margin-top: -4vh;
     }
 
