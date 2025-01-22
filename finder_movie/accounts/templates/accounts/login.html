@@ -32,9 +32,9 @@
 
 {% block content %}
     <div class="container mt-5 container-auth w-75">
-        <h2 id="auth-h2" class="text-center login-h2">Sign in</h2>
         <div class="row justify-content-center">
             <div class="col-md-4 login-container">
+                <h2 id="auth-h2" class="text-center login-h2">Sign in</h2>
                 <form id="signup-form" method="POST" class="p-4 shadow-sm form-auth-login">
                     {% csrf_token %}
                     <div class="mb-3">
@@ -46,10 +46,8 @@
                         {{ form.password|add_class:"form-control" }}
                     </div>
                     <button type="submit" class="btn btn-auth mt-3 w-100">Go</button>
+                    <p class="text-center m-0 mt-4 p-0 info-p"> Don't have an account? <a href="{% url 'accounts:signup' %}">Sign up here</a></p>
                 </form>
-                <div class="text-center mt-3 info-auth-p">
-                    <p>Don't have an account? <a href="{% url 'accounts:signup' %}">Sign up here</a></p>
-                </div>
             </div>
         </div>
     </div>

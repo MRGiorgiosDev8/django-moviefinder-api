@@ -30,9 +30,9 @@
 
 {% block content %}
     <div class="container mt-5 container-auth">
-        <h2 id="auth-h2" class="text-center sign-h2">Registration</h2>
         <div class="row justify-content-center">
             <div class="col-md-4 signup-container">
+                <h2 id="auth-h2" class="text-center sign-h2">Registration</h2>
                 <form id="signup-form" method="POST" enctype="multipart/form-data" class="p-4 shadow-sm form-auth-sign">
                     {% csrf_token %}
 
@@ -92,11 +92,8 @@
                         {% endif %}
                     </div>
                     <button type="submit" class="btn btn-auth w-100 mt-3">Go</button>
+                    <p class="text-center m-0 mt-4 p-0 info-p"> Already have an account? <a href="{% url 'accounts:login' %}">Login here</a></p>
                 </form>
-
-                <div class="text-center mt-3 info-auth-p">
-                    <p>Already have an account? <a href="{% url 'accounts:login' %}">Login here</a></p>
-                </div>
             </div>
         </div>
     </div>
