@@ -1236,7 +1236,7 @@ input[type="file"]::-webkit-file-upload-button {
     }
 
     .form-auth-sign {
-        /* scale: 0.88; */
+        scale: 0.90;
         margin-top: -4vh;
     }
 
