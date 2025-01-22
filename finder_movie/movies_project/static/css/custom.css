@@ -1181,6 +1181,7 @@ input[type="file"]::-webkit-file-upload-button {
         margin-left: 3px;
         scale: 0.96;
         background-color: #8fa856;
+        border-color: whitesmoke;
     }
 
     .navbar-toggler {
@@ -1344,7 +1345,7 @@ input[type="file"]::-webkit-file-upload-button {
     }
 
     input {
-        margin-bottom: 2vh;
+        margin-bottom: 3vh;
     }
 }
 
