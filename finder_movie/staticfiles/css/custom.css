@@ -309,17 +309,27 @@ main {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 1040;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
-.modal-backdrop::-webkit-scrollbar {
+body.modal-open {
+    overflow: hidden !important; 
+    padding-right: 0 !important; 
+}
+
+/* body.modal-backdrop ::-webkit-scrollbar {
+    width: 0 !important; 
+    height: 0 !important; 
+} */
+
+/* .modal-backdrop::-webkit-scrollbar {
     display: none;
 }
 
 .modal-backdrop {
     scrollbar-width: none; 
     -ms-overflow-style: none;
-}
+} */
 
 .carousel {
     width: 100%;
@@ -755,7 +765,7 @@ main {
     font-style: normal;
     font-size: 3.6em;
     color: #9caa76;
-    margin-bottom: 3px;
+    /* margin-bottom: 3px; */
     scale: 0.98;
     text-shadow:
         0.6px 0.6px 0px rgb(255, 255, 255),
@@ -767,7 +777,7 @@ main {
 .login-h2 {
     scale: 1.1;
     letter-spacing: 0.6px;
-    margin-bottom: 14px;
+    /* margin-bottom: 14px; */
 }
 
 .form-auth-sign,
@@ -779,7 +789,7 @@ main {
     border: 1px solid #969696;
 }
 
-.form-auth-sign {
+.signup-container {
     margin-bottom: 7vh;
 }
 
@@ -787,29 +797,20 @@ main {
     margin-top: -5vh;
 }
 
-.form-auth-sign,
-.info-auth-p {
+.login-container,
+.signup-container {
     position: fixed;
 }
 
-.login-page,
-.info-auth-p {
+.login-page {
     background-color: rgb(48, 48, 48);
 }
 
-.info-auth-p {
-    color: white;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.info-auth-p a {
+.info-p a {
     color: #66dbfb;
 }
 
-.form-auth,
-.info-auth-p {
+.info-p {
     font-family: "Play", sans-serif;
 }
 
@@ -1179,6 +1180,8 @@ input[type="file"]::-webkit-file-upload-button {
     .btn-custom {
         margin-left: 3px;
         scale: 0.96;
+        background-color: #8fa856;
+        border-color: whitesmoke;
     }
 
     .navbar-toggler {
@@ -1224,21 +1227,17 @@ input[type="file"]::-webkit-file-upload-button {
         background-color: white;
     }
 
-    .sign-h2 {
-        font-size: 3em;
-    }
-
-    .login-h2 {
-        font-size: 3.1em;
+    .sign-h2, .login-h2 {
+        font-size: 2.8em;
     }
 
     .form-auth-sign {
-        scale: 0.88;
+        scale: 0.90;
         margin-top: -4vh;
     }
 
     .form-auth-login {
-        scale: 1;
+        scale: 0.90;
     }
 
     body.login-page .navbar-toggler {
@@ -1318,7 +1317,7 @@ input[type="file"]::-webkit-file-upload-button {
     .btn-delete {
         text-align: center;
         margin-top: -11vh;
-        font-size: 1.5em;
+        font-size: 1.3em;
         transform: translateY(-3vh);
         padding-right: 13px;
         padding-left: 13px;
@@ -1340,6 +1339,10 @@ input[type="file"]::-webkit-file-upload-button {
     .logo-font {
         margin-left: 3px;
     }
+
+    input {
+        margin-bottom: 3vh;
+    }
 }
 
 /* @media (min-width: 1200px) {
@@ -1350,10 +1353,6 @@ input[type="file"]::-webkit-file-upload-button {
     .sign-h2 {
         position: fixed;
         right: 32%;
-    }
-
-    .info-auth-p {
-        margin-left: 3vh;
     }
 } */
 
@@ -1367,36 +1366,30 @@ input[type="file"]::-webkit-file-upload-button {
        position: fixed;
        right: 35%;
     }
-
-    .info-auth-p {
-        margin-left: 2vh;
-    }
 } */
 
 @media (min-height: 800px) and (max-height: 1000px) {
-    .form-auth-sign  {
+    .signup-container  {
         margin-top: 6vh;
     }
 
-    .login-h2 {
+    /* .login-h2 {
         margin-top: 14vh;
-    }
+    } */
 }
         
-       
-
 /* Для десктопных устроиств */
 @media (min-width: 1500px) {
     body {
-        zoom: 1.1;
+        zoom: 1.06;
     }
 
-    .form-auth-sign {
+    .signup-container {
         margin-top: 4vh;
     }
 
-    .sign-h2 {
+    /* .sign-h2 {
         position: fixed;
         right:36%;
-    }
+    } */
 }
