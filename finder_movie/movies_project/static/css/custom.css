@@ -82,7 +82,7 @@ a {
 
 .custom-navbar,
 .custom-footer  {
-    background-color: rgb(48, 48, 48);
+    background-color: black;
 }
 
 .custom-footer {
@@ -803,7 +803,7 @@ body.modal-open {
 }
 
 .login-page {
-    background-color: rgb(48, 48, 48);
+    background-color: black;
 }
 
 .info-p a {
